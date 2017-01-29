@@ -1,0 +1,35 @@
+<ion-view title="Canvas" id="page10">
+  <style>
+    .floatL {
+      float:left;
+    }
+    .floatR {
+      float:right;
+    }
+
+    .contentObjective {
+      margin-top: 150px;
+      margin-bottom: 100px;
+    }
+  </style>
+  <ion-nav-buttons side="right" class="has-header">
+    <button class="button icon ion-android-refresh" ng-click="reset()"></button>
+  </ion-nav-buttons>
+  <ion-content padding="true" class="has-header">
+    <h1 id="canvas-heading3" style="color:#000000;text-align:right;" class="floatR">0:59</h1>
+    <div id="canvas-markdown4" class="floatL show-list-numbers-and-dots">
+      <p style="color:#000000;">Level: 1/10{{level}}</p>
+      <p style="color:#000000;">Total score: {{score}}</p>
+      <p style="color:#000000;">Score: {{score}}</p>
+    </div>
+    <h1 id="canvas-heading2" style="color:#000000;text-align:center;" class="contentObjective">{{num1}} {{operation}} {{num2}}</h1>
+    <div id="canvas-button-bar6" class="button-bar">
+      <button id="canvas-button32" class="button button-positive  button-block" ng-click="checkResult(1)">{{option1}}</button>
+      <button id="canvas-button34" class="button button-positive  button-block" ng-click="checkResult(2)">{{option2}}</button>
+    </div>
+    <div id="canvas-button-bar7" class="button-bar">
+      <button id="canvas-button36" class="button button-positive  button-block" ng-click="checkResult(3)">{{option3}}</button>
+      <button id="canvas-button37" class="button button-positive  button-block" ng-click="checkResult(4)">{{option4}}</button>
+    </div>
+  </ion-content>
+</ion-view>
