@@ -16,6 +16,12 @@ angular.module('app.routes', [])
     abstract:true
   })
 
+  .state('selectLevel', {
+    url: '/pageSelectLevel',
+    templateUrl: 'templates/selectLevel.html',
+    controller: 'selectLevelCtrl'
+  })
+
   .state('canvas', {
     url: '/page2',
     templateUrl: 'templates/canvas.html',
