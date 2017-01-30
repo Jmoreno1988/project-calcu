@@ -1,17 +1,17 @@
 <ion-view title="Main Menu" id="page14">
   <style>
-  .width50 {
-    width: 48%;
-  }
-
-  .floatL {
-    float: left;
-  }
-
-  .floatR {
-    float: right;
-  }
-/*
+    .width50 {
+      width: 48%;
+    }
+    
+    .floatL {
+      float: left;
+    }
+    
+    .floatR {
+      float: right;
+    }
+    /*
   @-webkit-keyframes slideIn {
   0% {
     left: -100%;
@@ -40,21 +40,27 @@
   animation-duration: 750ms;
 }
 */
-
-.containerCircles {
-  text-align: center;
-  margin: 30px 0 40px 0;
-}
-
-.rotateY {
-  transform: rotateY(130deg);
-  transition: all 1s ease;
-}
-</style>
+    
+    .containerCircles {
+      text-align: center;
+      margin: 50px 0 10px 0;
+    }
+    
+    .rotateY {
+      transform: rotateY(130deg);
+      transition: all 1s ease;
+    }
+    .bar-header{
+          background-image: linear-gradient(0deg, #32408f, #32408f 50%, transparent 100%);
+    }
+  </style>
 
   <ion-nav-buttons side="right" class="has-header">
     <button class="button icon ion-android-settings"></button>
   </ion-nav-buttons>
+  <div id="subHeaderMainMenu" class="bar bar-subheader bar-balanced">
+    <h2 class="title">Math workout</h2>
+  </div>
   <ion-content padding="true" class="has-header">
     <div id="mainMenu-container4" class="creator-container containerCircles">
       <img width="48" height="48" src="img/circle1.png" class=""></img>
@@ -62,11 +68,10 @@
       <img width="48" height="48" src="img/circle3.png"></img>
       <img width="48" height="48" src="img/circle4.png"></img>
     </div>
-    <div class="list card" id="mainMenu-card21">
+
+    <div class="list card" id="mainMenu-card23">
       <ion-item class="item-icon-left positive" id="mainMenu-list-item3" ui-sref="canvas">
         <i class="icon ion-ios-play"></i>PLAY</ion-item>
-    </div>
-    <div class="list card" id="mainMenu-card23">
       <ion-item class="item-icon-left positive" id="mainMenu-list-item13">
         <i class="icon ion-arrow-graph-up-right"></i>High scores</ion-item>
       <ion-item class="item-icon-left positive" id="mainMenu-list-item4">
@@ -80,6 +85,6 @@
       <ion-item class="item-icon-left positive   " id="mainMenu-list-item22">
         <i class="icon ion-ios-game-controller-b"></i>More games</ion-item>
     </div>
-    <button id="mainMenu-button63" class="button button-royal  button-block button-clear">Exit</button>
+    <!--<button id="mainMenu-button63" class="button button-royal  button-block button-clear">Exit</button>-->
   </ion-content>
 </ion-view>
