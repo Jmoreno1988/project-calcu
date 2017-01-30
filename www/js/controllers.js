@@ -1,4 +1,4 @@
-angular.module('app.controllers', [])
+var appControllers = angular.module('app.controllers', [])
 
     .controller('menuCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
         // You can include any angular dependencies as parameters for this function
@@ -7,7 +7,7 @@ angular.module('app.controllers', [])
 
 
         }])
-
+/*
     .controller('canvasCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
         // You can include any angular dependencies as parameters for this function
         // TIP: Access Route Parameters for your page via $stateParams.parameterName
@@ -58,14 +58,15 @@ angular.module('app.controllers', [])
             }.bind(this)
 
         }])
-
+        */
+/*
     .controller('selectLevelCtrl', ['$scope', '$stateParams', 'sessionService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
         // You can include any angular dependencies as parameters for this function
         // TIP: Access Route Parameters for your page via $stateParams.parameterName
         function ($scope, $stateParams, sessionService) {
-            //console.log(sessionService.get("test"));
+            console.log(sessionService.get("test"));
         }])
-
+*/
     .controller('countdownCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
         // You can include any angular dependencies as parameters for this function
         // TIP: Access Route Parameters for your page via $stateParams.parameterName
