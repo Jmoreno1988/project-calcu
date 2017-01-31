@@ -1,50 +1,73 @@
-appControllers.controller('canvasCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-    // You can include any angular dependencies as parameters for this function
-    // TIP: Access Route Parameters for your page via $stateParams.parameterName
-    function ($scope, $stateParams) {
-        this.game = new Game();
+appControllers.controller('canvasCtrl', ['$scope', '$stateParams', 'bridgeService', '$timeout', '$state',
+    function ($scope, $stateParams, bridgeService, $timeout, $state) {
+        var level = bridgeService.data.selectLevel;
+
+        this.game = new Game(level);
         this.game.generateMove();
 
-        $scope.score = this.game.getScore();
-        $scope.num1 = this.game.getNum1();
-        $scope.num2 = this.game.getNum2();
-        $scope.operation = this.game.getOperation();
-        $scope.option1 = this.game.getOptions()[0];
-        $scope.option2 = this.game.getOptions()[1];
-        $scope.option3 = this.game.getOptions()[2];
-        $scope.option4 = this.game.getOptions()[3];
+        pullInfo(this.game);
 
         $scope.checkResult = function (option) {
             if (this.game.getOptions()[option - 1] === this.game.getResult()) {
+                countdown.add(5000);
                 this.game.setScore(this.game.getScore() + 1);
                 this.game.newRound();
                 this.game.generateMove();
 
-                $scope.score = this.game.getScore();
-                $scope.num1 = this.game.getNum1();
-                $scope.num2 = this.game.getNum2();
-                $scope.operation = this.game.getOperation();
-                $scope.option1 = this.game.getOptions()[0];
-                $scope.option2 = this.game.getOptions()[1];
-                $scope.option3 = this.game.getOptions()[2];
-                $scope.option4 = this.game.getOptions()[3];
+                pullInfo(this.game);
+            } else {
+                countdown.add(-3000);
+                this.game.setScore(this.game.getScore() + 1);
+                this.game.newRound();
+                this.game.generateMove();
+
+                pullInfo(this.game);
             }
 
         }.bind(this)
+
+        var isActiveController = true;
+        var countdown = new Countdown(3000);
+        countdown.init();
+
+        var timerUp = function () {
+            if (isActiveController && countdown.isActive) {
+                countdown.update();
+                $scope.time = countdown.getRest();
+                $timeout(timerUp, 100);
+            } else {
+                // Lanzamos otra pagina de results
+                $state.go("result", {});
+            }
+        }
+
+        var promise = $timeout(timerUp, 100);
+
+        $scope.$on('$destroy', function () {
+            isActiveController = false;
+            $timeout.cancel(promise);
+        });
+
 
         $scope.reset = function (option) {
             this.game.setScore(0);
             this.game.newRound();
             this.game.generateMove();
+            countdown.reset();
 
-            $scope.score = this.game.getScore();
-            $scope.num1 = this.game.getNum1();
-            $scope.num2 = this.game.getNum2();
-            $scope.operation = this.game.getOperation();
-            $scope.option1 = this.game.getOptions()[0];
-            $scope.option2 = this.game.getOptions()[1];
-            $scope.option3 = this.game.getOptions()[2];
-            $scope.option4 = this.game.getOptions()[3];
-        }.bind(this)
 
+            pullInfo(this.game);
+            var promise = $timeout(timerUp, 100);
+        }.bind(this);
+
+        function pullInfo(game) {
+            $scope.score = game.getScore();
+            $scope.num1 = game.getNum1();
+            $scope.num2 = game.getNum2();
+            $scope.operation = game.getOperation();
+            $scope.option1 = game.getOptions()[0];
+            $scope.option2 = game.getOptions()[1];
+            $scope.option3 = game.getOptions()[2];
+            $scope.option4 = game.getOptions()[3];
+        }
     }])

@@ -1,4 +1,4 @@
-<ion-view title="Main Menu" id="page14">
+<ion-view title="Menu" id="page14">
   <style>
     .width50 {
       width: 48%;
@@ -56,17 +56,17 @@
   </style>
 
   <ion-nav-buttons side="right" class="has-header">
-    <button class="button icon ion-android-settings"></button>
+    <button class="button icon ion-android-settings" ng-click="openSettings()"></button>
   </ion-nav-buttons>
   <div id="subHeaderMainMenu" class="bar bar-subheader bar-balanced">
     <h2 class="title">Math workout</h2>
   </div>
   <ion-content padding="true" class="has-header">
     <div id="mainMenu-container4" class="creator-container containerCircles">
-      <img width="48" height="48" src="img/circle1.png" class=""></img>
+      <img width="48" height="48" src="img/circle1.png"></img>
       <img width="48" height="48" src="img/circle2.png"></img>
       <img width="48" height="48" src="img/circle3.png"></img>
-      <img width="48" height="48" src="img/circle4.png"></img>
+      <img width="48" height="48" src="img/circle4.png"></img> 
     </div>
 
     <div class="list card" id="mainMenu-card23">
@@ -85,6 +85,5 @@
       <ion-item class="item-icon-left positive   " id="mainMenu-list-item22">
         <i class="icon ion-ios-game-controller-b"></i>More games</ion-item>
     </div>
-    <!--<button id="mainMenu-button63" class="button button-royal  button-block button-clear">Exit</button>-->
   </ion-content>
 </ion-view>

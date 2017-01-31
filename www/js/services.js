@@ -1,6 +1,6 @@
 angular.module('app.services', [])
 
-    
+
 
     .factory('sessionService', ['$http', function ($http) {
         return {
@@ -14,12 +14,15 @@ angular.module('app.services', [])
                 return localStorage.removeItem(key);
             },
 
-            greeter: function() {
+            greeter: function () {
                 alert("hello world!!!")
             }
         };
     }])
 
-    .service('BlankService', [function () {
-
+    .service('bridgeService', [function () {
+        return {
+            data: {
+            }
+        };
     }]);

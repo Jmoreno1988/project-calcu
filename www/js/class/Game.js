@@ -1,6 +1,7 @@
 Game.prototype.constructor = Game;
 
-function Game() {
+function Game(level) {
+    this.level = level;
     this.score = 0;
     this.typeOperation = Math.floor(Math.random() * 3);
     this.operation = "";
@@ -9,6 +10,7 @@ function Game() {
     this.result = null;
     this.options = [];
 }
+
 
 Game.prototype.newRound = function() {
     this.typeOperation = Math.floor(Math.random() * 3);

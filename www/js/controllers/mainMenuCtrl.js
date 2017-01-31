@@ -1,6 +1,6 @@
 appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSideMenuDelegate', 'sessionService',
     function ($scope, $stateParams, $ionicSideMenuDelegate, sessionService) {
-        $ionicSideMenuDelegate.canDragContent(false)
+        $ionicSideMenuDelegate.canDragContent(false);
 
 
         var isLocalStorage = sessionService.get("isLocalStorage");
@@ -52,5 +52,18 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
             sessionService.set("isLocalStorage", isLocalStorage);
             sessionService.set("progress", progress);
             sessionService.set("config", config);
+        }
+
+        $scope.openSettings = function () {
+            $ionicSideMenuDelegate.toggleLeft();
+        }
+
+        $scope.goTo = function (dir) {
+            console.log(321212)
+            switch (dir) {
+                case "otherApps":
+                    window.open('https://play.google.com/store/apps/developer?id=JMoreno', '_system');
+                    break;
+            }
         }
     }])
