@@ -12,6 +12,9 @@
       margin-top: 150px;
       margin-bottom: 100px;
     }
+
+    #canvas-operation {
+    }
   </style>
   <ion-nav-buttons side="right" class="has-header">
     <button class="button icon ion-android-refresh" ng-click="reset()"></button>
@@ -23,7 +26,7 @@
       <p style="color:#000000;">Total score: {{score}}</p>
       <p style="color:#000000;">Score: {{score}}</p>
     </div>
-    <h1 id="canvas-heading2" style="color:#000000;text-align:center;" class="contentObjective">{{num1}} {{operation}} {{num2}}</h1>
+    <h1 id="canvas-operation" style="color:#000000;text-align:center;" class="contentObjective">{{operation}}</h1>
     <div id="canvas-button-bar6" class="button-bar">
       <button id="canvas-button32" class="button button-positive  button-block" ng-click="checkResult(1)">{{option1}}</button>
       <button id="canvas-button34" class="button button-positive  button-block" ng-click="checkResult(2)">{{option2}}</button>

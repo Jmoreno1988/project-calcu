@@ -18,17 +18,17 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
                     normal: {
                         score: 0,
                         maxScore: 0,
-                        blocked: true
+                        blocked: false
                     },
                     hard: {
                         score: 0,
                         maxScore: 0,
-                        blocked: true
+                        blocked: false
                     },
                     master: {
                         score: 0,
                         maxScore: 0,
-                        blocked: true
+                        blocked: false
                     },
                     kids: {
                         score: 0,
