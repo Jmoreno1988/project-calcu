@@ -27,9 +27,9 @@ appControllers.controller('canvasCtrl', ['$scope', '$stateParams', 'bridgeServic
         }.bind(this)
 
         var isActiveController = true;
-        var countdown = new Countdown(3000);
+        var countdown = new Countdown(60000);
         countdown.init();
-
+/*
         var timerUp = function () {
             if (isActiveController && countdown.isActive) {
                 countdown.update();
@@ -47,7 +47,7 @@ appControllers.controller('canvasCtrl', ['$scope', '$stateParams', 'bridgeServic
             isActiveController = false;
             $timeout.cancel(promise);
         });
-
+*/
 
         $scope.reset = function (option) {
             this.game.setScore(0);
@@ -57,7 +57,7 @@ appControllers.controller('canvasCtrl', ['$scope', '$stateParams', 'bridgeServic
 
 
             pullInfo(this.game);
-            var promise = $timeout(timerUp, 100);
+            //var promise = $timeout(timerUp, 100);
         }.bind(this);
 
         function pullInfo(game) {
