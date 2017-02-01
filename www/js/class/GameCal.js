@@ -4,10 +4,6 @@ function GameCal(level, controller) {
     this.level = level;
     this.ctrl = controller;
     this.score = 0;
-    this.typeOperation = Math.floor(Math.random() * 3);
-    this.operation = "";
-    this.num1 = Math.floor(Math.random() * 18) + 2;
-    this.num2 = Math.floor(Math.random() * 18) + 2;
     this.result = null;
     this.options = [];
     this.unknown = null;

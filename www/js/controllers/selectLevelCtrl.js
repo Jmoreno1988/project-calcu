@@ -15,4 +15,11 @@ appControllers.controller('selectLevelCtrl', ['$scope', '$stateParams', '$state'
                 });
             }
         }
+
+        $scope.showPopup = function() {
+            var confirmPopup = $ionicPopup.alert({
+                    title: 'Work in progress',
+                    template: 'sorry...'
+                });
+        }
     }])
