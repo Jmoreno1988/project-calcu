@@ -16,10 +16,10 @@ appControllers.controller('selectLevelCtrl', ['$scope', '$stateParams', '$state'
             }
         }
 
-        $scope.showPopup = function() {
+        $scope.showPopup = function () {
             var confirmPopup = $ionicPopup.alert({
-                    title: 'Work in progress',
-                    template: 'sorry...'
-                });
+                title: 'Work in progress',
+                template: 'sorry...'
+            });
         }
     }])

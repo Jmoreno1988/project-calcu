@@ -1,8 +1,8 @@
-appControllers.controller('canvasCtrl', ['$scope', '$stateParams', 'bridgeService', '$timeout', '$state',
-    function ($scope, $stateParams, bridgeService, $timeout, $state) {
+appControllers.controller('canvasCtrl', ['$scope', '$stateParams', 'bridgeService', '$interval', '$state',
+    function ($scope, $stateParams, bridgeService, $interval, $state) {
         
         var level = bridgeService.data.selectLevel;
-        var game = new GameCal(level, $scope);
+        var game = new GameCal(level, $scope, $interval, $state);
 
         game.init(); // lets rock!
 
@@ -12,8 +12,6 @@ appControllers.controller('canvasCtrl', ['$scope', '$stateParams', 'bridgeServic
 
     /*
         var isActiveController = true;
-        var countdown = new Countdown(60000);
-        countdown.init();
 
 /*
         var timerUp = function () {
