@@ -11,7 +11,7 @@ function GameCal(difficulty, controller, $interval, $state) {
     this.result = null;
     this.options = [];
     this.unknown = null;
-    this.countdown = new Countdown(60000, controller, $interval);
+    this.countdown = new Countdown(5000, controller, $interval);
 }
 
 GameCal.prototype.init = function () {
@@ -109,6 +109,8 @@ GameCal.prototype.checkResult = function (option) {
 }
 
 GameCal.prototype.reset = function () {
+    this.level = 0;
+    this.countdown.init();
     this.score = 0;
     this.newRound();
     this.generateMove();

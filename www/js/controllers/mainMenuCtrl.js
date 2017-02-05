@@ -1,6 +1,6 @@
-appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSideMenuDelegate', 'sessionService',
-    function ($scope, $stateParams, $ionicSideMenuDelegate, sessionService) {
-        $ionicSideMenuDelegate.canDragContent(false);
+appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSideMenuDelegate', 'sessionService', '$http',
+    function ($scope, $stateParams, $ionicSideMenuDelegate, sessionService, $http) {
+       // $ionicSideMenuDelegate.canDragContent(false);
 
 
         var isLocalStorage = sessionService.get("isLocalStorage");
@@ -58,12 +58,28 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
             $ionicSideMenuDelegate.toggleLeft();
         }
 
-        $scope.goTo = function (dir) {
-            console.log(321212)
-            switch (dir) {
-                case "otherApps":
-                    window.open('https://play.google.com/store/apps/developer?id=JMoreno', '_system');
-                    break;
-            }
+        $scope.getScores = function () {
+            console.log("Pidiendo las clasificaciones...")
+            $http({
+                method: 'GET',
+                url: 'http://46.101.187.32:3000/getscore'
+            }).then(function successCallback(response) {
+                console.log("Respuesta recibida:")
+                console.log(response.data)
+            }, function errorCallback(response) {
+                console.log("Error:")
+                console.log(response)
+            });
         }
+        /*
+                $scope.test = function (dir) {
+                    console.log(123123123)
+                    // More games
+                    //window.open('https://play.google.com/store/apps/developer?id=JMoreno', '_system');
+        
+                    // Remove ADS
+        
+                    // Evaluate app 
+                }
+                */
     }])

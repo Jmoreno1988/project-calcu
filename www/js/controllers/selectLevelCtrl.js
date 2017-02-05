@@ -1,5 +1,5 @@
-appControllers.controller('selectLevelCtrl', ['$scope', '$stateParams', '$state', 'sessionService', '$ionicPopup', 'bridgeService',
-    function ($scope, $stateParams, $state, sessionService, $ionicPopup, bridgeService) {
+appControllers.controller('selectLevelCtrl', ['$scope', '$stateParams', '$state', 'sessionService', '$ionicPopup', 'bridgeService', '$ionicSideMenuDelegate',
+    function ($scope, $stateParams, $state, sessionService, $ionicPopup, bridgeService, $ionicSideMenuDelegate) {
         var mathCalcu = sessionService.get("progress").mathCalcu;
 
         //TODO: Poner los candados en funcion de si esta bloqueado
@@ -21,5 +21,9 @@ appControllers.controller('selectLevelCtrl', ['$scope', '$stateParams', '$state'
                 title: 'Work in progress',
                 template: 'sorry...'
             });
+        }
+
+        $scope.openSettings = function () {
+            $ionicSideMenuDelegate.toggleLeft();
         }
     }])

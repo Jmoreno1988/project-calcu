@@ -1,10 +1,15 @@
-<ion-view title="Result" id="page12">
+<ion-view hide-back-button="true" title="Result" id="page12">
+  <ion-nav-buttons side="left" class="has-header">
+    <button class="button icon ion-android-home" ui-sref="mainMenu"></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right" class="has-header">
+    <button class="button icon ion-navicon" ng-click="reset()" ui-sref="selectLevel"></button>
+  </ion-nav-buttons>
   <ion-content padding="true" class="has-header">
-    <h1 id="result-heading8" style="color:#000000;">Heading</h1>
+    <h1 id="result-heading8" style="color:#000000;">SUCCESS / TIME OUT</h1>
     <div id="result-markdown7" class="show-list-numbers-and-dots">
-      <p style="color:#000000;">Some friendly
-        <strong>markdown</strong>
-      </p>
+      Level: 10/10 <br>
+      Total Score: 340
     </div>
     <div id="result-button-bar9" class="button-bar">
       <button id="result-button44" class="button button-positive  button-block">1</button>
