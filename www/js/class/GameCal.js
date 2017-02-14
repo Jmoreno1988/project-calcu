@@ -1,6 +1,7 @@
 GameCal.prototype.constructor = GameCal;
 
-function GameCal(difficulty, controller, $interval, $state) {
+function GameCal(difficulty, controller, $interval, $state, $cordovaVibration) {
+    this.vibration = $cordovaVibration;
     this.difficulty = difficulty;
     this.level = 1;
     this.levelMax = 10;
@@ -11,14 +12,15 @@ function GameCal(difficulty, controller, $interval, $state) {
     this.result = null;
     this.options = [];
     this.unknown = null;
-    this.countdown = new Countdown(5000, controller, $interval);
+    this.timeVibration = 500;
+    //this.countdown = new Countdown(5000, controller, $interval);
 }
 
 GameCal.prototype.init = function () {
     this.generateMove();
-    this.countdown.fCallback = this.finish.bind(this);
-    this.countdown.sCallback = this.step.bind(this);
-    this.countdown.init();
+    //this.countdown.fCallback = this.finish.bind(this);
+    //this.countdown.sCallback = this.step.bind(this);
+    //this.countdown.init();
     this.pullInfo();
 }
 
@@ -80,6 +82,7 @@ GameCal.prototype.checkResult = function (option) {
                 this.pullInfo();
             }
         } else {
+            navigator.vibrate(this.timeVibration)
             this.score = 10;
             this.newRound();
             this.generateMove();
@@ -100,6 +103,7 @@ GameCal.prototype.checkResult = function (option) {
             this.pullInfo();
         }
     } else {
+        navigator.vibrate(this.timeVibration)
         this.score = 10;
         //countdown.add(-3000);
         this.newRound();
@@ -138,7 +142,7 @@ GameCal.prototype.pullInfo = function () {
     this.ctrl.option2 = this.options[1];
     this.ctrl.option3 = this.options[2];
     this.ctrl.option4 = this.options[3];
-    this.ctrl.time = this.countdown.getRest();
+    //this.ctrl.time = this.countdown.getRest();
 }
 
 GameCal.prototype.generateEasy = function () {

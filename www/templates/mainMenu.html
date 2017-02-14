@@ -50,44 +50,139 @@
       transform: rotateY(130deg);
       transition: all 1s ease;
     }
-    .bar-header{
-          background-image: linear-gradient(0deg, #32408f, #32408f 50%, transparent 100%);
+    
+    .bar-header {
+      background-image: linear-gradient(0deg, #32408f, #32408f 50%, transparent 100%);
+    }
+    
+    .buttonMenu {
+      width: 80px;
+      height: 80px;
+      background: #2196f3;
+      border-radius: 50%;
+      /*transition: all 0.3s cubic-bezier(.25,.8,.25,1);*/
+      color: white;
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+    
+    .buttonText {
+      text-align: center;
+      position: relative;
+      top: 50%;
+      -ms-transform: translateY(-50%);
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+
+    .buttonIcon {
+      text-align: center;
+      position: relative;
+      top: 50%;
+      -ms-transform: translateY(-50%);
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+      padding-top: 5px;
+    }
+
+    #buttonOptions{
+      width: 50px;
+      height: 50px;
+      -ms-transform: translate(-150%, 100%);
+      -webkit-transform: translate(-150%, 100%);
+      transform: translate(-150%, 100%);
+      border: 3px solid #448AFF;
+      background: white;
+    }
+
+    #buttonPlay{
+      width: 80px;
+      height: 80px;
+      -ms-transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+
+    #buttonShare{
+      width: 50px;
+      height: 50px;
+       -ms-transform: translate(50%, 100%);
+      -webkit-transform: translate(50%, 100%);
+      transform: translate(50%, 100%);
+      border: 3px solid #448AFF;
+      background: white;
+    }
+
+    #buttonScores{
+      width: 50px;
+      height: 50px;
+      -ms-transform: translate(125%, -50%);
+      -webkit-transform: translate(125%, -50%);
+      transform: translate(125%, -50%);
+      border: 3px solid #448AFF;
+      background: white;
+    }
+
+    #buttonEvaluate{
+      width: 50px;
+      height: 50px;
+      -ms-transform: translate(-225%, -50%);
+      -webkit-transform: translate(-225%, -50%);
+      transform: translate(-225%, -50%);
+      border: 3px solid #448AFF;
+      background: white;
+    }
+
+    #halo {
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      top: 50%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      border: 3px solid #448AFF;
     }
   </style>
 
   <ion-nav-buttons side="right" class="has-header">
     <button class="button icon ion-android-settings" ng-click="openSettings()"></button>
   </ion-nav-buttons>
-  <!-- 
-  <div id="subHeaderMainMenu" class="bar bar-subheader bar-balanced">
-    <h2 class="title">Math workout</h2>
-  </div>
-  -->
+
   <ion-content padding="true" class="has-header">
     <div id="mainMenu-container4" class="creator-container containerCircles">
       <img width="48" height="48" src="img/circle1.png"></img>
       <img width="48" height="48" src="img/circle2.png"></img>
       <img width="48" height="48" src="img/circle3.png"></img>
-      <img width="48" height="48" src="img/circle4.png"></img> 
+      <img width="48" height="48" src="img/circle4.png"></img>
+    </div>
+    
+    <div id="halo"></div>
+    <div class="buttonMenu" id="buttonPlay" ui-sref="selectLevel">
+      <div class="buttonText">PLAY</div>
     </div>
 
-    <div class="list card" id="mainMenu-card23">
-      <ion-item class="item-icon-left positive" id="mainMenu-list-item3" ui-sref="selectLevel" ng-click="test()">
-        <i class="icon ion-ios-play"></i>PLAY</ion-item>
-      <ion-item class="item-icon-left positive" id="mainMenu-list-item13" ng-click="getScores()">
-        <i class="icon ion-arrow-graph-up-right"></i>High scores</ion-item>
-      <ion-item class="item-icon-left positive" id="mainMenu-list-item4">
-        <i class="icon ion-help-buoy"></i>How to play</ion-item>
+    <div class="buttonMenu" id="buttonScores">
+      <div class="buttonIcon"><img src="img/trophy.svg" alt="" ng-click="showPopup()"></div>
     </div>
-    <!-- 
-    <div class="list card width50 floatL" id="mainMenu-card25">
-      <ion-item class="item-icon-left positive   " id="mainMenu-list-item18">
-        <i class="icon ion-ios-glasses"></i>About</ion-item>
+
+    <div class="buttonMenu" id="buttonEvaluate">
+      <div class="buttonIcon"><img src="img/heart.svg" alt="" ng-click="showPopup()"></div>
     </div>
-    <div class="list card width50 floatR" id="mainMenu-card26">
-      <ion-item class="item-icon-left positive   " id="mainMenu-list-item22">
-        <i class="icon ion-ios-game-controller-b"></i>More games</ion-item>
+
+    <div class="buttonMenu" id="buttonOptions" ng-click="openSettings()">
+      <div class="buttonIcon"><img src="img/settings.svg" alt=""></div>
     </div>
-    -->
+
+    <div class="buttonMenu" id="buttonShare">
+      <div class="buttonIcon"><img src="img/share.svg" alt="" ng-click="showPopup()"></div>
+    </div>
   </ion-content>
 </ion-view>

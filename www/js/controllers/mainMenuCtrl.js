@@ -1,5 +1,5 @@
-appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSideMenuDelegate', 'sessionService', '$http',
-    function ($scope, $stateParams, $ionicSideMenuDelegate, sessionService, $http) {
+appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSideMenuDelegate', 'sessionService', '$http', '$ionicPopup',
+    function ($scope, $stateParams, $ionicSideMenuDelegate, sessionService, $http, $ionicPopup) {
        // $ionicSideMenuDelegate.canDragContent(false);
 
 
@@ -71,15 +71,11 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
                 console.log(response)
             });
         }
-        /*
-                $scope.test = function (dir) {
-                    console.log(123123123)
-                    // More games
-                    //window.open('https://play.google.com/store/apps/developer?id=JMoreno', '_system');
-        
-                    // Remove ADS
-        
-                    // Evaluate app 
-                }
-                */
+
+        $scope.showPopup = function () {
+            var confirmPopup = $ionicPopup.alert({
+                title: 'Work in progress',
+                template: 'Estara listo en la versión final del juego ;)'
+            });
+        }
     }])
