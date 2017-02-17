@@ -9,8 +9,33 @@
     }
     
     .contentObjective {
-      margin-top: 150px;
-      margin-bottom: 100px;
+    }
+
+    .red {
+      color: tomato;
+    }
+    
+    #content1 {
+      width: 100%;
+      height: 20%;
+      border-bottom: 1px solid #D8D8D8;
+    }
+    
+    #content2 {
+      width: 100%;
+      height: 30%;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      flex-direction: column;
+    }
+    
+    #content3 {
+      width: 100%;
+      height: 50%;
+      border-top: 1px solid #D8D8D8;
+      padding-top: 30px; 
     }
   </style>
   <ion-nav-buttons side="right" class="has-header">
@@ -18,19 +43,25 @@
   </ion-nav-buttons>
   <ion-content padding="true" class="has-header">
     <h1 id="canvas-heading3" style="color:#000000;text-align:right;" class="floatR">{{time}}</h1>
-    <div id="canvas-markdown4" class="floatL show-list-numbers-and-dots">
-      <p style="color:#000000;">Level: {{level}}/{{levelMax}}</p>
-      <p style="color:#000000;">Total score: {{totalScore}}</p>
-      <p style="color:#000000;">Score: {{score}}</p>
+    <div id="content1">
+      <div id="canvas-markdown4" class="floatL show-list-numbers-and-dots">
+        <p style="color:#000000;">Level: {{level}}/{{levelMax}}</p>
+        <p style="color:#000000;">Total score: {{totalScore}}</p>
+        <p style="color:#000000;">Score: {{score}}</p>
+      </div>
     </div>
-    <h1 id="canvas-operation" style="color:#000000;text-align:center;" class="contentObjective">{{operation}}</h1>
-    <div id="canvas-button-bar6" class="button-bar">
-      <button id="canvas-button32" class="button button-positive  button-block" ng-click="checkResult(1)">{{option1}}</button>
-      <button id="canvas-button34" class="button button-positive  button-block" ng-click="checkResult(2)">{{option2}}</button>
+    <div id="content2">
+      <h1 id="canvas-operation" class="contentObjective">{{operation}}</h1>
     </div>
-    <div id="canvas-button-bar7" class="button-bar">
-      <button id="canvas-button36" class="button button-positive  button-block" ng-click="checkResult(3)">{{option3}}</button>
-      <button id="canvas-button37" class="button button-positive  button-block" ng-click="checkResult(4)">{{option4}}</button>
+    <div id="content3">
+      <div id="canvas-button-bar6" class="button-bar">
+        <button id="canvas-button32" class="button button-positive  button-block" ng-click="checkResult(1)">{{option1}}</button>
+        <button id="canvas-button34" class="button button-positive  button-block" ng-click="checkResult(2)">{{option2}}</button>
+      </div>
+      <div id="canvas-button-bar7" class="button-bar">
+        <button id="canvas-button36" class="button button-positive  button-block" ng-click="checkResult(3)">{{option3}}</button>
+        <button id="canvas-button37" class="button button-positive  button-block" ng-click="checkResult(4)">{{option4}}</button>
+      </div>
     </div>
   </ion-content>
 </ion-view>
