@@ -1,4 +1,4 @@
-Countdown.prototype.construcotr = Countdown;
+Countdown.prototype.constructor = Countdown;
 
 function Countdown(limitTime, controller, $interval) {
     this.$interval = $interval;

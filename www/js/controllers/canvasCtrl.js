@@ -2,7 +2,7 @@ appControllers.controller('canvasCtrl', ['$scope', '$stateParams', 'bridgeServic
     function ($scope, $stateParams, bridgeService, $interval, $state) {
         
         var level = bridgeService.data.selectLevel;
-        var game = new GameCal(level, $scope, $interval, $state);
+        var game = new GameCal(level, $scope, $state, $interval);
 
         game.init(); // lets rock!
 

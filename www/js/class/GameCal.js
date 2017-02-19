@@ -1,6 +1,6 @@
 GameCal.prototype.constructor = GameCal;
 
-function GameCal(difficulty, controller, $interval, $state, $cordovaVibration) {
+function GameCal(difficulty, controller, $state, $interval, $cordovaVibration) {
     this.vibration = $cordovaVibration;
     this.difficulty = difficulty;
     this.level = 1;
@@ -13,14 +13,14 @@ function GameCal(difficulty, controller, $interval, $state, $cordovaVibration) {
     this.options = [];
     this.unknown = null;
     this.timeVibration = 500;
-    //this.countdown = new Countdown(5000, controller, $interval);
+    this.countdown = new Countdown(60000, controller, $interval);
 }
 
 GameCal.prototype.init = function () {
     this.generateMove();
-    //this.countdown.fCallback = this.finish.bind(this);
-    //this.countdown.sCallback = this.step.bind(this);
-    //this.countdown.init();
+    this.countdown.fCallback = this.finish.bind(this);
+    this.countdown.sCallback = this.step.bind(this);
+    this.countdown.init();
     this.pullInfo();
 }
 
