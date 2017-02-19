@@ -8,25 +8,25 @@ function GameCal(difficulty, controller, $state, $interval, $cordovaVibration) {
     this.ctrl = controller;
     this.$state = $state;
     this.totalScore = 0;
-    this.score = 10;
+    this.score = 1000;
     this.result = null;
     this.options = [];
     this.unknown = null;
     this.timeVibration = 500;
-    this.countdown = new Countdown(60000, controller, $interval);
+    this.timer = new Timer(controller, $interval);
 }
 
 GameCal.prototype.init = function () {
     this.generateMove();
-    this.countdown.fCallback = this.finish.bind(this);
-    this.countdown.sCallback = this.step.bind(this);
-    this.countdown.init();
+    this.timer.fCallback = this.finish.bind(this);
+    this.timer.sCallback = this.step.bind(this);
+    this.timer.init();
     this.pullInfo();
 }
 
 GameCal.prototype.step = function () {
-    if (this.score > 3) {
-        this.score--;
+    if (this.score > 20) {
+        this.score -= 10;
         this.pullInfo();
     }
 }
@@ -72,7 +72,7 @@ GameCal.prototype.checkResult = function (option) {
     if (this.difficulty == "master") {
         if (this.options[option - 1] === this.unknown) {
             this.totalScore += this.score;
-            this.score = 10;
+            this.score = 1000;
             this.level++;
             if (this.level >= this.levelMax) {
                 this.finish();
@@ -83,7 +83,7 @@ GameCal.prototype.checkResult = function (option) {
             }
         } else {
             navigator.vibrate(this.timeVibration)
-            this.score = 10;
+            this.score = 1000;
             this.newRound();
             this.generateMove();
             this.pullInfo();
@@ -93,7 +93,7 @@ GameCal.prototype.checkResult = function (option) {
     if (this.options[option - 1] === this.result) {
         //countdown.add(5000);
         this.totalScore += this.score;
-        this.score = 10;
+        this.score = 1000;
         this.level++;
         if (this.level >= this.levelMax) {
             this.finish();
@@ -104,7 +104,7 @@ GameCal.prototype.checkResult = function (option) {
         }
     } else {
         navigator.vibrate(this.timeVibration)
-        this.score = 10;
+        this.score = 1000;
         //countdown.add(-3000);
         this.newRound();
         this.generateMove();
@@ -114,7 +114,7 @@ GameCal.prototype.checkResult = function (option) {
 
 GameCal.prototype.reset = function () {
     this.level = 0;
-    this.countdown.init();
+    this.timer.init();
     this.score = 0;
     this.newRound();
     this.generateMove();
@@ -142,7 +142,7 @@ GameCal.prototype.pullInfo = function () {
     this.ctrl.option2 = this.options[1];
     this.ctrl.option3 = this.options[2];
     this.ctrl.option4 = this.options[3];
-    //this.ctrl.time = this.countdown.getRest();
+    this.ctrl.time = this.timer.getTime();
 }
 
 GameCal.prototype.generateEasy = function () {
