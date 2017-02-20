@@ -1,0 +1,27 @@
+// Base de datos
+================
+CREATE DATABASE brain-android-app;
+
+
+
+// Tabla Users
+==============
+CREATE TABLE Users (
+    id int NOT NULL AUTO_INCREMENT,
+    nick varchar(255) NOT NULL,
+    createdAt DATETIME,
+    updatedAt DATETIME,
+    PRIMARY KEY(id)
+)
+
+
+// Tabla Records_Calcu
+CREATE TABLE Records_Calcu (
+    id int NOT NULL AUTO_INCREMENT,
+    idUser int NOT NULL,
+    record int NOT NULL
+    PRIMARY KEY(id)
+)
+
+
+
