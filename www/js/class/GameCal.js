@@ -1,18 +1,20 @@
 GameCal.prototype.constructor = GameCal;
 
-function GameCal(difficulty, controller, $state, $interval, $cordovaVibration) {
+function GameCal(difficulty, controller, $state, $interval, sessionService, $cordovaVibration) {
     this.vibration = $cordovaVibration;
     this.difficulty = difficulty;
+    this.sessionService = sessionService;
     this.level = 1;
     this.levelMax = 10;
     this.ctrl = controller;
     this.$state = $state;
     this.totalScore = 0;
+    this.listScores = [];
     this.score = 1000;
     this.result = null;
     this.options = [];
     this.unknown = null;
-    this.timeVibration = 500;
+    this.timeVibration = 250;
     this.timer = new Timer(controller, $interval);
 }
 
@@ -32,6 +34,7 @@ GameCal.prototype.step = function () {
 }
 
 GameCal.prototype.finish = function () {
+    this.sessionService.set("listScore", this.listScores);
     this.$state.go("result", {});
 }
 
@@ -71,6 +74,7 @@ GameCal.prototype.generateMove = function () {
 GameCal.prototype.checkResult = function (option) {
     if (this.difficulty == "master") {
         if (this.options[option - 1] === this.unknown) {
+            this.listScores.push(this.score);
             this.totalScore += this.score;
             this.score = 1000;
             this.level++;
@@ -91,7 +95,7 @@ GameCal.prototype.checkResult = function (option) {
     }
 
     if (this.options[option - 1] === this.result) {
-        //countdown.add(5000);
+        this.listScores.push(this.score);
         this.totalScore += this.score;
         this.score = 1000;
         this.level++;
@@ -105,7 +109,6 @@ GameCal.prototype.checkResult = function (option) {
     } else {
         navigator.vibrate(this.timeVibration)
         this.score = 1000;
-        //countdown.add(-3000);
         this.newRound();
         this.generateMove();
         this.pullInfo();

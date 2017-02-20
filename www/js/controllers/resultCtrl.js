@@ -1,7 +1,28 @@
-appControllers.controller('resultCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-        // You can include any angular dependencies as parameters for this function
-        // TIP: Access Route Parameters for your page via $stateParams.parameterName
-        function ($scope, $stateParams) {
+appControllers.controller('resultCtrl', ['$scope', '$stateParams', 'sessionService',
+        function ($scope, $stateParams, sessionService) {
+                var listScores = sessionService.get("listScore");
+                
+                var points = [];
+                for(var i = 0; i < listScores.length; i++) 
+                        points.push([i, listScores[i]]);
 
+                points.unshift(["", 'Puntuación de la partida']);
+
+                google.charts.load('current', { 'packages': ['corechart'] });
+                google.charts.setOnLoadCallback(drawChart);
+
+                function drawChart() {
+                        var data = google.visualization.arrayToDataTable(points);
+
+                        var options = {
+                                title: 'Rendimiento',
+                                curveType: 'function',
+                                legend: { position: 'bottom' }
+                        };
+
+                        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+                        chart.draw(data, options);
+                }
 
         }])
