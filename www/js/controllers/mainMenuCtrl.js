@@ -2,6 +2,20 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
     function ($scope, $stateParams, $ionicSideMenuDelegate, sessionService, $http, $ionicPopup) {
        // $ionicSideMenuDelegate.canDragContent(false);
 
+       /*
+       if(cfg.resetLocalStorage)
+        sessionService.clear();
+
+        var isLocalStorage = sessionService.get("isLocalStorage");
+
+        if(!isLocalStorage) {
+            sessionService.set("isLocalStorage", isLocalStorage);
+            sessionService.set("progress", cfg.progress);
+            sessionService.set("config", cfg.config);
+        }
+
+       */
+
 
         var isLocalStorage = sessionService.get("isLocalStorage");
 
@@ -63,7 +77,7 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
             $http({
                 method: 'GET',
                 //url: 'http://46.101.187.32:3000/getscore'
-                url: 'http://localhost:3000/getscore'
+                url: cfg.urlServer + 'getscore'
             }).then(function successCallback(response) {
                 console.log("Respuesta recibida:")
                 console.log(response.data)

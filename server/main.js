@@ -4,20 +4,20 @@ var http = require('http');
 var url = require('url');
 var Sequelize = require('sequelize');
 var port = 3000;
-vm.runInThisContext(fs.readFileSync(__dirname + '/cfg.js'));
 
-for (var i = 0; i < cfg.localDependencies.length; i++)
-    vm.runInThisContext(fs.readFileSync(__dirname + cfg.localDependencies[i]));
+// Carga de dependecias
+vm.runInThisContext(fs.readFileSync(__dirname + '/cfg.js'));
+cfg.localDependencies.forEach(function(a) {
+    vm.runInThisContext(fs.readFileSync(__dirname + a));
+});
+// Fin Carga de dependecias
 
 var sq = new Sequelize(cfg.chainConnection.developmentWork);
-
 var modelUsers = new ModelUsers('Users', sq, Sequelize);
 var modelRecordsNormal = new ModelRecordsCalcu('records_calcu', sq, Sequelize);
-/*
-modelUsers.getModel().findOne({ where: { id: 1 } }).then(function (user) {
-    console.log(user)
-}.bind(this));
-*/
+
+
+
 /**
  * Estructura de datos para las puntuaciones
  * 
@@ -26,7 +26,6 @@ modelUsers.getModel().findOne({ where: { id: 1 } }).then(function (user) {
  *    2      Denis       7900       Male     2017/02/23
  *    3      Inma        6900       Male     2017/02/23
  */
-
 
 http.createServer(function (request, response) {
     var path = url.parse(request.url).pathname;
@@ -41,7 +40,6 @@ http.createServer(function (request, response) {
             modelRecordsNormal.getModel().findAll({  }).then(function (records) {
                 response.end(JSON.stringify(records));
             }.bind(this));
-            //response.end("pablo: 3000");
             break;
     }
 

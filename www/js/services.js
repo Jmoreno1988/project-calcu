@@ -14,6 +14,10 @@ angular.module('app.services', [])
                 return localStorage.removeItem(key);
             },
 
+            clear: function() {
+                return localStorage.clear();
+            },
+
             greeter: function () {
                 alert("hello world!!!")
             }
