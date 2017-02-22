@@ -1,7 +1,5 @@
 angular.module('app.services', [])
-
-
-
+    // Permite el acceso al localStorage
     .factory('sessionService', ['$http', function ($http) {
         return {
             set: function (key, value) {
@@ -19,11 +17,18 @@ angular.module('app.services', [])
             },
 
             greeter: function () {
-                alert("hello world!!!")
+                alert("Hello world!!!")
+            },
+
+            exist: function(key) {
+                if(localStorage.getItem(key))
+                    return true;
+                return false;
             }
         };
     }])
 
+    // Util para pasar datos entre controladores
     .service('bridgeService', [function () {
         return {
             data: {

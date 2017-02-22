@@ -2,71 +2,19 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
     function ($scope, $stateParams, $ionicSideMenuDelegate, sessionService, $http, $ionicPopup) {
        // $ionicSideMenuDelegate.canDragContent(false);
 
-       /*
-       if(cfg.resetLocalStorage)
-        sessionService.clear();
+       if(cfg.resetLocalStorage) 
+            sessionService.clear();
+       
 
-        var isLocalStorage = sessionService.get("isLocalStorage");
-
-        if(!isLocalStorage) {
-            sessionService.set("isLocalStorage", isLocalStorage);
-            sessionService.set("progress", cfg.progress);
+        if(!sessionService.exist("isLocalStorage")) {
+            console.log("Reinicio localStorage")
+            sessionService.set("isLocalStorage", true);
+            sessionService.set("progressMathCalcu", cfg.modelObjectLocalStorage.progress.mathCalcu);
             sessionService.set("config", cfg.config);
         }
 
-       */
-
-
-        var isLocalStorage = sessionService.get("isLocalStorage");
-
-        if (!isLocalStorage) {
-            var isLocalStorage = true;
-
-            var progress = {
-                mathCalcu: {
-                    easy: {
-                        score: 0,
-                        maxScore: 0,
-                        blocked: false
-                    },
-                    normal: {
-                        score: 0,
-                        maxScore: 0,
-                        blocked: false
-                    },
-                    hard: {
-                        score: 0,
-                        maxScore: 0,
-                        blocked: false
-                    },
-                    master: {
-                        score: 0,
-                        maxScore: 0,
-                        blocked: false
-                    },
-                    kids: {
-                        score: 0,
-                        maxScore: 0,
-                        blocked: false
-                    },
-                    survival: {
-                        score: 0,
-                        maxScore: 0,
-                        blocked: false
-                    }
-                }
-            }
-
-            var config = {
-                isSound: false,
-                isEvaluate: false,
-                lenguage: "en"
-            }
-
-            sessionService.set("isLocalStorage", isLocalStorage);
-            sessionService.set("progress", progress);
-            sessionService.set("config", config);
-        }
+        //console.log("Existe localStorage = " + sessionService.exist("isLocalStorage"))
+        //console.log(sessionService.get("progressMathCalcu"))
 
         $scope.openSettings = function () {
             $ionicSideMenuDelegate.toggleLeft();

@@ -1,6 +1,7 @@
 var cfg = {
     // Caution !!!
     resetLocalStorage: false,
+    isForPaymentVersion: false,
 
     // Url del servidor
     urlServer: "http://localhost:3000/",
@@ -11,32 +12,32 @@ var cfg = {
         progress: {
             mathCalcu: {
                 easy: {
-                    score: 0,
+                    lastScore: 0,
                     maxScore: 0,
                     blocked: false
                 },
                 normal: {
-                    score: 0,
+                    lastScore: 0,
                     maxScore: 0,
                     blocked: false
                 },
                 hard: {
-                    score: 0,
+                    lastScore: 0,
                     maxScore: 0,
                     blocked: false
                 },
                 master: {
-                    score: 0,
+                    lastScore: 0,
                     maxScore: 0,
                     blocked: false
                 },
                 kids: {
-                    score: 0,
+                    lastScore: 0,
                     maxScore: 0,
                     blocked: false
                 },
                 survival: {
-                    score: 0,
+                    lastScore: 0,
                     maxScore: 0,
                     blocked: false
                 }
@@ -46,7 +47,7 @@ var cfg = {
         config: {
             isSound: false,
             isEvaluate: false,
-            isVibra: true,
+            isVibration: true,
             lenguage: "en"
         }
     }

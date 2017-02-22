@@ -1,18 +1,20 @@
-appControllers.controller('resultCtrl', ['$scope', '$stateParams', 'sessionService',
-        function ($scope, $stateParams, sessionService) {
-                var listScores = sessionService.get("listScore");
+appControllers.controller('resultCtrl', ['$scope', '$stateParams', 'bridgeService',
+        function ($scope, $stateParams, bridgeService) {
+                var listScores = bridgeService.data.listScore;
                 var totalScore = listScores.reduce(function(a, b) { return a + b; }, 0);
-                var timeTotal = sessionService.get("timeCal");
-                var level = sessionService.get("levelCal");
-                var levelWin = sessionService.get("levelCalWin");                
+                var timeTotal = bridgeService.data.timeCal;
+                var level = bridgeService.data.levelCal;
+                var selectLevel = bridgeService.data.selectLevel;
+                var levelWin = bridgeService.data.levelCalWin;                
                 var isWin = level >= levelWin ? true : false;
-                var msgResult = isWin ? "You win!!" : "You lose...";
+                var msgResult = isWin ? "You win!!" : "You lose";
 
                 $scope.isWin = msgResult;
                 $scope.level = level;
                 $scope.levelWin = levelWin;
                 $scope.timeTotal = timeTotal;
                 $scope.totalScore = totalScore;
+                $scope.selectLevel = selectLevel;
 
                 // Graficos
                 var points = [];

@@ -1,8 +1,9 @@
 GameCal.prototype.constructor = GameCal;
 
-function GameCal(difficulty, controller, $state, $interval, sessionService, $cordovaVibration) {
+function GameCal(difficulty, controller, $state, $interval, bridgeService, sessionService, $cordovaVibration) {
     this.vibration = $cordovaVibration;
     this.difficulty = difficulty;
+    this.bridgeService = bridgeService;
     this.sessionService = sessionService;
     this.level = 1;
     this.levelMax = 10;
@@ -34,10 +35,27 @@ GameCal.prototype.step = function () {
 }
 
 GameCal.prototype.finish = function () {
-    this.sessionService.set("listScore", this.listScores);
-    this.sessionService.set("timeCal", this.timer.getTime());
-    this.sessionService.set("levelCal", this.level);
-    this.sessionService.set("levelCalWin", this.levelMax);
+    this.bridgeService.data.listScore = this.listScores;
+    this.bridgeService.data.timeCal = this.timer.getTime();
+    this.bridgeService.data.levelCal = this.level;
+    this.bridgeService.data.levelCalWin = this.levelMax;
+
+    var selectLevel = this.bridgeService.data.selectLevel;
+    
+    console.log(this.sessionService.get("progressMathCalcu")[selectLevel].maxScore)
+
+    var aux2 = this.sessionService.get("progressMathCalcu");
+    aux2[selectLevel].lastScore = this.totalScore;
+    this.sessionService.set("progressMathCalcu", aux2);
+    
+    if(this.totalScore > this.sessionService.get("progressMathCalcu")[selectLevel].maxScore) {
+        var aux = this.sessionService.get("progressMathCalcu");
+        aux[selectLevel].maxScore = this.totalScore;
+        this.sessionService.set("progressMathCalcu", aux);
+    }
+
+    
+
     this.$state.go("result", {});
 }
 

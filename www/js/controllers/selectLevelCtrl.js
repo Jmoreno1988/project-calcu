@@ -1,8 +1,9 @@
 appControllers.controller('selectLevelCtrl', ['$scope', '$stateParams', '$state', 'sessionService', '$ionicPopup', 'bridgeService', '$ionicSideMenuDelegate',
     function ($scope, $stateParams, $state, sessionService, $ionicPopup, bridgeService, $ionicSideMenuDelegate) {
-        var mathCalcu = sessionService.get("progress").mathCalcu;
+        var mathCalcu = sessionService.get("progressMathCalcu");
 
-        //TODO: Poner los candados en funcion de si esta bloqueado
+        $scope.recordEasy = mathCalcu.easy.maxScore;
+        $scope.lastScoreEasy = mathCalcu.easy.lastScore;
 
         $scope.selectLevel = function (level) {
             if (!mathCalcu[level].blocked) {
