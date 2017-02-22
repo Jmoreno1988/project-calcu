@@ -1,5 +1,5 @@
-appControllers.controller('resultCtrl', ['$scope', '$stateParams', 'bridgeService',
-        function ($scope, $stateParams, bridgeService) {
+appControllers.controller('resultCtrl', ['$scope', '$stateParams', 'bridgeService', '$ionicSideMenuDelegate',
+        function ($scope, $stateParams, bridgeService, $ionicSideMenuDelegate) {
                 var listScores = bridgeService.data.listScore;
                 var totalScore = listScores.reduce(function(a, b) { return a + b; }, 0);
                 var timeTotal = bridgeService.data.timeCal;
@@ -15,6 +15,8 @@ appControllers.controller('resultCtrl', ['$scope', '$stateParams', 'bridgeServic
                 $scope.timeTotal = timeTotal;
                 $scope.totalScore = totalScore;
                 $scope.selectLevel = selectLevel;
+
+                $scope.openSettings = function () { $ionicSideMenuDelegate.toggleLeft() }
 
                 // Graficos
                 var points = [];
@@ -39,4 +41,5 @@ appControllers.controller('resultCtrl', ['$scope', '$stateParams', 'bridgeServic
 
                         chart.draw(data, options);
                 }
+
         }])

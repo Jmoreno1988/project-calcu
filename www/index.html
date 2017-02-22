@@ -98,14 +98,13 @@
                 </ion-nav-bar>
                 <ion-nav-view></ion-nav-view>
             </ion-side-menu-content>
-            <ion-side-menu side="left" id="side-menu21" >
+            <ion-side-menu side="left" id="side-menu21">
                 <ion-header-bar class="bar-stable">
                     <div class="title">Options</div>
                 </ion-header-bar>
                 <ion-content ng-controller="menuCtrl" padding="false" class="side-menu-left has-header ">
                     <ion-list>
-                        <ion-toggle toggle-class="toggle-balanced">Sound</ion-toggle>
-                        <ion-toggle toggle-class="toggle-balanced">Vibration</ion-toggle>
+                        <!--<ion-toggle toggle-class="toggle-balanced">Sound</ion-toggle>-->
                         <label class="item item-input item-select">
                             <div class="input-label"> Language </div>
                             <select>
@@ -113,8 +112,9 @@
                                 <option selected>English</option>
                                 <option>Esperanto</option>
                             </select>
-                            </label>
-                        <ion-item ng-click="goTo('removeAds')"> 
+                        </label>
+                        <ion-toggle toggle-class="toggle-balanced">Vibration</ion-toggle>
+                        <ion-item ng-click="goTo('removeAds')">
                             Remove ADS
                         </ion-item>
                         <ion-item ng-click="goTo('otherApps')">

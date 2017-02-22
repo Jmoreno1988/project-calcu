@@ -4,13 +4,13 @@
       text-align: center;
     }
   </style>
-
+  <!--
   <ion-nav-buttons side="left" class="has-header">
     <button class="button icon ion-android-home" ui-sref="mainMenu"></button>
   </ion-nav-buttons>
-
+-->
   <ion-nav-buttons side="right" class="has-header">
-    <button class="button icon ion-navicon" ng-click="reset()" ui-sref="selectLevel"></button>
+    <button class="button icon ion-android-settings" ng-click="openSettings()"></button>
   </ion-nav-buttons>
 
   <ion-content padding="true" class="has-header">
@@ -22,12 +22,17 @@
 
     <div id="curve_chart" style="width: 100%; height: 250px"></div>
 
-    <div id="result-button-bar9" class="button-bar">
-      <button id="result-button44" class="button  button-block button-positive" ui-sref="mainMenu">HOME</button>
-      <button id="result-button45" class="button  button-block button-positive" ui-sref="canvas">RETRY</button>
-      <button id="result-button46" class="button   button-block button-positive" ui-sref="selectLevel">LIST</button>
+    <div class="tabs tabs-icon-top">
+      <a class="tab-item">
+        <i class="icon ion-planet"></i> Home
+      </a>
+      <a class="tab-item">
+        <i class="icon ion-refresh"></i> RETRY
+      </a>
+      <a class="tab-item">
+        <i class="icon ion-speedometer"></i> LIST LEVELS
+      </a>
     </div>
-
   </ion-content>
 
 
