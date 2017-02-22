@@ -4,7 +4,7 @@ appControllers.controller('canvasCtrl', ['$scope', '$stateParams', 'bridgeServic
         var level = bridgeService.data.selectLevel;
         var game = new GameCal(level, $scope, $state, $interval, sessionService);
 
-        game.init(); // lets rock!
+        game.init(); // lets rock!!!
 
         // Binding events
         $scope.checkResult = function(option) { game.checkResult(option) };

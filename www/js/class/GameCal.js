@@ -35,6 +35,9 @@ GameCal.prototype.step = function () {
 
 GameCal.prototype.finish = function () {
     this.sessionService.set("listScore", this.listScores);
+    this.sessionService.set("timeCal", this.timer.getTime());
+    this.sessionService.set("levelCal", this.level);
+    this.sessionService.set("levelCalWin", this.levelMax);
     this.$state.go("result", {});
 }
 
