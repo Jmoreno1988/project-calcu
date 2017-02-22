@@ -7,6 +7,7 @@ var cfg = {
 
 	localDependencies: [
 		"/models/ModelUsers.js",
+		"/models/ModelRecordsCalcu.js",
 		/*
 		"/cfg.js",
 		"/models/ModelGames.js",

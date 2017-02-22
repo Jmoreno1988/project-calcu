@@ -62,7 +62,8 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
             console.log("Pidiendo las clasificaciones...")
             $http({
                 method: 'GET',
-                url: 'http://46.101.187.32:3000/getscore'
+                //url: 'http://46.101.187.32:3000/getscore'
+                url: 'http://localhost:3000/getscore'
             }).then(function successCallback(response) {
                 console.log("Respuesta recibida:")
                 console.log(response.data)

@@ -2,6 +2,8 @@
 ================
 CREATE DATABASE brain-android-app;
 
+DROP TABLE 
+
 
 
 // Tabla Users
@@ -16,12 +18,19 @@ CREATE TABLE Users (
 
 
 // Tabla Records_Calcu
+======================
 CREATE TABLE Records_Calcu (
     id int NOT NULL AUTO_INCREMENT,
     idUser int NOT NULL,
-    record int NOT NULL
+    nick varchar(255) NOT NULL,
+    record int NOT NULL,
+    level varchar(255) NOT NULL,
+    createdAt DATETIME,
+    updatedAt DATETIME,
     PRIMARY KEY(id)
 )
 
 
 
+Inserts Records_Calcu
+=====================
