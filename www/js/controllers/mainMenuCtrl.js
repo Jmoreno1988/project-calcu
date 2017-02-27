@@ -1,5 +1,5 @@
-appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSideMenuDelegate', 'sessionService', '$http', '$ionicPopup',
-    function ($scope, $stateParams, $ionicSideMenuDelegate, sessionService, $http, $ionicPopup) {
+appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSideMenuDelegate', 'sessionService', '$http', '$ionicPopup', '$state',
+    function ($scope, $stateParams, $ionicSideMenuDelegate, sessionService, $http, $ionicPopup, $state) {
        // $ionicSideMenuDelegate.canDragContent(false);
 
        if(cfg.resetLocalStorage) 
@@ -20,6 +20,15 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
             $ionicSideMenuDelegate.toggleLeft();
         }
 
+        $scope.goTo = function(page) {
+            switch(page) {
+                case 'menuRecordsCal':
+                    $state.go(page);
+                    break;
+            }
+        }
+
+        /*
         $scope.getScores = function () {
             console.log("Pidiendo las clasificaciones...")
             $http({
@@ -34,7 +43,7 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
                 console.log(response)
             });
         }
-
+        */
         $scope.showPopup = function () {
             var confirmPopup = $ionicPopup.alert({
                 title: 'Work in progress',

@@ -5,6 +5,7 @@ var cfg = {
 
     // Url del servidor
     urlServer: "http://localhost:3000/",
+    // urlServer: "http://46.101.187.32:3000/",
 
     modelObjectConfig: {},
 
