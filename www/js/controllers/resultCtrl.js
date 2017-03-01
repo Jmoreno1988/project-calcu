@@ -1,11 +1,11 @@
 appControllers.controller('resultCtrl', ['$scope', '$stateParams', 'bridgeService', '$ionicSideMenuDelegate',
         function ($scope, $stateParams, bridgeService, $ionicSideMenuDelegate) {
                 var listScores = bridgeService.data.listScore;
-                var totalScore = listScores.reduce(function(a, b) { return a + b; }, 0);
+                var totalScore = listScores.reduce(function (a, b) { return a + b; }, 0);
                 var timeTotal = bridgeService.data.timeCal;
                 var level = bridgeService.data.levelCal;
                 var selectLevel = bridgeService.data.selectLevel;
-                var levelWin = bridgeService.data.levelCalWin;                
+                var levelWin = bridgeService.data.levelCalWin;
                 var isWin = level >= levelWin ? true : false;
                 var msgResult = isWin ? "You win!!" : "You lose";
 
@@ -19,27 +19,18 @@ appControllers.controller('resultCtrl', ['$scope', '$stateParams', 'bridgeServic
                 $scope.openSettings = function () { $ionicSideMenuDelegate.toggleLeft() }
 
                 // Graficos
-                var points = [];
-                for(var i = 0; i < listScores.length; i++)
-                        points.push([i, listScores[i]]);
+                var labels = [];
 
-                points.unshift(["", 'Puntuación de la partida']);
+                for (var i = 0; i < listScores.length; i++)
+                        labels.push("L" + (i + 1));
 
-                google.charts.load('current', { 'packages': ['corechart'] });
-                google.charts.setOnLoadCallback(drawChart);
-
-                function drawChart() {
-                        var data = google.visualization.arrayToDataTable(points);
-
-                        var options = {
-                                title: 'Rendimiento',
-                                curveType: 'function',
-                                legend: { position: 'bottom' }
-                        };
-
-                        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-
-                        chart.draw(data, options);
-                }
-
+                new Chartist.Line('.ct-chart', {
+                        labels: labels,
+                        series: [listScores]
+                }, {
+                                fullWidth: true,
+                                chartPadding: {
+                                        right: 40
+                                }
+                        });
         }])

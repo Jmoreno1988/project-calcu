@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "angular-translate": "^2.14.0",
-    "angular-translate-loader-static-files": "^2.14.0"
+    "angular-translate-loader-static-files": "^2.14.0",
+    "chartist": "^0.10.1"
   }
 }
