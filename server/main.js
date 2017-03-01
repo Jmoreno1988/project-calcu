@@ -7,26 +7,14 @@ var port = 3000;
 
 // Carga de dependecias
 vm.runInThisContext(fs.readFileSync(__dirname + '/cfg.js'));
-cfg.localDependencies.forEach(function(a) {
-    vm.runInThisContext(fs.readFileSync(__dirname + a));
-});
+cfg.localDependencies.forEach(function(a) { vm.runInThisContext(fs.readFileSync(__dirname + a)) });
 // Fin Carga de dependecias
 
 var sq = new Sequelize(cfg.chainConnection.developmentWork);
 var modelUsers = new ModelUsers('Users', sq, Sequelize);
 var modelRecordsNormal = new ModelRecordsCalcu('records_calcu', sq, Sequelize);
 
-
-
-/**
- * Estructura de datos para las puntuaciones
- * 
- *   Pos |   Nick   | Puntuacion | Genero |    Fecha
- *    1      Jose        8900       Male     2017/02/22
- *    2      Denis       7900       Male     2017/02/23
- *    3      Inma        6900       Male     2017/02/23
- */
-
+// Servidor
 http.createServer(function (request, response) {
     var path = url.parse(request.url).pathname;
 
@@ -40,6 +28,14 @@ http.createServer(function (request, response) {
             modelRecordsNormal.getModel().findAll({  }).then(function (records) {
                 response.end(JSON.stringify(records));
             }.bind(this));
+            break;
+        
+        case '/insertNewUSer':
+            // modelUsers.insert("test");
+            break;
+
+        case '/updateUser':
+            // modelUsers.updateNick(3, "Vegetto Rulessss");
             break;
     }
 
