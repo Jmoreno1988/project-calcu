@@ -7,10 +7,15 @@
         }
         
         .spinner svg {
-            width: 20%;
-            height: 20%;
+            width: 15%;
+            height: 15%;
             stroke: #444;
             fill: #444;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display:none;
         }
         
         .titleRecords {
@@ -31,21 +36,27 @@
                 <ion-slide-page>
                     <div class="box blue">
                         <h1 class="titleRecords">Easy</h1>
-                        <!--
-                        <div>
-                            <ion-spinner icon="spiral"></ion-spinner>
-                        </div>
-                        -->
-                        <div id="boxRecordsEasyCal"></div>
+
+                        <div > <ion-spinner id="spinnerEasy" ng-model="spinnerEasy" icon="spiral"></ion-spinner> </div>
+
+                        <ion-list>
+                            <ion-item ng-repeat="record in listRecordsEasy">
+                                <div class="row">
+                                    <div class="col">{{$index + 1}}</div>
+                                    <div class="col">{{record.nick}}</div>
+                                    <div class="col">{{record.record}}</div>
+                                </div>
+                            </ion-item>
+                        </ion-list>
                     </div>
                 </ion-slide-page>
                 <ion-slide-page>
                     <div class="box blue">
                         <h1 class="titleRecords">Normal</h1>
                         <ion-list>
-                            <ion-item ng-repeat="record in listRecords">
+                            <ion-item ng-repeat="record in listRecordsNormal">
                                 <div class="row">
-                                    <div class="col">{{record.id}}</div>
+                                    <div class="col">{{$index + 1}}</div>
                                     <div class="col">{{record.nick}}</div>
                                     <div class="col">{{record.record}}</div>
                                 </div>
@@ -56,16 +67,43 @@
                 <ion-slide-page>
                     <div class="box yellow">
                         <h1 class="titleRecords">Hard</h1>
+                        <ion-list>
+                            <ion-item ng-repeat="record in listRecordsHard">
+                                <div class="row">
+                                    <div class="col">{{$index + 1}}</div>
+                                    <div class="col">{{record.nick}}</div>
+                                    <div class="col">{{record.record}}</div>
+                                </div>
+                            </ion-item>
+                        </ion-list>
                     </div>
                 </ion-slide-page>
                 <ion-slide-page>
                     <div class="box yellow">
                         <h1 class="titleRecords">Master</h1>
+                        <ion-list>
+                            <ion-item ng-repeat="record in listRecordsMaster">
+                                <div class="row">
+                                    <div class="col">{{$index + 1}}</div>
+                                    <div class="col">{{record.nick}}</div>
+                                    <div class="col">{{record.record}}</div>
+                                </div>
+                            </ion-item>
+                        </ion-list>
                     </div>
                 </ion-slide-page>
                 <ion-slide-page>
                     <div class="box pink">
                         <h1 class="titleRecords">Survive</h1>
+                        <ion-list>
+                            <ion-item ng-repeat="record in listRecordsSurvive">
+                                <div class="row">
+                                    <div class="col">{{$index + 1}}</div>
+                                    <div class="col">{{record.nick}}</div>
+                                    <div class="col">{{record.record}}</div>
+                                </div>
+                            </ion-item>
+                        </ion-list>
                     </div>
                 </ion-slide-page>
             </ion-slides>

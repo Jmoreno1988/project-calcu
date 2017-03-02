@@ -12,7 +12,12 @@ cfg.localDependencies.forEach(function(a) { vm.runInThisContext(fs.readFileSync(
 
 var sq = new Sequelize(cfg.chainConnection.developmentWork);
 var modelUsers = new ModelUsers('Users', sq, Sequelize);
-var modelRecordsNormal = new ModelRecordsCalcu('records_calcu', sq, Sequelize);
+
+var modelRecordsEasy = new ModelRecordsCalcu('records_calcu_easy', sq, Sequelize, 1);
+var modelRecordsNormal = new ModelRecordsCalcu('records_calcu_normal', sq, Sequelize, 1);
+var modelRecordsHard = new ModelRecordsCalcu('records_calcu_hard', sq, Sequelize, 1);
+var modelRecordsMaster = new ModelRecordsCalcu('records_calcu_master', sq, Sequelize, 1);
+var modelRecordsSurvive = new ModelRecordsCalcu('records_calcu_survive', sq, Sequelize, 1);
 
 // Servidor
 http.createServer(function (request, response) {
@@ -24,8 +29,32 @@ http.createServer(function (request, response) {
     });
 
     switch (path) {
-        case '/getscore':
+         case '/getscoreeasy':
+            modelRecordsEasy.getModel().findAll({  }).then(function (records) {
+                response.end(JSON.stringify(records));
+            }.bind(this));
+            break;
+
+        case '/getscorenormal':
             modelRecordsNormal.getModel().findAll({  }).then(function (records) {
+                response.end(JSON.stringify(records));
+            }.bind(this));
+            break;
+
+        case '/getscorehard':
+            modelRecordsHard.getModel().findAll({  }).then(function (records) {
+                response.end(JSON.stringify(records));
+            }.bind(this));
+            break;
+
+        case '/getscoremaster':
+            modelRecordsMaster.getModel().findAll({  }).then(function (records) {
+                response.end(JSON.stringify(records));
+            }.bind(this));
+            break;
+        
+        case '/getscoresurvive':
+            modelRecordsSurvive.getModel().findAll({  }).then(function (records) {
                 response.end(JSON.stringify(records));
             }.bind(this));
             break;

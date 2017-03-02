@@ -25,8 +25,6 @@ ModelUsers.prototype.updateNick = function (id, newNick) {
             nick: newNick
         });
     }.bind(this));
-
-
 }
 
 /** Getters & Setters **/

@@ -24,19 +24,117 @@ appControllers.controller('menuRecordsCalCtrl', ['$scope', '$stateParams', '$htt
         var trophyRoom = new TrophyRoom();
 
         var id = 0;
-        var scores = getScores(id)
-        //$scope.listRecords = [{nick: "pepe"}, {nick: "sergio"}];
-        function getScores(id) {
+        
+        getScoresEasy(id);
+        getScoresNormal(id);
+        getScoresHard(id);
+        getScoresMaster(id);
+        getScoresSurvive(id);
+        
+/*
+        console.log($scope.listRecordsEasy)
+        getScores(id, 'easy', $scope.listRecordsEasy);
+
+        function getScores(id, level, node) {
             $http({
                 method: 'GET',
-                url: cfg.urlServer + 'getscore'
-            }).then(function successCallback(response) {
+                url: cfg.urlServer + 'getscore' + level
+            }).then(function successCallback(response, node) {
                 //trophyRoom.setRecords(response.data);
-                $scope.listRecords = response.data;
+                console.log(node)
+                node = orderList(response.data);
             }, function errorCallback(response) {
                 console.log("Error:")
                 console.log(response)
             });
         }
-        
+*/
+console.log(document.getElementById('spinnerEasy'))
+
+        function initSpinner(id) {
+            //var node = angular.element(document.getElementById(id))
+            //if(node)
+             //   node.style.display = "block";
+        }
+
+
+        function finishSpinner() {
+            var node = document.getElementById(id)
+
+            if(node)
+                node.style.display = "none";
+        }
+
+        function getScoresEasy(id) {
+            initSpinner('spinnerEasy');
+            $http({
+                method: 'GET',
+                url: cfg.urlServer + 'getscoreeasy'
+            }).then(function successCallback(response) {
+                finishSpinner('spinnerEasy');
+                $scope.listRecordsEasy = orderList(response.data);
+            }.bind(this), function errorCallback(response) {
+                finishSpinner('spinnerEasy');
+                console.log("Error:")
+                console.log(response)
+            });
+        }
+
+        function getScoresNormal(id) {
+            $http({
+                method: 'GET',
+                url: cfg.urlServer + 'getscorenormal'
+            }).then(function successCallback(response) {
+                //trophyRoom.setRecords(response.data);
+                $scope.listRecordsNormal = orderList(response.data);
+            }, function errorCallback(response) {
+                console.log("Error:")
+                console.log(response)
+            });
+        }
+
+        function getScoresHard(id) {
+            $http({
+                method: 'GET',
+                url: cfg.urlServer + 'getscorehard'
+            }).then(function successCallback(response) {
+                //trophyRoom.setRecords(response.data);
+                $scope.listRecordsHard = orderList(response.data);
+            }, function errorCallback(response) {
+                console.log("Error:")
+                console.log(response)
+            });
+        }
+
+        function getScoresMaster(id) {
+            $http({
+                method: 'GET',
+                url: cfg.urlServer + 'getscoremaster'
+            }).then(function successCallback(response) {
+                //trophyRoom.setRecords(response.data);
+                $scope.listRecordsMaster = orderList(response.data);
+            }, function errorCallback(response) {
+                console.log("Error:")
+                console.log(response)
+            });
+        }
+
+        function getScoresSurvive(id) {
+            $http({
+                method: 'GET',
+                url: cfg.urlServer + 'getscoresurvive'
+            }).then(function successCallback(response) {
+                //trophyRoom.setRecords(response.data);
+                $scope.listRecordsSurvive = orderList(response.data);
+            }, function errorCallback(response) {
+                console.log("Error:")
+                console.log(response)
+            });
+        }
+
+        function orderList(list) {
+            return list.sort(function (a, b) {
+                return (b.record - a.record)
+            })
+        }
     }])

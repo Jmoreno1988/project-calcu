@@ -30,7 +30,66 @@ CREATE TABLE Records_Calcu (
     PRIMARY KEY(id)
 )
 
+CREATE TABLE Records_Calcu_Easy (
+    id int NOT NULL AUTO_INCREMENT,
+    idUser int NOT NULL,
+    nick varchar(255) NOT NULL,
+    record int NOT NULL,
+    level varchar(255) NOT NULL,
+    createdAt DATETIME,
+    updatedAt DATETIME,
+    PRIMARY KEY(id)
+)
+
+CREATE TABLE Records_Calcu_Normal (
+    id int NOT NULL AUTO_INCREMENT,
+    idUser int NOT NULL,
+    nick varchar(255) NOT NULL,
+    record int NOT NULL,
+    level varchar(255) NOT NULL,
+    createdAt DATETIME,
+    updatedAt DATETIME,
+    PRIMARY KEY(id)
+)
+
+CREATE TABLE Records_Calcu_Hard (
+    id int NOT NULL AUTO_INCREMENT,
+    idUser int NOT NULL,
+    nick varchar(255) NOT NULL,
+    record int NOT NULL,
+    level varchar(255) NOT NULL,
+    createdAt DATETIME,
+    updatedAt DATETIME,
+    PRIMARY KEY(id)
+)
+
+CREATE TABLE Records_Calcu_Master (
+    id int NOT NULL AUTO_INCREMENT,
+    idUser int NOT NULL,
+    nick varchar(255) NOT NULL,
+    record int NOT NULL,
+    level varchar(255) NOT NULL,
+    createdAt DATETIME,
+    updatedAt DATETIME,
+    PRIMARY KEY(id)
+)
+
+CREATE TABLE Records_Calcu_Survive (
+    id int NOT NULL AUTO_INCREMENT,
+    idUser int NOT NULL,
+    nick varchar(255) NOT NULL,
+    record int NOT NULL,
+    level varchar(255) NOT NULL,
+    createdAt DATETIME,
+    updatedAt DATETIME,
+    PRIMARY KEY(id)
+)
 
 
-Inserts Records_Calcu
-=====================
+// Borrar datos
+===============
+delete from records_calcu_easy;
+delete from records_calcu_normal;
+delete from records_calcu_hard;
+delete from records_calcu_master;
+delete from records_calcu_survive;
