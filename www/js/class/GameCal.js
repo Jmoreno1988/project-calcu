@@ -54,8 +54,6 @@ GameCal.prototype.finish = function () {
         this.sessionService.set("progressMathCalcu", aux);
     }
 
-    
-
     this.$state.go("result", {});
 }
 
@@ -107,7 +105,7 @@ GameCal.prototype.checkResult = function (option) {
                 this.pullInfo();
             }
         } else {
-            navigator.vibrate(this.timeVibration)
+            this.vibrate();
             this.score = 1000;
             this.newRound();
             this.generateMove();
@@ -128,7 +126,7 @@ GameCal.prototype.checkResult = function (option) {
             this.pullInfo();
         }
     } else {
-        navigator.vibrate(this.timeVibration)
+        this.vibrate();
         this.score = 1000;
         this.newRound();
         this.generateMove();
@@ -275,4 +273,11 @@ GameCal.prototype.getOptions = function () {
 
 GameCal.prototype.getResult = function () {
     return this.result;
+}
+
+GameCal.prototype.vibrate = function() {
+    var config = this.sessionService.get("config");
+    
+    if(config.isVibration)
+        navigator.vibrate(this.timeVibration);
 }

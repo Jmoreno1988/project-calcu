@@ -10,7 +10,7 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
             console.log("Reinicio localStorage")
             sessionService.set("isLocalStorage", true);
             sessionService.set("progressMathCalcu", cfg.modelObjectLocalStorage.progress.mathCalcu);
-            sessionService.set("config", cfg.config);
+            sessionService.set("config", cfg.modelObjectLocalStorage.config);
         }
 
         //console.log("Existe localStorage = " + sessionService.exist("isLocalStorage"))

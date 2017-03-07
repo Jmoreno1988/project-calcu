@@ -1,5 +1,6 @@
-appControllers.controller('menuCtrl', ['$scope', '$stateParams',
-    function ($scope, $stateParams, $cordovaSocialSharing) {
+appControllers.controller('menuCtrl', ['$scope', '$stateParams', 'sessionService',
+    function ($scope, $stateParams, sessionService, $cordovaSocialSharing) {
+
         $scope.goTo = function (page) {
             switch (page) {
                 case "removeAds":
@@ -14,8 +15,18 @@ appControllers.controller('menuCtrl', ['$scope', '$stateParams',
                     window.open('https://play.google.com/store/apps/developer?id=JMoreno', '_system');
                     break;
                 case "shareApp":
-                    window.plugins.socialsharing.shareViaTwitter('Digital Signature Maker', null /* img */, 'https://play.google.com/store/apps/details?id=com.prantikv.digitalsignaturemaker', null, function(errormsg){alert("Error: Cannot Share")});
+                    window.plugins.socialsharing.shareViaTwitter('Digital Signature Maker', null /* img */, 'https://play.google.com/store/apps/details?id=com.prantikv.digitalsignaturemaker', null, function (errormsg) { alert("Error: Cannot Share") });
                     break;
             }
+        }
+
+        var config = sessionService.get("config");
+        $scope.isVibration = config.isVibration;
+        
+        $scope.updateIsVibration = function () {
+            var config = sessionService.get("config");
+            
+            config.isVibration = $scope.isVibration;
+            sessionService.set("config", config);
         }
     }])

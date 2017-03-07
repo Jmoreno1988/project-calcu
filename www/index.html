@@ -117,7 +117,7 @@
                                 <option>Esperanto</option>
                             </select>
                         </label>
-                        <ion-toggle toggle-class="toggle-balanced">Vibration</ion-toggle>
+                        <ion-toggle ng-model="isVibration" ng-checked="isVibration" ng-change="updateIsVibration()" toggle-class="toggle-balanced">Vibration</ion-toggle>
                         <ion-item ng-click="goTo('removeAds')">
                             Remove ADS
                         </ion-item>
