@@ -19,7 +19,7 @@ Client
     - Internacionalizacion
     - Opciones:
         + Selector de lenguaje
-        + Vibracion opcional
+        ✔ Vibracion opcional
     - App de pago
     ✔ Cambiar graficas de google por otra libreria
     - Icono
