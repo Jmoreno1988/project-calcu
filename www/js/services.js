@@ -8,6 +8,7 @@ angular.module('app.services', [])
             get: function (key) {
                 return JSON.parse(localStorage.getItem(key));
             },
+            
             destroy: function (key) {
                 return localStorage.removeItem(key);
             },

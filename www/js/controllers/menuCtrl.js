@@ -1,5 +1,5 @@
-appControllers.controller('menuCtrl', ['$scope', '$stateParams', 'sessionService',
-    function ($scope, $stateParams, sessionService, $cordovaSocialSharing) {
+appControllers.controller('menuCtrl', ['$rootScope', '$scope', '$stateParams', 'sessionService',
+    function ($rootScope, $scope, $stateParams, sessionService, $cordovaSocialSharing) {
 
         $scope.goTo = function (page) {
             switch (page) {
@@ -20,6 +20,7 @@ appControllers.controller('menuCtrl', ['$scope', '$stateParams', 'sessionService
             }
         }
 
+        // Configuracion de la vibracion
         var config = sessionService.get("config");
         $scope.isVibration = config.isVibration;
         
@@ -29,4 +30,26 @@ appControllers.controller('menuCtrl', ['$scope', '$stateParams', 'sessionService
             config.isVibration = $scope.isVibration;
             sessionService.set("config", config);
         }
+        // Fin Configuracion de la vibracion
+
+        // Configuracion del lenguaje
+        // var config = sessionService.get("config").lenguage;
+        //$scope.lenguage = config.lenguage;
+
+        $scope.languagesList = [
+            {title: "es", code: "es"},
+            {title: "en", code: "en"},
+            {title: "eo", code: "eo"},
+        ]
+
+        $scope.updateLanguage = function () {
+            console.log($scope.selectLanguage)
+
+            var config = sessionService.get("config");
+            
+            config.lenguage = $scope.selectLanguage;
+            sessionService.set("config", config);
+            $rootScope.$broadcast("changeLanguage", {})
+        }
+        // Fin configuracion del lenguaje
     }])

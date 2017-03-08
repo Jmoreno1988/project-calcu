@@ -8,6 +8,8 @@
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="js/cfg.js"></script>
+    <script src="js/traductions/dictionary.js"></script>
+    <script src="js/class/Translator.js"></script>
     <script src="js/class/Timer.js"></script>
     <script src="js/class/Countdown.js"></script>
     <script src="js/class/GameCal.js"></script>
@@ -111,10 +113,8 @@
                         <!--<ion-toggle toggle-class="toggle-balanced">Sound</ion-toggle>-->
                         <label class="item item-input item-select">
                             <div class="input-label"> Language </div>
-                            <select>
-                                <option>Español</option>
-                                <option selected>English</option>
-                                <option>Esperanto</option>
+                            <select ng-model="selectLanguage" ng-change="updateLanguage()">
+                                <option ng-repeat="language in languagesList">{{language.title}}</option>
                             </select>
                         </label>
                         <ion-toggle ng-model="isVibration" ng-checked="isVibration" ng-change="updateIsVibration()" toggle-class="toggle-balanced">Vibration</ion-toggle>
