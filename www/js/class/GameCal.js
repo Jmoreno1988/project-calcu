@@ -41,8 +41,6 @@ GameCal.prototype.finish = function () {
     this.bridgeService.data.levelCalWin = this.levelMax;
 
     var selectLevel = this.bridgeService.data.selectLevel;
-    
-    console.log(this.sessionService.get("progressMathCalcu")[selectLevel].maxScore)
 
     var aux2 = this.sessionService.get("progressMathCalcu");
     aux2[selectLevel].lastScore = this.totalScore;
@@ -53,6 +51,8 @@ GameCal.prototype.finish = function () {
         aux[selectLevel].maxScore = this.totalScore;
         this.sessionService.set("progressMathCalcu", aux);
     }
+
+    this.timer.cancelTimer();
 
     this.$state.go("result", {});
 }

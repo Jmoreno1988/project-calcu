@@ -37,7 +37,7 @@ Timer.prototype.cancelTimer = function () {
 }
 
 Timer.prototype.update = function () {
-    /*
+    
     this.ctrl.time = this.getTime();
     this.sCallback();
     /*

@@ -28,11 +28,9 @@ appControllers.controller('selectLevelCtrl', ['$scope', '$stateParams', '$state'
             $ionicSideMenuDelegate.toggleLeft();
         }
 
-
         $scope.$on("changeLanguage", function() {translate()});
         
         function translate() {
-            console.log(21321321)
             Translator.translate($scope, sessionService.get("config").lenguage, [
                 "selectLevelCtrl_levelEasy"
             ]);
