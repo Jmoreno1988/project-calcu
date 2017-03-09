@@ -30,7 +30,7 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
 
         $scope.showValorateModal = function () {
             var confirmPopup = $ionicPopup.confirm({
-                title: 'Queremos tu opinion',
+                title: Translator.get("mainMenuCtrl_titleOpinion", sessionService.get("config").lenguage, dictionary),
                 template: 'Hemos desarrollado este juego con todo nuestro cariño para ti, por eso nos gustaria saber tu opinion.',
                 cancelText: 'Quizas mas tarde',
                 okText: 'Dar opinion'
@@ -58,14 +58,14 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
             );
             //$cordovaSocialSharing.shareViaTwitter('Digital Signature Maker', null /* img */, 'https://play.google.com/store/apps/details?id=com.prantikv.digitalsignaturemaker', null, function(errormsg){alert("Error: Cannot Share")});
         }
-
+/*
         $scope.showPopup = function () {
             var confirmPopup = $ionicPopup.alert({
                 title: 'Work in progress',
                 template: 'Estara listo en la versión final del juego ;)'
             });
         }
-
+*/
 
         $ionicModal.fromTemplateUrl('my-modal.html', {
             scope: $scope,

@@ -1,6 +1,7 @@
 var dictionary = {
     "es": {
         "mainMenuCtrl_play": "JUGAR",
+        "mainMenuCtrl_titleOpinion": "Queremos tu opinión",
 
         "mainMenuCtrl_userProfile": "Perfil de usuario",
         "mainMenuCtrl_editAccount": "Editar cuenta",
@@ -26,6 +27,7 @@ var dictionary = {
     
     "en": {
         "mainMenuCtrl_play": "PLAY",
+        "mainMenuCtrl_titleOpinion": "We want your opinion",
 
         "mainMenuCtrl_userProfile": "User profile",
         "mainMenuCtrl_editAccount": "Edit account",
@@ -45,14 +47,5 @@ var dictionary = {
         "selectLevelCtrl_levelMaster": "Master",
         "selectLevelCtrl_levelKids": "Kids",
         "selectLevelCtrl_levelSurvival": "Survival"
-    },
-
-    "default": {
-        "selectLevelCtrl_levelEasy": "Easy",
-        "selectLevelCtrl_levelNormal": "Normal",
-        "selectLevelCtrl_levelHard": "Hard",
-        "selectLevelCtrl_levelMaster": "Master",
-        "selectLevelCtrl_levelKids": "Kids",
-        "selectLevelCtrl_levelSurvival": "Survival"
-    },
+    }
 }
