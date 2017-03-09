@@ -1,5 +1,5 @@
 appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSideMenuDelegate', 'sessionService', '$http', '$ionicPopup', '$state', '$cordovaSocialSharing', '$ionicModal',
-    function($scope, $stateParams, $ionicSideMenuDelegate, sessionService, $http, $ionicPopup, $state, $cordovaSocialSharing, $ionicModal) {
+    function ($scope, $stateParams, $ionicSideMenuDelegate, sessionService, $http, $ionicPopup, $state, $cordovaSocialSharing, $ionicModal) {
         // $ionicSideMenuDelegate.canDragContent(false);
 
         if (cfg.resetLocalStorage)
@@ -16,11 +16,11 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
         //console.log("Existe localStorage = " + sessionService.exist("isLocalStorage"))
         //console.log(sessionService.get("progressMathCalcu"))
 
-        $scope.openSettings = function() {
+        $scope.openSettings = function () {
             $ionicSideMenuDelegate.toggleLeft();
         }
 
-        $scope.goTo = function(page) {
+        $scope.goTo = function (page) {
             switch (page) {
                 case 'menuRecordsCal':
                     $state.go(page);
@@ -28,7 +28,7 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
             }
         }
 
-        $scope.showValorateModal = function() {
+        $scope.showValorateModal = function () {
             var confirmPopup = $ionicPopup.confirm({
                 title: 'Queremos tu opinion',
                 template: 'Hemos desarrollado este juego con todo nuestro cariño para ti, por eso nos gustaria saber tu opinion.',
@@ -36,7 +36,7 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
                 okText: 'Dar opinion'
             });
 
-            confirmPopup.then(function(res) {
+            confirmPopup.then(function (res) {
                 if (res) {
                     window.open('https://play.google.com/store/apps/developer?id=JMoreno', '_system');
                 } else {
@@ -44,7 +44,7 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
             });
         };
 
-        $scope.shareViaTwitter = function(message, image, link) {
+        $scope.shareViaTwitter = function (message, image, link) {
             //$cordovaSocialSharing.shareViaTwitter("Check out this cool app I'm using called IonicProject for ");
             $cordovaSocialSharing.shareViaEmail(
                 'Message', // can contain HTML tags, but support on Android is rather limited:  http://stackoverflow.com/questions/15136480/how-to-send-html-content-with-image-through-android-default-email-client
@@ -53,13 +53,13 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
                 ['cc@person1.com'], // CC: must be null or an array
                 null, // BCC: must be null or an array
                 ['https://www.google.nl/images/srpr/logo4w.png', 'www/localimage.png'], // FILES: can be null, a string, or an array
-                function() { console.log('si') }, // called when sharing worked, but also when the user cancelled sharing via email. On iOS, the callbacks' boolean result parameter is true when sharing worked, false if cancelled. On Android, this parameter is always true so it can't be used). See section "Notes about the successCallback" below.
-                function() { console.log('nop') } // called when sh*t hits the fan
+                function () { console.log('si') }, // called when sharing worked, but also when the user cancelled sharing via email. On iOS, the callbacks' boolean result parameter is true when sharing worked, false if cancelled. On Android, this parameter is always true so it can't be used). See section "Notes about the successCallback" below.
+                function () { console.log('nop') } // called when sh*t hits the fan
             );
             //$cordovaSocialSharing.shareViaTwitter('Digital Signature Maker', null /* img */, 'https://play.google.com/store/apps/details?id=com.prantikv.digitalsignaturemaker', null, function(errormsg){alert("Error: Cannot Share")});
         }
 
-        $scope.showPopup = function() {
+        $scope.showPopup = function () {
             var confirmPopup = $ionicPopup.alert({
                 title: 'Work in progress',
                 template: 'Estara listo en la versión final del juego ;)'
@@ -70,25 +70,58 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
         $ionicModal.fromTemplateUrl('my-modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.modal = modal;
         });
-        $scope.openModal = function() {
+        $scope.openModal = function () {
             $scope.modal.show();
         };
-        $scope.closeModal = function() {
+        $scope.closeModal = function () {
             $scope.modal.hide();
         };
         // Cleanup the modal when we're done with it!
-        $scope.$on('$destroy', function() {
+        $scope.$on('$destroy', function () {
             $scope.modal.remove();
         });
         // Execute action on hide modal
-        $scope.$on('modal.hidden', function() {
+        $scope.$on('modal.hidden', function () {
             // Execute action
         });
         // Execute action on remove modal
-        $scope.$on('modal.removed', function() {
+        $scope.$on('modal.removed', function () {
             // Execute action
         });
+
+        $scope.showConfirmResetProfile = function () {
+            var confirmPopup = $ionicPopup.confirm({
+                title: 'Borrar perfil',
+                template: '¿Esta seguro de querer borrar su perfil y toda la información asociada a el?'
+            });
+
+            confirmPopup.then(function (res) {
+                if (res) {
+                    console.log('Borrar perfil...');
+                } else {
+                    console.log('Todavia no, dame un turno mas...');
+                }
+            });
+        };
+
+        // Traduccion
+        $scope.$on("changeLanguage", function () { translate() });
+
+        function translate() {
+            Translator.translate($scope, sessionService.get("config").lenguage, [
+                "mainMenuCtrl_play",
+                "mainMenuCtrl_userProfile",
+                "mainMenuCtrl_editAccount",
+                "mainMenuCtrl_nickName",
+                "mainMenuCtrl_email",
+                "mainMenuCtrl_save",
+                "mainMenuCtrl_reset"
+            ]);
+        }
+
+        translate();
+        // Fin Traduccion
     }])

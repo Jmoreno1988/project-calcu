@@ -3,9 +3,9 @@ TODO list
 
 Server
 ======
-    - Tabla usuarios
-    - Tablas para diferentes niveles
-    - Script automatizacion creacion bbdd
+    ✔ Tabla usuarios
+    ✔ Tablas para diferentes niveles
+    ✔ Script automatizacion creacion bbdd
 
 
 
@@ -16,25 +16,20 @@ Client
     - Usuarios:
         + Pantalla inicial de Usuarios
         + Menu de Usuarios => ventana ionicModal 
-    - Internacionalizacion
+    - Internacionalizacion:
+        + Infraestructura lista; Falta hacer todas las traducciones.
     - Opciones:
-        + Selector de lenguaje
+        ✔ Selector de lenguaje
         ✔ Vibracion opcional
-    - App de pago
+    - App de pago 
     ✔ Cambiar graficas de google por otra libreria
     - Icono
     - Carga icono y splash screen logo
     - Bug con el timer en el juego
     - Arreglar enrutamiento
     - Spinner en pantalla logros
+    - Mandar punt al server
 
 Varios
 ======
     - Carta para verificar mi cuenta de adMob
-
-Configurar datos a guardar
-Pantalla de nombre si no hay datos guardados
-Se manda al server la info de usuario 
-Cada vez que se haga una puntuacion si es la mas alta se manda al server
-
-
