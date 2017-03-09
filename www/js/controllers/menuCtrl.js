@@ -32,24 +32,42 @@ appControllers.controller('menuCtrl', ['$rootScope', '$scope', '$stateParams', '
         }
         // Fin Configuracion de la vibracion
 
-        // Configuracion del lenguaje
-        // var config = sessionService.get("config").lenguage;
-        //$scope.lenguage = config.lenguage;
 
+        // Configuracion del lenguaje
         $scope.languagesList = [
-            {title: "es", code: "es"},
-            {title: "en", code: "en"},
-            {title: "eo", code: "eo"},
+            {title: "Español", code: "es"},
+            {title: "English", code: "en"},
+            {title: "Esperanto", code: "eo"}
         ]
 
         $scope.updateLanguage = function () {
-            console.log($scope.selectLanguage)
 
             var config = sessionService.get("config");
             
-            config.lenguage = $scope.selectLanguage;
+            config.lenguage = getCodeLanguage($scope.selectLanguage);
             sessionService.set("config", config);
             $rootScope.$broadcast("changeLanguage", {})
         }
+
+        function getCodeLanguage(title) {
+            for(var i = 0; i < $scope.languagesList.length; i++)
+                if($scope.languagesList[i].title == title)
+                    return $scope.languagesList[i].code;
+        }
         // Fin configuracion del lenguaje
+
+        // Traduccion
+        $scope.$on("changeLanguage", function () { translate() });
+
+        function translate() {
+            Translator.translate($scope, sessionService.get("config").lenguage, [
+                "menuCtrl_language",
+                "menuCtrl_vibration",
+                "menuCtrl_removeADS",
+                "menuCtrl_moreGames"
+            ]);
+        }
+
+        translate();
+        // Fin Traduccion
     }])

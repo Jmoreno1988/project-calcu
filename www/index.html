@@ -112,17 +112,17 @@
                     <ion-list>
                         <!--<ion-toggle toggle-class="toggle-balanced">Sound</ion-toggle>-->
                         <label class="item item-input item-select">
-                            <div class="input-label"> Language </div>
+                            <div class="input-label"> {{menuCtrl_language}} </div>
                             <select ng-model="selectLanguage" ng-change="updateLanguage()">
                                 <option ng-repeat="language in languagesList">{{language.title}}</option>
                             </select>
                         </label>
-                        <ion-toggle ng-model="isVibration" ng-checked="isVibration" ng-change="updateIsVibration()" toggle-class="toggle-balanced">Vibration</ion-toggle>
+                        <ion-toggle ng-model="isVibration" ng-checked="isVibration" ng-change="updateIsVibration()" toggle-class="toggle-balanced"> {{menuCtrl_vibration}} </ion-toggle>
                         <ion-item ng-click="goTo('removeAds')">
-                            Remove ADS
+                            {{menuCtrl_removeADS}}
                         </ion-item>
                         <ion-item ng-click="goTo('otherApps')">
-                            More games
+                            {{menuCtrl_moreGames}}
                         </ion-item>
                     </ion-list>
                 </ion-content>

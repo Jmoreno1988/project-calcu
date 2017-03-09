@@ -9,6 +9,10 @@ var dictionary = {
         "mainMenuCtrl_save": "Guardar cambios",
         "mainMenuCtrl_reset": "Reiniciar perfil",
 
+        "menuCtrl_language": "Idioma",
+        "menuCtrl_vibration": "Vibración",
+        "menuCtrl_removeADS": "Eliminar publicidad",
+        "menuCtrl_moreGames": "Más juegos",
 
         "selectLevelCtrl_levelEasy": "Facil",
         "selectLevelCtrl_levelNormal": "Normal",
@@ -16,6 +20,7 @@ var dictionary = {
         "selectLevelCtrl_levelMaster": "Maestro",
         "selectLevelCtrl_levelKids": "Niños",
         "selectLevelCtrl_levelSurvival": "Supervivencia"
+        
         
     },
     
@@ -28,6 +33,11 @@ var dictionary = {
         "mainMenuCtrl_email": "Email (optional)",
         "mainMenuCtrl_save": "Save changes",
         "mainMenuCtrl_reset": "Reset profile",
+
+        "menuCtrl_language": "Language",
+        "menuCtrl_vibration": "Vibration",
+        "menuCtrl_removeADS": "Remove ads",
+        "menuCtrl_moreGames": "More games",
 
         "selectLevelCtrl_levelEasy": "Easy",
         "selectLevelCtrl_levelNormal": "Normal",
