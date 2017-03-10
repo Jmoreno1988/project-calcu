@@ -7,8 +7,6 @@ var cfg = {
     urlServer: "http://localhost:3000/",
     // urlServer: "http://46.101.187.32:3000/",
 
-    modelObjectConfig: {},
-
     modelObjectLocalStorage: {
         progress: {
             mathCalcu: {
@@ -50,6 +48,12 @@ var cfg = {
             isEvaluate: false,
             isVibration: true,
             lenguage: "en"
+        },
+
+        infoUser: {
+            id: null,
+            nick: null,
+            email: null
         }
     }
 }

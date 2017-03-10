@@ -5,16 +5,13 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
         if (cfg.resetLocalStorage)
             sessionService.clear();
 
-
         if (!sessionService.exist("isLocalStorage")) {
-            console.log("Reinicio localStorage")
+            console.log("Reinicio localStorage");
             sessionService.set("isLocalStorage", true);
             sessionService.set("progressMathCalcu", cfg.modelObjectLocalStorage.progress.mathCalcu);
             sessionService.set("config", cfg.modelObjectLocalStorage.config);
+            sessionService.set("infoUser", cfg.modelObjectLocalStorage.infoUser);
         }
-
-        //console.log("Existe localStorage = " + sessionService.exist("isLocalStorage"))
-        //console.log(sessionService.get("progressMathCalcu"))
 
         $scope.openSettings = function () {
             $ionicSideMenuDelegate.toggleLeft();
@@ -29,18 +26,19 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
         }
 
         $scope.showValorateModal = function () {
+            var l = sessionService.get("config").lenguage;
+            var d = dictionary; 
             var confirmPopup = $ionicPopup.confirm({
-                title: Translator.get("mainMenuCtrl_titleOpinion", sessionService.get("config").lenguage, dictionary),
-                template: 'Hemos desarrollado este juego con todo nuestro cariño para ti, por eso nos gustaria saber tu opinion.',
-                cancelText: 'Quizas mas tarde',
-                okText: 'Dar opinion'
+                title: Translator.get("mainMenuCtrl_titleOpinion", l, d),
+                template: Translator.get("mainMenuCtrl_msgOpinion", l, d),
+                cancelText: Translator.get("mainMenuCtrl_cancel", l, d),
+                okText: Translator.get("mainMenuCtrl_accept", l, d)
             });
 
             confirmPopup.then(function (res) {
                 if (res) {
                     window.open('https://play.google.com/store/apps/developer?id=JMoreno', '_system');
-                } else {
-                }
+                } else { }
             });
         };
 
@@ -106,6 +104,52 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
                 }
             });
         };
+
+        // Comprobar si existe usuario
+        var infoUser = sessionService.get("infoUser");
+
+        if(!infoUser.id){
+            console.log("WARNING :: No existe usuario registrado en la app.");
+            var node = document.getElementById("imgAccount");
+            node.src = "img/account-alert.svg";
+        }
+
+        $scope.validateInfo = function() {
+            var email = document.getElementById("inputEmailUser").value;
+            var nick = document.getElementById("inputNickUser").value;
+/*
+            if(!Util.validateNick(nick)) {
+                console.log("Nick invalido, por favor ingrese un nick con un formato valido.")
+                return;
+            }
+
+            if(!Util.validateEmail(email)) {
+                console.log("Email invalido, por favor ingrese un email con un formato valido.")
+                return;
+            }
+*/
+            // Mandar info al server
+            var url = cfg.urlServer + 'insertnewuser?nick=' + nick;
+            $http({
+                method: 'GET',
+                url: url
+            }).then(function successCallback(response) {
+                //console.log(response.data)
+                // guardar info en sessionstorage
+                var infoUser = sessionService.get("infoUser");
+                infoUser.id = response.data.id;
+                infoUser.nick = response.data.nick;
+
+                sessionService.set("infoUser", infoUser);
+
+                console.log(sessionService.get("infoUser"));
+
+            }.bind(this), function errorCallback(response) {
+                console.log("Error:")
+                console.log(response)
+            });
+        }
+
 
         // Traduccion
         $scope.$on("changeLanguage", function () { translate() });

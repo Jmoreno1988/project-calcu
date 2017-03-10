@@ -2,6 +2,9 @@ var dictionary = {
     "es": {
         "mainMenuCtrl_play": "JUGAR",
         "mainMenuCtrl_titleOpinion": "Queremos tu opinión",
+        "mainMenuCtrl_msgOpinion": "Hemos desarrollado este juego con todo nuestro cariño para ti, por eso nos gustaría saber tu opinión.",
+        "mainMenuCtrl_accept": 'Dar opinión',
+        "mainMenuCtrl_cancel": 'Quizás más tarde...',
 
         "mainMenuCtrl_userProfile": "Perfil de usuario",
         "mainMenuCtrl_editAccount": "Editar cuenta",
@@ -21,13 +24,14 @@ var dictionary = {
         "selectLevelCtrl_levelMaster": "Maestro",
         "selectLevelCtrl_levelKids": "Niños",
         "selectLevelCtrl_levelSurvival": "Supervivencia"
-        
-        
     },
     
     "en": {
         "mainMenuCtrl_play": "PLAY",
         "mainMenuCtrl_titleOpinion": "We want your opinion",
+        "mainMenuCtrl_msgOpinion": "We have developed this game with all our affection for you, that is why we would like to know your opinion.",
+        "mainMenuCtrl_accept": 'Give opinion',
+        "mainMenuCtrl_cancel": 'Maybe later...',
 
         "mainMenuCtrl_userProfile": "User profile",
         "mainMenuCtrl_editAccount": "Edit account",
@@ -38,7 +42,7 @@ var dictionary = {
 
         "menuCtrl_language": "Language",
         "menuCtrl_vibration": "Vibration",
-        "menuCtrl_removeADS": "Remove ads",
+        "menuCtrl_removeADS": "Remove Ads",
         "menuCtrl_moreGames": "More games",
 
         "selectLevelCtrl_levelEasy": "Easy",

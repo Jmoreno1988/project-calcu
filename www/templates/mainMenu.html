@@ -177,7 +177,7 @@
         </div>
 
         <div class="buttonMenu" id="buttonOptions" ng-click="openModal()">
-            <div class="buttonIcon"><img src="img/account.svg" alt=""></div>
+            <div class="buttonIcon"><img id="imgAccount" src="img/account.svg" alt=""></div>
         </div>
 
         <div class="buttonMenu" id="buttonShare">
@@ -198,16 +198,16 @@
                     <div class="list">
                         <label class="item item-input item-stacked-label">
                             <span class="input-label">{{mainMenuCtrl_nickName}}</span>
-                            <input type="text" placeholder="">
+                            <input id="inputNickUser" type="text" placeholder="">
                         </label>
                         <label class="item item-input item-stacked-label">
                             <span class="input-label">{{mainMenuCtrl_email}}</span>
-                            <input type="text" placeholder="">
+                            <input id="inputEmailUser" type="text" placeholder="">
                         </label>
                     </div>
                     
-                    <button id="" class="button button-positive button-block">{{mainMenuCtrl_save}}</button>
-                    <button id="" class="button button-block"ng-click="showConfirmResetProfile()">{{mainMenuCtrl_reset}}</button>
+                    <button id="" ng-click="validateInfo()" class="button button-positive button-block">{{mainMenuCtrl_save}}</button>
+                    <button id="" class="button button-block" ng-click="showConfirmResetProfile()">{{mainMenuCtrl_reset}}</button>
                 </ion-content>
             </ion-modal-view>
         </script>
