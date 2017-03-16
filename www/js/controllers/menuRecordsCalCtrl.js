@@ -12,7 +12,7 @@ appControllers.controller('menuRecordsCalCtrl', ['$scope', '$stateParams', '$htt
         });
 
         $scope.$on("$ionicSlides.slideChangeStart", function (event, data) {
-            console.log('Slide change is beginning');
+            //console.log('Slide change is beginning');
         });
 
         $scope.$on("$ionicSlides.slideChangeEnd", function (event, data) {
