@@ -24,44 +24,41 @@ appControllers.controller('menuRecordsCalCtrl', ['$scope', '$stateParams', '$htt
         var trophyRoom = new TrophyRoom();
 
         var id = 0;
-        
+
         getScoresEasy(id);
         getScoresNormal(id);
         getScoresHard(id);
         getScoresMaster(id);
         getScoresSurvive(id);
+
+        /*
+                console.log($scope.listRecordsEasy)
+                getScores(id, 'easy', $scope.listRecordsEasy);
         
-/*
-        console.log($scope.listRecordsEasy)
-        getScores(id, 'easy', $scope.listRecordsEasy);
-
-        function getScores(id, level, node) {
-            $http({
-                method: 'GET',
-                url: cfg.urlServer + 'getscore' + level
-            }).then(function successCallback(response, node) {
-                //trophyRoom.setRecords(response.data);
-                console.log(node)
-                node = orderList(response.data);
-            }, function errorCallback(response) {
-                console.log("Error:")
-                console.log(response)
-            });
-        }
-*/
-console.log(document.getElementById('spinnerEasy'))
-
+                function getScores(id, level, node) {
+                    $http({
+                        method: 'GET',
+                        url: cfg.urlServer + 'getscore' + level
+                    }).then(function successCallback(response, node) {
+                        //trophyRoom.setRecords(response.data);
+                        console.log(node)
+                        node = orderList(response.data);
+                    }, function errorCallback(response) {
+                        console.log("Error:")
+                        console.log(response)
+                    });
+                }
+        */
         function initSpinner(id) {
             //var node = angular.element(document.getElementById(id))
             //if(node)
-             //   node.style.display = "block";
+            //   node.style.display = "block";
         }
-
 
         function finishSpinner() {
             var node = document.getElementById(id)
 
-            if(node)
+            if (node)
                 node.style.display = "none";
         }
 

@@ -7,6 +7,8 @@ function GameCal(difficulty, controller, $state, $interval, bridgeService, sessi
     this.sessionService = sessionService;
     this.level = 1;
     this.levelMax = 10;
+    this.errors = 0;
+    this.maxErrors = 3;
     this.ctrl = controller;
     this.$state = $state;
     this.totalScore = 0;
@@ -90,6 +92,15 @@ GameCal.prototype.generateMove = function () {
     this.pullInfo();
 }
 
+GameCal.prototype.isFinish = function() {
+    var isFinish = false;
+
+    if(this.level >= this.levelMax || this.errors >= this.maxErrors)
+        isFinish = true;
+
+    return isFinish; 
+}
+
 GameCal.prototype.checkResult = function (option) {
     if (this.difficulty == "master") {
         if (this.options[option - 1] === this.unknown) {
@@ -97,7 +108,8 @@ GameCal.prototype.checkResult = function (option) {
             this.totalScore += this.score;
             this.score = 1000;
             this.level++;
-            if (this.level >= this.levelMax) {
+
+            if (this.isFinish()) {
                 this.finish();
             } else {
                 this.newRound();
@@ -105,11 +117,15 @@ GameCal.prototype.checkResult = function (option) {
                 this.pullInfo();
             }
         } else {
+            this.errors += 1;
             this.vibrate();
             this.score = 1000;
             this.newRound();
             this.generateMove();
             this.pullInfo();
+
+            if (this.isFinish()) 
+                this.finish();
         }
     }
 
@@ -118,7 +134,7 @@ GameCal.prototype.checkResult = function (option) {
         this.totalScore += this.score;
         this.score = 1000;
         this.level++;
-        if (this.level >= this.levelMax) {
+        if (this.isFinish()) {
             this.finish();
         } else {
             this.newRound();
@@ -126,11 +142,15 @@ GameCal.prototype.checkResult = function (option) {
             this.pullInfo();
         }
     } else {
+        this.errors += 1;
         this.vibrate();
         this.score = 1000;
         this.newRound();
         this.generateMove();
         this.pullInfo();
+
+        if (this.isFinish()) 
+                this.finish();
     }
 }
 
@@ -159,6 +179,8 @@ GameCal.prototype.pullInfo = function () {
     this.ctrl.score = this.score;
     this.ctrl.level = this.level;
     this.ctrl.levelMax = this.levelMax;
+    this.ctrl.errors = this.errors;
+    this.ctrl.maxErrors = this.maxErrors;
     this.ctrl.operation = this.operation;
     this.ctrl.option1 = this.options[0];
     this.ctrl.option2 = this.options[1];
