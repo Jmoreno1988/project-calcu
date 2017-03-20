@@ -22,6 +22,9 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
                 case 'menuRecordsCal':
                     $state.go(page);
                     break;
+                case 'sudokuBoard': 
+                    $state.go(page);
+                    break;
             }
         }
 

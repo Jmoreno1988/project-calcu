@@ -7,6 +7,12 @@ angular.module('app.routes', [])
         controller: 'selectLevelCtrl'
       })
 
+      $stateProvider.state('sudokuBoard', {
+        url: '/pageSudokuBoard',
+        templateUrl: 'templates/sudokuBoard.html',
+        controller: 'sudokuBoardCtrl'
+      })
+
       $stateProvider.state('canvas', {
         url: '/page2',
         templateUrl: 'templates/canvas.html',

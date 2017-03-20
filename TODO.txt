@@ -25,9 +25,9 @@ Client
     ✔ Cambiar graficas de google por otra libreria
     - Icono
     - Carga icono y splash screen logo
-    - Bug con el timer en el juego
+    ✔ Bug con el timer en el juego
     - Arreglar enrutamiento
-    - Spinner en pantalla logros
+    ✔ Spinner en pantalla logros
     - Mandar punt al server
 
 Varios
