@@ -1,21 +1,30 @@
 appControllers.controller('sudokuBoardCtrl', ['$scope',
     function ($scope) {
-        
-        var mySudokuJS = $("#sudoku").sudokuJS({
+        var gameSudoku = new GameSudoku({
+            idBoard: "sudoku",
             difficulty: "normal"
         });
+        
+        gameSudoku.init();
 
-        //mySudokuJS.solveAll();
-        //console.log(mySudokuJS.getBoard())
-
-        var listInputs = document.querySelectorAll("input")
-
-        for(var i = 0; i < listInputs.length; i++){
-            listInputs[i].setAttribute("readonly", "true");
-            listInputs[i].addEventListener("click", listener.bind( null, i))
+        // Handlers
+        $scope.clickNumber = function(value) {
+            gameSudoku.setActualNumber(value);
         }
 
-        function listener(i) {
-            listInputs[i].style.background = "red";
-        } 
+        $scope.toggleEraseMode = function(value) {
+            gameSudoku.toggleEraseMode(value);
+        }
+
+        $scope.isCorrect = function() {
+            console.log(gameSudoku.isCorrect())
+        }
+
+        $scope.solveAll = function() {
+            gameSudoku.solveAll();
+        }
+
+        $scope.solveStep = function() {
+            gameSudoku.solveStep();
+        }
     }])
