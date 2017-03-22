@@ -4,16 +4,21 @@ appControllers.controller('sudokuBoardCtrl', ['$scope',
             idBoard: "sudoku",
             difficulty: "normal"
         });
-        
+
         gameSudoku.init();
 
         // Handlers
         $scope.clickNumber = function(value) {
+            unSelect();
+
+            document.getElementById(value).classList.add("cliked");
             gameSudoku.setActualNumber(value);
         }
 
         $scope.toggleEraseMode = function(value) {
-            gameSudoku.toggleEraseMode(value);
+            unSelect();
+            document.getElementById("erase").classList.add("cliked");
+            gameSudoku.toggleEraseMode(true);
         }
 
         $scope.isCorrect = function() {
@@ -26,5 +31,14 @@ appControllers.controller('sudokuBoardCtrl', ['$scope',
 
         $scope.solveStep = function() {
             gameSudoku.solveStep();
+        }
+
+        function unSelect() {
+            var listButtons = document.querySelectorAll(".buttonSetNumbers");
+
+            for( var i = 0; i < listButtons.length; i++)
+                listButtons[i].classList.remove("cliked");
+                
+            gameSudoku.toggleEraseMode(false);
         }
     }])

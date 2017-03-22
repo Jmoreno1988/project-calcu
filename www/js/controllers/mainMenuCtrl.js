@@ -137,8 +137,6 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
                 method: 'GET',
                 url: url
             }).then(function successCallback(response) {
-                //console.log(response.data)
-                // guardar info en sessionstorage
                 var infoUser = sessionService.get("infoUser");
                 infoUser.id = response.data.id;
                 infoUser.nick = response.data.nick;

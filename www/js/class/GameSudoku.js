@@ -94,7 +94,7 @@ GameSudoku.prototype.isValidate = function () {
 
 GameSudoku.prototype.listener = function (i) {
     var isFixed = this.listInputs[i].getAttribute("fixed");
-
+    
     if (this.eraseMode && !isFixed) {
         this.listInputs[i].value = "";
         this.isValidate();
@@ -105,9 +105,11 @@ GameSudoku.prototype.listener = function (i) {
         this.listInputs[i].value = this.actualNumber;
 
     if (this.isValidate()) {
-        console.log("Jugada valida")
+        //console.log("Jugada valida")
+        // if(this.isComplete())
+        //console.log("Ganastes :)")
     } else {
-        console.log("Jugada NO VALIDA")
+        //console.log("Jugada NO VALIDA")
     }
 }
 
@@ -123,8 +125,8 @@ GameSudoku.prototype.setActualNumber = function (newValue) {
     this.actualNumber = newValue;
 }
 
-GameSudoku.prototype.toggleEraseMode = function () {
-    this.eraseMode = this.eraseMode ? false : true;
+GameSudoku.prototype.toggleEraseMode = function (newValue) {
+    this.eraseMode = newValue;
 }
 
 GameSudoku.prototype.isCorrect = function () {

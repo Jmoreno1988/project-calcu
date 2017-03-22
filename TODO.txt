@@ -30,6 +30,11 @@ Client
     ✔ Spinner en pantalla logros
     - Mandar punt al server
 
+    - Pantalla niveles sudoku (opciones de retomar o reiniciar)
+    - Guardado de partida segun nivel.
+    - Pantalla resultados -> tiempo total, 
+
+
 Varios
 ======
     - Carta para verificar mi cuenta de adMob

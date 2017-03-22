@@ -149,33 +149,41 @@
         input[type="text"][fixed] {
             background: lightgrey;
         }
-
+        
         input[type="text"][error] {
             background: tomato;
+        }
+        
+        .cliked {
+            background: lightgray;
         }
     </style>
     <ion-nav-buttons side="right" class="has-header">
         <button class="button icon ion-android-settings" ng-click="openSettings()"></button>
     </ion-nav-buttons>
     <ion-content padding="true" class="has-header">
-        <div id='sudoku'></div>
-        <div class="button-bar">
-            <a class="button" ng-click="clickNumber(1)">1</a>
-            <a class="button" ng-click="clickNumber(2)">2</a>
-            <a class="button" ng-click="clickNumber(3)">3</a>
-            <a class="button" ng-click="clickNumber(4)">4</a>
-            <a class="button" ng-click="clickNumber(5)">5</a>
-        </div>
+        <div id="wrapperSudoku">
+            <div id='sudoku'></div>
+            <div class="button-bar">
+                <a id="1" clicked class="buttonSetNumbers button" ng-click="clickNumber(1)">1</a>
+                <a id="2" class="buttonSetNumbers button" ng-click="clickNumber(2)">2</a>
+                <a id="3" class="buttonSetNumbers button" ng-click="clickNumber(3)">3</a>
+                <a id="4" class="buttonSetNumbers button" ng-click="clickNumber(4)">4</a>
+                <a id="5" class="buttonSetNumbers button" ng-click="clickNumber(5)">5</a>
+            </div>
 
-        <div class="button-bar">
-            <a class="button" ng-click="clickNumber(6)">6</a>
-            <a class="button" ng-click="clickNumber(7)">7</a>
-            <a class="button" ng-click="clickNumber(8)">8</a>
-            <a class="button" ng-click="clickNumber(9)">9</a>
-            <a class="button" ng-click="toggleEraseMode(true)">E</a>
+            <div class="button-bar">
+                <a id="6" class="buttonSetNumbers button" ng-click="clickNumber(6)">6</a>
+                <a id="7" class="buttonSetNumbers button" ng-click="clickNumber(7)">7</a>
+                <a id="8" class="buttonSetNumbers button" ng-click="clickNumber(8)">8</a>
+                <a id="9" class="buttonSetNumbers button" ng-click="clickNumber(9)">9</a>
+                <a id="erase" class="buttonSetNumbers button" ng-click="toggleEraseMode(true)"><i class="icon ion-trash-b"></i></a>
+            </div>
         </div>
+        <!--
         <a class="button" ng-click="solveAll()">Resolver</a>
 
         <a class="button" ng-click="solveStep()">Resolver uno</a>
+        -->
     </ion-content>
 </ion-view>
