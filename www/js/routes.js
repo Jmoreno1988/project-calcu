@@ -7,12 +7,6 @@ angular.module('app.routes', [])
         controller: 'selectLevelCtrl'
       })
 
-      $stateProvider.state('sudokuBoard', {
-        url: '/pageSudokuBoard',
-        templateUrl: 'templates/sudokuBoard.html',
-        controller: 'sudokuBoardCtrl'
-      })
-
       $stateProvider.state('canvas', {
         url: '/page2',
         templateUrl: 'templates/canvas.html',
@@ -47,6 +41,18 @@ angular.module('app.routes', [])
         url: '/pageRecords',
         templateUrl: 'templates/menuRecordsCal.html',
         controller: 'menuRecordsCalCtrl'
+      })
+
+      $stateProvider.state('sudokuBoard', {
+        url: '/pageSudokuBoard',
+        templateUrl: 'templates/sudokuBoard.html',
+        controller: 'sudokuBoardCtrl'
+      })
+
+      $stateProvider.state('sudokuSelectLevel', {
+        url: '/pageSudokuSelectLevel',
+        templateUrl: 'templates/sudokuSelectLevel.html',
+        controller: 'sudokuSelectLevelCtrl'
       })
 
     $urlRouterProvider.otherwise('/page1')

@@ -164,7 +164,7 @@
         </div>
 
         <div id="halo"></div>
-        <div class="buttonMenu" id="buttonPlay" ui-sref="selectLevel">
+        <div class="buttonMenu" id="buttonPlay" ui-sref="sudokuBoard">
             <div class="buttonText">{{mainMenuCtrl_play}}</div>
         </div>
 
@@ -184,7 +184,8 @@
             <div class="buttonIcon"><img src="img/share.svg" alt="" ng-click="shareViaTwitter('some message', null, 'https://www.thepolyglotdeveloper.com')"></div>
         </div>
 
-        <button class="button button-full button-positive" ng-click="goTo('sudokuBoard')">Sudoku temp</button>
+        <button class="button button-full button-positive" ui-sref="sudokuBoard">Sudoku Board</button>
+        <button class="button button-full button-positive" ui-sref="sudokuSelectLevel">Sudoku Select Level</button>
 
         <script id="my-modal.html" type="text/ng-template">
             <ion-modal-view>
