@@ -13,6 +13,16 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
             sessionService.set("infoUser", cfg.modelObjectLocalStorage.infoUser);
         }
 
+        $scope.openListGames = function() {
+            document.getElementById("buttonShare").classList.toggle("buttonShareSecondPosition");
+            document.getElementById("buttonEvaluate").classList.toggle("buttonEvaluateSecondPosition");
+            document.getElementById("buttonSudoku").classList.toggle("buttonSudokuSecondPosition");
+            document.getElementById("buttonCalculator").classList.toggle("buttonCalculatorSecondPosition");
+            document.getElementById("buttonChess").classList.toggle("buttonChessSecondPosition");
+            document.getElementById("buttonPlay").classList.toggle("buttonPlaySecondPosition");
+            document.getElementById("buttonClose").classList.toggle("buttonCloseSecondPosition");
+        }
+
         $scope.openSettings = function () {
             $ionicSideMenuDelegate.toggleLeft();
         }

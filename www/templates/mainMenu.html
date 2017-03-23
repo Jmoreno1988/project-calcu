@@ -105,16 +105,34 @@
             -ms-transform: translate(-50%, -50%);
             -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
+            transition: all .3s ease;
+        }
+
+        .buttonPlaySecondPosition {
+            width: 60px!important;
+            height: 60px!important;
         }
         
         #buttonShare {
             width: 50px;
             height: 50px;
+            /* old
             -ms-transform: translate(50%, 100%);
             -webkit-transform: translate(50%, 100%);
             transform: translate(50%, 100%);
+            */
+            -ms-transform: translate(125%, -50%);
+            -webkit-transform: translate(125%, -50%);
+            transform: translate(125%, -50%);
             border: 3px solid #448AFF;
             background: white;
+            transition: all .3s ease;
+        }
+        
+        .buttonShareSecondPosition {
+            -ms-transform: translate(50%, 100%)!important;
+            -webkit-transform: translate(50%, 100%)!important;
+            transform: translate(50%, 100%)!important;
         }
         
         #buttonScores {
@@ -135,9 +153,70 @@
             transform: translate(-225%, -50%);
             border: 3px solid #448AFF;
             background: white;
+            transition: all .3s ease;
+        }
+        
+        .buttonEvaluateSecondPosition {
+            -ms-transform: translate(-150%, 100%)!important;
+            -webkit-transform: translate(-150%, 100%)!important;
+            transform: translate(-150%, 100%)!important;
+        }
+        
+        #buttonSudoku {
+            z-index: -1;
+            width: 50px;
+            height: 50px;
+            border: 3px solid #448AFF;
+            background: white;
+            transition: all .3s ease;
+        }
+        
+        .buttonSudokuSecondPosition {
+            transform: translate(-25px, -112px)!important;
+        }
+        
+        #buttonCalculator {
+            z-index: -1;
+            width: 50px;
+            height: 50px;
+            border: 3px solid #448AFF;
+            background: white;
+            transition: all .3s ease;
+        }
+        
+        .buttonCalculatorSecondPosition {
+            transform: translate(-100px, -75px)!important;
+        }
+        
+        #buttonChess {
+            z-index: -1;
+            width: 50px;
+            height: 50px;
+            border: 3px solid #448AFF;
+            background: white;
+            transition: all .3s ease;
+        }
+        
+        .buttonChessSecondPosition {
+            transform: translate(52px, -75px)!important;
+        }
+
+        #buttonClose {
+            z-index: 2;
+            width: 60px;
+            height: 60px;
+            background: #2196f3;
+            transition: all .3s ease; 
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        .buttonCloseSecondPosition {
+            opacity: 1!important;
         }
         
         #halo {
+            z-index: -2;
             position: absolute;
             width: 180px;
             height: 180px;
@@ -164,29 +243,45 @@
         </div>
 
         <div id="halo"></div>
-        <div class="buttonMenu" id="buttonPlay" ui-sref="sudokuBoard">
+        <div class="buttonMenu" id="buttonPlay" ng-click="openListGames()">
             <div class="buttonText">{{mainMenuCtrl_play}}</div>
         </div>
 
+        <div class="buttonMenu" id="buttonClose">
+            <div class="buttonIcon"><img src="img/close.svg" alt="" ui-sref="selectLevel"></div>
+        </div>
+        <!--
         <div class="buttonMenu" id="buttonScores">
             <div class="buttonIcon"><img src="img/trophy.svg" alt="" ng-click="goTo('menuRecordsCal')"></div>
+        </div>
+        -->
+        <div class="buttonMenu" id="buttonCalculator">
+            <div class="buttonIcon"><img src="img/calculator.svg" alt="" ui-sref="selectLevel"></div>
+        </div>
+
+        <div class="buttonMenu" id="buttonChess">
+            <div class="buttonIcon"><img src="img/keg.svg" alt="" ng-click=""></div>
         </div>
 
         <div class="buttonMenu" id="buttonEvaluate">
             <div class="buttonIcon"><img src="img/heart.svg" alt="" ng-click="showValorateModal()"></div>
         </div>
-
+        <!--
         <div class="buttonMenu" id="buttonOptions" ng-click="openModal()">
             <div class="buttonIcon"><img id="imgAccount" src="img/account.svg" alt=""></div>
+        </div>
+        -->
+        <div class="buttonMenu" id="buttonSudoku" ui-sref="sudokuSelectLevel">
+            <div class="buttonIcon"><img id="imgAccount" src="img/grid.svg" alt=""></div>
         </div>
 
         <div class="buttonMenu" id="buttonShare">
             <div class="buttonIcon"><img src="img/share.svg" alt="" ng-click="shareViaTwitter('some message', null, 'https://www.thepolyglotdeveloper.com')"></div>
         </div>
-
+        <!--
         <button class="button button-full button-positive" ui-sref="sudokuBoard">Sudoku Board</button>
         <button class="button button-full button-positive" ui-sref="sudokuSelectLevel">Sudoku Select Level</button>
-
+-->
         <script id="my-modal.html" type="text/ng-template">
             <ion-modal-view>
                 <ion-header-bar align-title="left" class="bar-positive">
