@@ -23,6 +23,10 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
             document.getElementById("buttonClose").classList.toggle("buttonCloseSecondPosition");
         }
 
+        $scope.showHelp = function() {
+            document.getElementById("helpOptions").classList.toggle("helpOptionsShowSecond");
+        }
+
         $scope.openSettings = function () {
             $ionicSideMenuDelegate.toggleLeft();
         }
