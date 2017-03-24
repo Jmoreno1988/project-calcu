@@ -1,8 +1,9 @@
-appControllers.controller('sudokuBoardCtrl', ['$scope',
-    function ($scope) {
+appControllers.controller('sudokuBoardCtrl', ['$scope', 'bridgeService',
+    function ($scope, bridgeService) {
+        var level =  bridgeService.data.sudokuSelectLevel;
         var gameSudoku = new GameSudoku({
             idBoard: "sudoku",
-            difficulty: "normal"
+            difficulty: level
         });
 
         gameSudoku.init();
