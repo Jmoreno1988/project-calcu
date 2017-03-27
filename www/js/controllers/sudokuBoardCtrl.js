@@ -1,5 +1,6 @@
-appControllers.controller('sudokuBoardCtrl', ['$scope', 'bridgeService',
-    function ($scope, bridgeService) {
+appControllers.controller('sudokuBoardCtrl', ['$scope', 'bridgeService', '$ionicSideMenuDelegate',
+    function ($scope, bridgeService, $ionicSideMenuDelegate) {
+
         var level =  bridgeService.data.sudokuSelectLevel;
         var gameSudoku = new GameSudoku({
             idBoard: "sudoku",
@@ -41,5 +42,9 @@ appControllers.controller('sudokuBoardCtrl', ['$scope', 'bridgeService',
                 listButtons[i].classList.remove("cliked");
                 
             gameSudoku.toggleEraseMode(false);
+        }
+
+        $scope.openSettings = function () {
+            $ionicSideMenuDelegate.toggleLeft();
         }
     }])

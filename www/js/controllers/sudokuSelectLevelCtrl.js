@@ -1,9 +1,13 @@
-appControllers.controller('sudokuSelectLevelCtrl', ['$scope', 'sessionService', '$state', 'bridgeService',
-    function ($scope, sessionService, $state, bridgeService) {
+appControllers.controller('sudokuSelectLevelCtrl', ['$scope', 'sessionService', '$state', 'bridgeService', '$ionicSideMenuDelegate',
+    function ($scope, sessionService, $state, bridgeService, $ionicSideMenuDelegate) {
 
         $scope.selectLevel = function (level) {
             bridgeService.data.sudokuSelectLevel = level;
             $state.go("sudokuBoard");
+        }
+
+        $scope.openSettings = function () {
+            $ionicSideMenuDelegate.toggleLeft();
         }
 
 
