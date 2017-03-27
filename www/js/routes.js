@@ -55,5 +55,11 @@ angular.module('app.routes', [])
         controller: 'sudokuSelectLevelCtrl'
       })
 
+      $stateProvider.state('chessBoard', {
+        url: '/pageChessBoard',
+        templateUrl: 'templates/chessBoard.html',
+        controller: 'chessBoardCtrl'
+      })
+
     $urlRouterProvider.otherwise('/page1')
   });
