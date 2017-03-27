@@ -16,18 +16,19 @@
             <a class="item item-icon-left item-icon-right" ng-click="selectLevel('normal')">
                 <i class="icon ion-ribbon-b"></i>
                 <h2>Normal</h2>
+                <p>Record: {{recordNormal}} :: Last score: {{lastScoreNormal}}</p>
             </a>
 
             <a class="item item-icon-left item-icon-right" ng-click="selectLevel('hard')">
                 <i class="icon ion-ribbon-a"></i>
                 <h2>Hard</h2>
-                <i class="icon ion-android-lock"></i>
+                <p>Record: {{recordHard}} :: Last score: {{lastScoreHard}}</p>
             </a>
 
             <a class="item item-icon-left item-icon-right" ng-click="selectLevel('master')">
                 <i class="icon ion-university"></i>
                 <h2>Master</h2>
-                <i class="icon ion-android-lock"></i>
+                <p>Record: {{recordMaster}} :: Last score: {{lastScoreMaster}}</p>
             </a>
 
             <a class="item item-icon-left item-icon-right">
@@ -43,7 +44,7 @@
                 <i class="icon ion-ios-infinite"></i>
                 <h2>Survival</h2>
                 <p>Good luck!</p>
-                <i class="icon ion-android-lock"></i>
+                <p>Record: {{recordSurvival}} :: Last score: {{lastScoreSurvival}}</p>
             </a>
         </div>
     </ion-content>
