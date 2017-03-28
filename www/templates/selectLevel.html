@@ -1,4 +1,4 @@
-<ion-view title="Select Level" id="pageSelectLevel">
+<ion-view title="Select Level" id="pageSelectLevel" ng-init ="update()">
     <style>
 
     </style>
@@ -10,41 +10,42 @@
             <a class="item item-icon-left item-icon-right" ng-click="selectLevel('easy')">
                 <i class="icon ion-tshirt"></i>
                 <h2>{{selectLevelCtrl_levelEasy}}</h2>
-                <p>Record: {{recordEasy}} :: Last score: {{lastScoreEasy}}</p>
+                <p>{{selectLevelCtrl_record}}: {{recordEasy}} :: {{selectLevelCtrl_lastScore}}: {{lastScoreEasy}}</p>
             </a>
 
             <a class="item item-icon-left item-icon-right" ng-click="selectLevel('normal')">
                 <i class="icon ion-ribbon-b"></i>
-                <h2>Normal</h2>
-                <p>Record: {{recordNormal}} :: Last score: {{lastScoreNormal}}</p>
+                <h2>{{selectLevelCtrl_levelNormal}}</h2>
+                <p>{{selectLevelCtrl_record}}: {{recordNormal}} :: {{selectLevelCtrl_lastScore}}: {{lastScoreNormal}}</p>
             </a>
 
             <a class="item item-icon-left item-icon-right" ng-click="selectLevel('hard')">
                 <i class="icon ion-ribbon-a"></i>
-                <h2>Hard</h2>
-                <p>Record: {{recordHard}} :: Last score: {{lastScoreHard}}</p>
+                <h2>{{selectLevelCtrl_levelHard}}</h2>
+                <p>{{selectLevelCtrl_record}}: {{recordHard}} :: {{selectLevelCtrl_lastScore}}: {{lastScoreHard}}</p>
             </a>
 
             <a class="item item-icon-left item-icon-right" ng-click="selectLevel('master')">
                 <i class="icon ion-university"></i>
-                <h2>Master</h2>
-                <p>Record: {{recordMaster}} :: Last score: {{lastScoreMaster}}</p>
+                <h2>{{selectLevelCtrl_levelMaster}}</h2>
+                <p>{{selectLevelCtrl_record}}: {{recordMaster}} :: {{selectLevelCtrl_lastScore}}: {{lastScoreMaster}}</p>
             </a>
 
             <a class="item item-icon-left item-icon-right">
-                <h2>Other categories</h2>
+                <h2>{{selectLevelCtrl_otherCategories}}</h2>
             </a>
 
             <a class="item item-icon-left item-icon-right" ng-click="selectLevel('kids')">
                 <i class="icon ion-ios-football"></i>
-                <h2>Kids</h2>
+                <h2>{{selectLevelCtrl_levelKids}}</h2>
+                <p>{{selectLevelCtrl_record}}: {{recordKids}} :: {{selectLevelCtrl_lastScore}}: {{lastScoreKids}}</p>
             </a>
 
             <a class="item item-icon-left item-icon-right" ng-click="showPopup('survival')">
                 <i class="icon ion-ios-infinite"></i>
-                <h2>Survival</h2>
-                <p>Good luck!</p>
-                <p>Record: {{recordSurvival}} :: Last score: {{lastScoreSurvival}}</p>
+                <h2>{{selectLevelCtrl_levelSurvival}}</h2>
+                <p>{{selectLevelCtrl_goodLuck}}</p>
+                <p>{{selectLevelCtrl_record}}: {{recordSurvival}} :: {{selectLevelCtrl_lastScore}}: {{lastScoreSurvival}}</p>
             </a>
         </div>
     </ion-content>

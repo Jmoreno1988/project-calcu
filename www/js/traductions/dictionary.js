@@ -23,7 +23,11 @@ var dictionary = {
         "selectLevelCtrl_levelHard": "Dificil",
         "selectLevelCtrl_levelMaster": "Maestro",
         "selectLevelCtrl_levelKids": "Niños",
-        "selectLevelCtrl_levelSurvival": "Supervivencia"
+        "selectLevelCtrl_levelSurvival": "Supervivencia",
+        "selectLevelCtrl_record": "Record",
+        "selectLevelCtrl_lastScore": "Ultima puntuación",
+        "selectLevelCtrl_otherCategories": "Otras categorías",
+        "selectLevelCtrl_goodLuck": "Buena suerte!!!"
     },
     
     "en": {
@@ -50,6 +54,10 @@ var dictionary = {
         "selectLevelCtrl_levelHard": "Hard",
         "selectLevelCtrl_levelMaster": "Master",
         "selectLevelCtrl_levelKids": "Kids",
-        "selectLevelCtrl_levelSurvival": "Survival"
+        "selectLevelCtrl_levelSurvival": "Survival",
+        "selectLevelCtrl_record": "Record",
+        "selectLevelCtrl_lastScore": "Last score",
+        "selectLevelCtrl_otherCategories": "Other categories",
+        "selectLevelCtrl_goodLuck": "Good luck!!!"
     }
 }

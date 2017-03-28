@@ -9,6 +9,8 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
             console.log("Reinicio localStorage");
             sessionService.set("isLocalStorage", true);
             sessionService.set("progressMathCalcu", cfg.modelObjectLocalStorage.progress.mathCalcu);
+            sessionService.set("progressSudoku", cfg.modelObjectLocalStorage.progress.sudoku);
+            sessionService.set("progressChess", cfg.modelObjectLocalStorage.progress.chess);
             sessionService.set("config", cfg.modelObjectLocalStorage.config);
             sessionService.set("infoUser", cfg.modelObjectLocalStorage.infoUser);
         }

@@ -4,6 +4,16 @@ appControllers.controller('selectLevelCtrl', ['$scope', '$stateParams', '$state'
 
         $scope.recordEasy = mathCalcu.easy.maxScore;
         $scope.lastScoreEasy = mathCalcu.easy.lastScore;
+        $scope.recordNormal = mathCalcu.normal.maxScore;
+        $scope.lastScoreNormal = mathCalcu.normal.lastScore;
+        $scope.recordHard = mathCalcu.hard.maxScore;
+        $scope.lastScoreHard = mathCalcu.hard.lastScore;
+        $scope.recordMaster = mathCalcu.master.maxScore;
+        $scope.lastScoreMaster = mathCalcu.master.lastScore;
+        $scope.recordKids = mathCalcu.kids.maxScore;
+        $scope.lastScoreKids = mathCalcu.kids.lastScore;
+        $scope.recordSurvival = mathCalcu.survival.maxScore;
+        $scope.lastScoreSurvival = mathCalcu.survival.lastScore;
 
         $scope.selectLevel = function (level) {
             if (!mathCalcu[level].blocked) {
@@ -15,6 +25,10 @@ appControllers.controller('selectLevelCtrl', ['$scope', '$stateParams', '$state'
                     template: 'If you want to unlock the level...'
                 });
             }
+        }
+
+        $scope.update = function() {
+            console.log(123)
         }
 
         $scope.showPopup = function () {
@@ -32,7 +46,16 @@ appControllers.controller('selectLevelCtrl', ['$scope', '$stateParams', '$state'
         
         function translate() {
             Translator.translate($scope, sessionService.get("config").lenguage, [
-                "selectLevelCtrl_levelEasy"
+                "selectLevelCtrl_levelEasy",
+                "selectLevelCtrl_levelNormal",
+                "selectLevelCtrl_levelHard",
+                "selectLevelCtrl_levelMaster",
+                "selectLevelCtrl_record",
+                "selectLevelCtrl_lastScore",
+                "selectLevelCtrl_otherCategories",
+                "selectLevelCtrl_levelKids",
+                "selectLevelCtrl_levelSurvival",
+                "selectLevelCtrl_goodLuck",
             ]);
         }
 
