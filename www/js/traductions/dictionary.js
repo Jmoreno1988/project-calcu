@@ -12,6 +12,12 @@ var dictionary = {
         "mainMenuCtrl_email": "Email (opcional)",
         "mainMenuCtrl_save": "Guardar cambios",
         "mainMenuCtrl_reset": "Reiniciar perfil",
+        "mainMenuCtrl_options": "Opciones",
+        "mainMenuCtrl_share": "Compartir",
+        "mainMenuCtrl_sudoku": "Sudoku",
+        "mainMenuCtrl_rate": "Evaluar App",
+        "mainMenuCtrl_chess": "Ajedrez",
+        "mainMenuCtrl_calcu": "Calcu",
 
         "menuCtrl_language": "Idioma",
         "menuCtrl_vibration": "Vibración",
@@ -51,6 +57,13 @@ var dictionary = {
         "mainMenuCtrl_msgOpinion": "We have developed this game with all our affection for you, that is why we would like to know your opinion.",
         "mainMenuCtrl_accept": 'Give opinion',
         "mainMenuCtrl_cancel": 'Maybe later...',
+        "mainMenuCtrl_options": "Options",
+        "mainMenuCtrl_share": "Share",
+        "mainMenuCtrl_sudoku": "Sudoku",
+        "mainMenuCtrl_rate": "Evaluate App",
+        "mainMenuCtrl_chess": "Chess",
+        "mainMenuCtrl_calcu": "Calcu",
+
 
         "mainMenuCtrl_userProfile": "User profile",
         "mainMenuCtrl_editAccount": "Edit account",

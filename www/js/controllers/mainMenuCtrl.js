@@ -26,7 +26,9 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
         }
 
         $scope.showHelp = function() {
-            document.getElementById("helpOptions").classList.toggle("helpOptionsShowSecond");
+            var list = document.querySelectorAll(".helpTitle")
+            for(var i = 0; i < list.length; i++)
+                list[i].classList.toggle("helpOptionsShowSecond");
         }
 
         $scope.openSettings = function () {
@@ -179,7 +181,13 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
                 "mainMenuCtrl_nickName",
                 "mainMenuCtrl_email",
                 "mainMenuCtrl_save",
-                "mainMenuCtrl_reset"
+                "mainMenuCtrl_reset",
+                "mainMenuCtrl_options",
+                "mainMenuCtrl_share",
+                "mainMenuCtrl_sudoku",
+                "mainMenuCtrl_rate",
+                "mainMenuCtrl_chess",
+                "mainMenuCtrl_calcu"
             ]);
         }
 
