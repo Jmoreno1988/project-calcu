@@ -26,7 +26,12 @@ appControllers.controller('sudokuSelectLevelCtrl', ['$scope', 'sessionService', 
 
         function translate() {
             Translator.translate($scope, sessionService.get("config").lenguage, [
-
+                "sudokuSelectLevelCtrl_easy",
+                "sudokuSelectLevelCtrl_normal",
+                "sudokuSelectLevelCtrl_hard",
+                "sudokuSelectLevelCtrl_veryHard",
+                "sudokuSelectLevelCtrl_wins",
+                "sudokuSelectLevelCtrl_time"
             ]);
         }
 

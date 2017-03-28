@@ -30,7 +30,13 @@ appControllers.controller('chessSelectLevelCtrl', ['$scope', 'sessionService', '
 
         function translate() {
             Translator.translate($scope, sessionService.get("config").lenguage, [
-
+                "chessSelectLevelCtrl_easy",
+                "chessSelectLevelCtrl_normal",
+                "chessSelectLevelCtrl_hard",
+                "chessSelectLevelCtrl_wins",
+                "chessSelectLevelCtrl_defeats",
+                "chessSelectLevelCtrl_moves",
+                "chessSelectLevelCtrl_time"
             ]);
         }
 

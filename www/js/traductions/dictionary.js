@@ -27,7 +27,22 @@ var dictionary = {
         "selectLevelCtrl_record": "Record",
         "selectLevelCtrl_lastScore": "Ultima puntuación",
         "selectLevelCtrl_otherCategories": "Otras categorías",
-        "selectLevelCtrl_goodLuck": "Buena suerte!!!"
+        "selectLevelCtrl_goodLuck": "Buena suerte!!!",
+
+        "sudokuSelectLevelCtrl_easy": "Facil",
+        "sudokuSelectLevelCtrl_normal": "Normal",
+        "sudokuSelectLevelCtrl_hard": "Dificil",
+        "sudokuSelectLevelCtrl_veryHard": "Muy dificil",
+        "sudokuSelectLevelCtrl_wins": "Victorias",
+        "sudokuSelectLevelCtrl_time": "Tiempo",
+
+        "chessSelectLevelCtrl_easy": "Facil",
+        "chessSelectLevelCtrl_normal": "Normal",
+        "chessSelectLevelCtrl_hard": "Dificil",
+        "chessSelectLevelCtrl_wins": "Visctorias",
+        "chessSelectLevelCtrl_defeats": "Derrotas",
+        "chessSelectLevelCtrl_moves": "Movimientos",
+        "chessSelectLevelCtrl_time": "Tiempo"
     },
     
     "en": {
@@ -58,6 +73,21 @@ var dictionary = {
         "selectLevelCtrl_record": "Record",
         "selectLevelCtrl_lastScore": "Last score",
         "selectLevelCtrl_otherCategories": "Other categories",
-        "selectLevelCtrl_goodLuck": "Good luck!!!"
+        "selectLevelCtrl_goodLuck": "Good luck!!!",
+
+        "sudokuSelectLevelCtrl_easy": "Easy",
+        "sudokuSelectLevelCtrl_normal": "Normal",
+        "sudokuSelectLevelCtrl_hard": "Hard",
+        "sudokuSelectLevelCtrl_veryHard": "Very hard",
+        "sudokuSelectLevelCtrl_wins": "Wins",
+        "sudokuSelectLevelCtrl_time": "Time",
+
+        "chessSelectLevelCtrl_easy": "Easy",
+        "chessSelectLevelCtrl_normal": "Normal",
+        "chessSelectLevelCtrl_hard": "Hard",
+        "chessSelectLevelCtrl_wins": "Wins",
+        "chessSelectLevelCtrl_defeats": "Defeats",
+        "chessSelectLevelCtrl_moves": "Moves",
+        "chessSelectLevelCtrl_time": "Time"
     }
 }
