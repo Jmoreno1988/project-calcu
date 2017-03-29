@@ -37,7 +37,7 @@ appControllers.controller('sudokuSelectLevelCtrl', ['$scope', 'sessionService', 
             });
         }
 
-        $scope.removeBoard = function (level) {
+        function removeBoard(level) {
             var aux = sessionService.get("progressSudoku");
             aux[level].board = null;
             sessionService.set("progressSudoku", aux);
