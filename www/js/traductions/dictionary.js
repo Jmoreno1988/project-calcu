@@ -41,6 +41,10 @@ var dictionary = {
         "sudokuSelectLevelCtrl_veryHard": "Muy dificil",
         "sudokuSelectLevelCtrl_wins": "Victorias",
         "sudokuSelectLevelCtrl_time": "Tiempo",
+        "sudokuSelectLevelCtrl_titlePopUp": "Reiniciar nivel",
+        "sudokuSelectLevelCtrl_msgPopUp": "Si reinicia se perderan todos los datos guardados.",
+        "sudokuSelectLevelCtrl_cancelPopUp": "Cancel",
+        "sudokuSelectLevelCtrl_acceptPopUp": "Aceptar",
 
         "chessSelectLevelCtrl_easy": "Facil",
         "chessSelectLevelCtrl_normal": "Normal",
@@ -48,7 +52,12 @@ var dictionary = {
         "chessSelectLevelCtrl_wins": "Visctorias",
         "chessSelectLevelCtrl_defeats": "Derrotas",
         "chessSelectLevelCtrl_moves": "Movimientos",
-        "chessSelectLevelCtrl_time": "Tiempo"
+        "chessSelectLevelCtrl_time": "Tiempo",
+
+        "easy": "Facil",
+        "normal": "Normal",
+        "hard": "Dificil",
+        "veryHard": "Muy dificil"
     },
     
     "en": {
@@ -94,6 +103,11 @@ var dictionary = {
         "sudokuSelectLevelCtrl_veryHard": "Very hard",
         "sudokuSelectLevelCtrl_wins": "Wins",
         "sudokuSelectLevelCtrl_time": "Time",
+        "sudokuSelectLevelCtrl_titlePopUp": "Reset game",
+        "sudokuSelectLevelCtrl_msgPopUp": "The game will be deleted, are you sure?",
+        "sudokuSelectLevelCtrl_cancelPopUp": "Cancel",
+        "sudokuSelectLevelCtrl_acceptPopUp": "Accept",
+
 
         "chessSelectLevelCtrl_easy": "Easy",
         "chessSelectLevelCtrl_normal": "Normal",
@@ -101,6 +115,11 @@ var dictionary = {
         "chessSelectLevelCtrl_wins": "Wins",
         "chessSelectLevelCtrl_defeats": "Defeats",
         "chessSelectLevelCtrl_moves": "Moves",
-        "chessSelectLevelCtrl_time": "Time"
+        "chessSelectLevelCtrl_time": "Time",
+
+        "easy": "Easy",
+        "normal": "Normal",
+        "hard": "Hard",
+        "veryHard": "Very Hard"
     }
 }

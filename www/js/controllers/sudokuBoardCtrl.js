@@ -1,11 +1,16 @@
-appControllers.controller('sudokuBoardCtrl', ['$scope', 'bridgeService', '$ionicSideMenuDelegate',
-    function ($scope, bridgeService, $ionicSideMenuDelegate) {
+appControllers.controller('sudokuBoardCtrl', ['$scope', 'bridgeService', '$ionicSideMenuDelegate', 'sessionService',
+    function ($scope, bridgeService, $ionicSideMenuDelegate, sessionService) {
+        
 
         var level =  bridgeService.data.sudokuSelectLevel;
+        
         var gameSudoku = new GameSudoku({
             idBoard: "sudoku",
-            difficulty: level
+            difficulty: level,
+            sessionService: sessionService//sessionService.get("progressSudoku")[level].board 
         });
+        
+        $scope.levelSudoku = dictionary[sessionService.get("config").lenguage][level];
 
         gameSudoku.init();
 

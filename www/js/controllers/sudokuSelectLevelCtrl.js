@@ -1,5 +1,5 @@
-appControllers.controller('sudokuSelectLevelCtrl', ['$scope', 'sessionService', '$state', 'bridgeService', '$ionicSideMenuDelegate',
-    function ($scope, sessionService, $state, bridgeService, $ionicSideMenuDelegate) {
+appControllers.controller('sudokuSelectLevelCtrl', ['$scope', 'sessionService', '$state', 'bridgeService', '$ionicSideMenuDelegate', '$ionicPopup',
+    function ($scope, sessionService, $state, bridgeService, $ionicSideMenuDelegate, $ionicPopup) {
         var progressSudoku = sessionService.get("progressSudoku");
 
         $scope.easyWins = progressSudoku.easy.wins;
@@ -18,6 +18,29 @@ appControllers.controller('sudokuSelectLevelCtrl', ['$scope', 'sessionService', 
 
         $scope.openSettings = function () {
             $ionicSideMenuDelegate.toggleLeft();
+        }
+
+        $scope.confirmRemoveBoard = function(level) {
+            var l = sessionService.get("config").lenguage;
+            var d = dictionary; 
+            var confirmPopup = $ionicPopup.confirm({
+                title: Translator.get("sudokuSelectLevelCtrl_titlePopUp", l, d),
+                template: Translator.get("sudokuSelectLevelCtrl_msgPopUp", l, d),
+                cancelText: Translator.get("sudokuSelectLevelCtrl_cancelPopUp", l, d),
+                okText: Translator.get("sudokuSelectLevelCtrl_acceptPopUp", l, d)
+            });
+
+            confirmPopup.then(function (res) {
+                if (res) {
+                    removeBoard(level);
+                } else { }
+            });
+        }
+
+        $scope.removeBoard = function (level) {
+            var aux = sessionService.get("progressSudoku");
+            aux[level].board = null;
+            sessionService.set("progressSudoku", aux);
         }
 
 

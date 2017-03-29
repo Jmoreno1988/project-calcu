@@ -163,6 +163,7 @@
     </ion-nav-buttons>
     <ion-content padding="true" class="has-header">
         <div id="wrapperSudoku">
+            <div> <h1 style="text-align:center" id="labelLevelSudoku"> {{levelSudoku}} </h1> </div>
             <div id='sudoku'></div>
             <div class="button-bar">
                 <a id="1" clicked class="buttonSetNumbers button" ng-click="clickNumber(1)">1</a>
@@ -179,11 +180,8 @@
                 <a id="9" class="buttonSetNumbers button" ng-click="clickNumber(9)">9</a>
                 <a id="erase" class="buttonSetNumbers button" ng-click="toggleEraseMode(true)"><i class="icon ion-trash-b"></i></a>
             </div>
-        </div>
-        <!--
-        <a class="button" ng-click="solveAll()">Resolver</a>
 
-        <a class="button" ng-click="solveStep()">Resolver uno</a>
-        -->
+            <div style="text-align:center"> 09:16 </div>
+        </div>
     </ion-content>
 </ion-view>

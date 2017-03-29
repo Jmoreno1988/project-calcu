@@ -4,6 +4,7 @@ function GameSudoku(options) {
     this.idBoard = options.idBoard;
     this.nodeBoard = document.getElementById(this.idBoard);
     this.difficulty = options.difficulty;
+    this.sessionService = options.sessionService;
     this.sudokuJs = null;
     this.listInputs = null;
     this.actualNumber = null;
@@ -15,7 +16,8 @@ function GameSudoku(options) {
 
 GameSudoku.prototype.init = function () {
     this.sudokuJs = $("#" + this.idBoard).sudokuJS({
-        difficulty: this.difficulty
+        difficulty: this.difficulty,
+        board: this.sessionService.get("progressSudoku")[this.difficulty].board
     });
 
     this.listInputs = this.nodeBoard.querySelectorAll("input");
@@ -39,6 +41,15 @@ GameSudoku.prototype.init = function () {
 
     this.listBoxes = this.generateListBoxes();
 }
+
+GameSudoku.prototype.save = function(pos, value) {
+    var aux = this.sessionService.get("progressSudoku");
+
+    aux[this.difficulty].board = this.sudokuJs.getBoard();
+    aux[this.difficulty].board[pos].val = value;
+    this.sessionService.set("progressSudoku", aux);
+}
+
 
 // TODO: refactor, refactor, refactor...
 GameSudoku.prototype.isValidate = function () {
@@ -94,7 +105,8 @@ GameSudoku.prototype.isValidate = function () {
 
 GameSudoku.prototype.listener = function (i) {
     var isFixed = this.listInputs[i].getAttribute("fixed");
-    
+    var posCell = this.listInputs[i].getAttribute("id").split("-")[1];
+
     if (this.eraseMode && !isFixed) {
         this.listInputs[i].value = "";
         this.isValidate();
@@ -107,10 +119,12 @@ GameSudoku.prototype.listener = function (i) {
     if (this.isValidate()) {
         //console.log("Jugada valida")
         // if(this.isComplete())
-        //console.log("Ganastes :)")
+        //console.log("Ganastes :)")gm
     } else {
         //console.log("Jugada NO VALIDA")
     }
+
+    this.save(posCell, this.actualNumber)
 }
 
 GameSudoku.prototype.isComplete = function () {

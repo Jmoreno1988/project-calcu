@@ -11,29 +11,30 @@
                 <i class="icon ion-ribbon-a"></i>
                 <h2>{{sudokuSelectLevelCtrl_easy}}</h2>
                 <p> {{sudokuSelectLevelCtrl_wins}}: {{easyWins}} :: {{sudokuSelectLevelCtrl_time}}: {{easyTime}} </p>
-                <i class="icon ion-trash-b"></i>
+                <button class="icon ion-trash-b" ng-click="confirmRemoveBoard('easy')"></button>
             </a>
 
             <a class="item item-icon-left item-icon-right" ng-click="selectLevel('normal')">
                 <i class="icon ion-ribbon-a"></i>
                 <h2>{{sudokuSelectLevelCtrl_normal}}</h2>
                 <p> {{sudokuSelectLevelCtrl_wins}}: {{normalWins}} :: {{sudokuSelectLevelCtrl_time}}: {{normalTime}} </p>
-                <i class="icon ion-trash-b"></i>
+                <button class="icon ion-trash-b" ng-click="confirmRemoveBoard('normal')"></button>
             </a>
 
             <a class="item item-icon-left item-icon-right" ng-click="selectLevel('hard')">
                 <i class="icon ion-ribbon-a"></i>
                 <h2>{{sudokuSelectLevelCtrl_hard}}</h2>
                 <p> {{sudokuSelectLevelCtrl_wins}}: {{hardWins}} :: {{sudokuSelectLevelCtrl_time}}: {{hardTime}} </p>
-                <i class="icon ion-trash-b"></i>
+                <button class="icon ion-trash-b" ng-click="confirmRemoveBoard('hard')"></button>
             </a>
-
-            <a class="item item-icon-left item-icon-right" ng-click="selectLevel('veryHard')">
+<!--
+            <a class="item item-icon-left item-icon-right" ng-click="selectLevel('very hard')">
                 <i class="icon ion-ribbon-a"></i>
                 <h2>{{sudokuSelectLevelCtrl_veryHard}}</h2>
                 <p> {{sudokuSelectLevelCtrl_wins}}: {{veryHardWins}} :: {{sudokuSelectLevelCtrl_time}}: {{veryHardTime}} </p>
-                <i class="icon ion-trash-b"></i>
+                <i class="icon ion-trash-b" ng-click="confirmRemoveBoard('veryHard')"></i>
             </a>
+            -->
         </div>
     </ion-content>
 </ion-view>
