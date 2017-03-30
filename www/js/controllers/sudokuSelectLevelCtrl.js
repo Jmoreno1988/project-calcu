@@ -1,6 +1,6 @@
 appControllers.controller('sudokuSelectLevelCtrl', ['$scope', 'sessionService', '$state', 'bridgeService', '$ionicSideMenuDelegate', '$ionicPopup',
     function ($scope, sessionService, $state, bridgeService, $ionicSideMenuDelegate, $ionicPopup) {
-                
+
         updateInfo();
 
         $scope.selectLevel = function (level) {
@@ -25,6 +25,7 @@ appControllers.controller('sudokuSelectLevelCtrl', ['$scope', 'sessionService', 
             confirmPopup.then(function (res) {
                 if (res) {
                     removeBoard(level);
+                    updateInfo()
                 } else { }
             });
         }
@@ -53,8 +54,7 @@ appControllers.controller('sudokuSelectLevelCtrl', ['$scope', 'sessionService', 
         }
 
         function millisToMinutesAndSeconds(millis) {
-            if (millis == '--')
-                return "--";
+            if (millis == '--') return "--";
 
             var minutes = Math.floor(millis / 60000);
             var seconds = ((millis % 60000) / 1000).toFixed(0);

@@ -15,7 +15,7 @@ function GameSudoku(options) {
     this.timeMilli = this.sessionService.get("progressSudoku")[this.difficulty].time;
     this.timer = new Timer(options.controller, options.interval, this.timeMilli);
     this.ctrl = options.controller;
-    this.rootScope = options.rootScope
+    this.rootScope = options.rootScope;
 }
 
 GameSudoku.prototype.init = function () {
