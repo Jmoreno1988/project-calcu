@@ -54,6 +54,7 @@ GameSudoku.prototype.init = function () {
 
     this.listBoxes = this.generateListBoxes();
     this.isValidate();
+    this.saveAll();
 }
 
 GameSudoku.prototype.save = function(pos, value) {
@@ -61,6 +62,17 @@ GameSudoku.prototype.save = function(pos, value) {
     
     aux[this.difficulty].board = this.sudokuJs.getBoard();
     aux[this.difficulty].board[pos].val = value;
+    this.sessionService.set("progressSudoku", aux);
+}
+
+GameSudoku.prototype.saveAll = function(pos, value) {
+    var aux = this.sessionService.get("progressSudoku");
+    
+    aux[this.difficulty].board = this.sudokuJs.getBoard();
+
+    for(var i = 0; i < this.sudokuJs.getBoard().length; i++)
+        aux[this.difficulty].board[i].val = this.sudokuJs.getBoard()[i].val;
+    
     this.sessionService.set("progressSudoku", aux);
 }
 
@@ -121,6 +133,7 @@ GameSudoku.prototype.listener = function (i) {
     var isFixed = this.listInputs[i].getAttribute("fixed");
     var posCell = this.listInputs[i].getAttribute("id").split("-")[1];
 
+    // Modo borrado activado
     if (this.eraseMode && !isFixed) {
         this.listInputs[i].value = "";
         this.save(posCell, null);
@@ -135,10 +148,8 @@ GameSudoku.prototype.listener = function (i) {
         //console.log("Jugada valida")
         // if(this.isComplete())
         //console.log("Ganastes :)")gm
-    } else {
-        //console.log("Jugada NO VALIDA")
     }
-    console.log(this.actualNumber)
+    
     this.save(posCell, this.actualNumber);
 }
 
