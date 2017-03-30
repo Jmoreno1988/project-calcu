@@ -1,15 +1,7 @@
 appControllers.controller('sudokuSelectLevelCtrl', ['$scope', 'sessionService', '$state', 'bridgeService', '$ionicSideMenuDelegate', '$ionicPopup',
     function ($scope, sessionService, $state, bridgeService, $ionicSideMenuDelegate, $ionicPopup) {
-        var progressSudoku = sessionService.get("progressSudoku");
-
-        $scope.easyWins = progressSudoku.easy.wins;
-        $scope.easyTime = progressSudoku.easy.time;
-        $scope.normalWins = progressSudoku.normal.wins;
-        $scope.normalTime = progressSudoku.normal.time;
-        $scope.hardWins = progressSudoku.hard.wins;
-        $scope.hardTime = progressSudoku.hard.time;
-        $scope.veryHardWins = progressSudoku.veryHard.wins;
-        $scope.veryHardTime = progressSudoku.veryHard.time;
+                
+        updateInfo();
 
         $scope.selectLevel = function (level) {
             bridgeService.data.sudokuSelectLevel = level;
@@ -20,9 +12,9 @@ appControllers.controller('sudokuSelectLevelCtrl', ['$scope', 'sessionService', 
             $ionicSideMenuDelegate.toggleLeft();
         }
 
-        $scope.confirmRemoveBoard = function(level) {
+        $scope.confirmRemoveBoard = function (level) {
             var l = sessionService.get("config").lenguage;
-            var d = dictionary; 
+            var d = dictionary;
             var confirmPopup = $ionicPopup.confirm({
                 title: Translator.get("sudokuSelectLevelCtrl_titlePopUp", l, d),
                 template: Translator.get("sudokuSelectLevelCtrl_msgPopUp", l, d),
@@ -37,11 +29,36 @@ appControllers.controller('sudokuSelectLevelCtrl', ['$scope', 'sessionService', 
             });
         }
 
+        $scope.$on('finishGameSudoku', function (evt) {
+            updateInfo();
+        });
+
+        function updateInfo() {
+            var progressSudoku = sessionService.get("progressSudoku");
+            $scope.easyWins = progressSudoku.easy.wins;
+            $scope.easyTime = millisToMinutesAndSeconds(progressSudoku.easy.time);
+            $scope.normalWins = progressSudoku.normal.wins;
+            $scope.normalTime = millisToMinutesAndSeconds(progressSudoku.normal.time);
+            $scope.hardWins = progressSudoku.hard.wins;
+            $scope.hardTime = millisToMinutesAndSeconds(progressSudoku.hard.time);
+            $scope.veryHardWins = progressSudoku.veryHard.wins;
+            $scope.veryHardTime = millisToMinutesAndSeconds(progressSudoku.veryHard.time);
+        }
+
         function removeBoard(level) {
             var aux = sessionService.get("progressSudoku");
             aux[level].board = null;
             aux[level].time = "--";
             sessionService.set("progressSudoku", aux);
+        }
+
+        function millisToMinutesAndSeconds(millis) {
+            if (millis == '--')
+                return "--";
+
+            var minutes = Math.floor(millis / 60000);
+            var seconds = ((millis % 60000) / 1000).toFixed(0);
+            return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
         }
 
 

@@ -15,6 +15,7 @@ function GameSudoku(options) {
     this.timeMilli = this.sessionService.get("progressSudoku")[this.difficulty].time;
     this.timer = new Timer(options.controller, options.interval, this.timeMilli);
     this.ctrl = options.controller;
+    this.rootScope = options.rootScope
 }
 
 GameSudoku.prototype.init = function () {
@@ -61,9 +62,10 @@ GameSudoku.prototype.init = function () {
 
     this.timer.sCallback = this.step.bind(this);
     this.timer.init();
+
     this.ctrl.$on('$destroy', function(evt) {
-        console.log("Termino con: " + this.timer.getTimeMillis())
         this.saveAll();
+        this.rootScope.$broadcast('finishGameSudoku');
     }.bind(this));
 }
 
@@ -95,10 +97,8 @@ GameSudoku.prototype.saveAll = function(pos, value) {
 
 // TODO: refactor, refactor, refactor...
 GameSudoku.prototype.isValidate = function () {
-    //if (!this.actualNumber)
-    //    return false;
-
     var isValidate = true;
+    
     // Limpieza
     for (var e = 0; e < this.listBoard.length; e++)
         for (var u = 0; u < this.listBoard[e].length; u++)

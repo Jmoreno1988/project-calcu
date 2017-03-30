@@ -17,7 +17,6 @@ Timer.prototype.init = function () {
     this.isActive = true;
     var auxTime = new Date();
     this.initMilliseconds = auxTime.getTime() - this.saveTime;
-    console.log("Empiezo con: " + this.getTime())
     this.auxStep = auxTime.getTime();
     this.theInterval = this.$interval(this.update.bind(this), 100);
     this.ctrl.$on('$destroy', this.cancelTimer.bind(this));
