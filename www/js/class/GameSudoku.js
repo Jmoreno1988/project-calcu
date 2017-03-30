@@ -58,7 +58,7 @@ GameSudoku.prototype.init = function () {
 
 GameSudoku.prototype.save = function(pos, value) {
     var aux = this.sessionService.get("progressSudoku");
-
+    
     aux[this.difficulty].board = this.sudokuJs.getBoard();
     aux[this.difficulty].board[pos].val = value;
     this.sessionService.set("progressSudoku", aux);
@@ -123,6 +123,7 @@ GameSudoku.prototype.listener = function (i) {
 
     if (this.eraseMode && !isFixed) {
         this.listInputs[i].value = "";
+        this.save(posCell, null);
         this.isValidate();
         return;
     }
@@ -137,8 +138,8 @@ GameSudoku.prototype.listener = function (i) {
     } else {
         //console.log("Jugada NO VALIDA")
     }
-
-    this.save(posCell, this.actualNumber)
+    console.log(this.actualNumber)
+    this.save(posCell, this.actualNumber);
 }
 
 GameSudoku.prototype.isComplete = function () {
