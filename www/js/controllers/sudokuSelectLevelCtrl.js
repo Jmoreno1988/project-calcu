@@ -40,6 +40,7 @@ appControllers.controller('sudokuSelectLevelCtrl', ['$scope', 'sessionService', 
         function removeBoard(level) {
             var aux = sessionService.get("progressSudoku");
             aux[level].board = null;
+            aux[level].time = "--";
             sessionService.set("progressSudoku", aux);
         }
 

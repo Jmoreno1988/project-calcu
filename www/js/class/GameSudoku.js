@@ -12,6 +12,9 @@ function GameSudoku(options) {
     this.listQuadrant = [];
     this.listBoard = Util.createArray(9, 9, null); // Array bidimensional del tablero
     this.listBoxes = null; // Lista de cajas de 3x3 del tablero
+    this.timeMilli = this.sessionService.get("progressSudoku")[this.difficulty].time;
+    this.timer = new Timer(options.controller, options.interval, this.timeMilli);
+    this.ctrl = options.controller;
 }
 
 GameSudoku.prototype.init = function () {
@@ -55,13 +58,25 @@ GameSudoku.prototype.init = function () {
     this.listBoxes = this.generateListBoxes();
     this.isValidate();
     this.saveAll();
+
+    this.timer.sCallback = this.step.bind(this);
+    this.timer.init();
+    this.ctrl.$on('$destroy', function(evt) {
+        console.log("Termino con: " + this.timer.getTimeMillis())
+        this.saveAll();
+    }.bind(this));
+}
+
+GameSudoku.prototype.step = function() {
+    this.ctrl.labelTimer = this.timer.getTime();
 }
 
 GameSudoku.prototype.save = function(pos, value) {
     var aux = this.sessionService.get("progressSudoku");
-    
+
     aux[this.difficulty].board = this.sudokuJs.getBoard();
     aux[this.difficulty].board[pos].val = value;
+    aux[this.difficulty].time = this.timer.getTimeMillis();
     this.sessionService.set("progressSudoku", aux);
 }
 
@@ -73,6 +88,7 @@ GameSudoku.prototype.saveAll = function(pos, value) {
     for(var i = 0; i < this.sudokuJs.getBoard().length; i++)
         aux[this.difficulty].board[i].val = this.sudokuJs.getBoard()[i].val;
     
+    aux[this.difficulty].time = this.timer.getTimeMillis();
     this.sessionService.set("progressSudoku", aux);
 }
 

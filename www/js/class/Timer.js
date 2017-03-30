@@ -1,8 +1,9 @@
 Timer.prototype.constructor = Timer;
 
-function Timer(controller, $interval) {
+function Timer(controller, $interval, initMilli) {
     this.$interval = $interval;
     this.ctrl = controller;
+    this.saveTime = (typeof initMilli == 'number') ? initMilli : 0;
     this.initMilliseconds = null;
     this.isActive = false;
     this.theInterval = null;
@@ -15,7 +16,8 @@ Timer.prototype.sCallback = function () { return 1; } // Callback para usar desd
 Timer.prototype.init = function () {
     this.isActive = true;
     var auxTime = new Date();
-    this.initMilliseconds = auxTime.getTime();
+    this.initMilliseconds = auxTime.getTime() - this.saveTime;
+    console.log("Empiezo con: " + this.getTime())
     this.auxStep = auxTime.getTime();
     this.theInterval = this.$interval(this.update.bind(this), 100);
     this.ctrl.$on('$destroy', this.cancelTimer.bind(this));
@@ -24,11 +26,18 @@ Timer.prototype.init = function () {
 Timer.prototype.getTime = function() {
     var auxTime = new Date();
     var millis = auxTime.getTime() - this.initMilliseconds;
-    console.log("Timer activo")
+
     if (millis >= 0)
         return this.millisToMinutesAndSeconds(millis);
     else
         return "0:00";
+}
+
+Timer.prototype.getTimeMillis = function() {
+    var auxTime = new Date();
+    var millis = auxTime.getTime() - this.initMilliseconds;
+    
+    return millis;
 }
 
 Timer.prototype.cancelTimer = function () {
