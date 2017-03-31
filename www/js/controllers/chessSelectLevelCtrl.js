@@ -16,7 +16,7 @@ appControllers.controller('chessSelectLevelCtrl', ['$scope', 'sessionService', '
         $scope.hardTime = progressChess.hard.time;
 
         $scope.selectLevel = function (level) {
-            bridgeService.data.sudokuSelectLevel = level;
+            bridgeService.data.chessSelectLevel = level;
             $state.go("chessBoard");
         }
 
