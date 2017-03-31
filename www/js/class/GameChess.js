@@ -37,11 +37,9 @@ GameChess.prototype.init = function() {
 }
 
 GameChess.prototype.save = function() {
-    var fen = GetFen();
     var aux = this.sessionService.get("progressChess");
 
-    aux[this.level].fen = fen;
-
+    aux[this.level].fen = GetFen();
     this.sessionService.set("progressChess", aux);
 }
 
