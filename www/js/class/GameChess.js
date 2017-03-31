@@ -1,0 +1,201 @@
+GameChess.prototype.constructor = GameChess;
+
+function GameChess(options) {
+    this.ctrl = options.ctrl;
+    this.rootScope = options.rootScope;
+    this.g_validMoves = null;
+    this.g_allMoves = [];
+    this.g_Checkmate = false;
+    this.g_Stalemate = false;
+    this.board = null;
+    this.sessionService = options.sessionService;
+    this.level = options.level;
+    this.initFen = this.sessionService.get("progressChess")[this.level].fen || "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
+}
+
+GameChess.prototype.init = function() {
+    this.board = new Chessboard('boardChess', {
+        position: this.initFen,
+        eventHandlers: {
+            onPieceSelected: this.pieceSelected.bind(this),
+            onMove: this.pieceMove.bind(this)
+        }
+    });
+    
+    ResetGame(this.initFen);
+    this.board.setPosition(this.initFen, true);
+    this.updateGameInfo();
+    this.g_Checkmate = false;
+    this.g_Stalemate = false;
+	this.g_timeout = 10;
+
+    // Listener
+    this.ctrl.$on('$destroy', function(evt) {
+        this.save();
+        this.rootScope.$broadcast('finishGameChess');
+    }.bind(this));
+}
+
+GameChess.prototype.save = function() {
+    var fen = GetFen();
+    var aux = this.sessionService.get("progressChess");
+
+    aux[this.level].fen = fen;
+
+    this.sessionService.set("progressChess", aux);
+}
+
+GameChess.prototype.updateGameInfo = function () {
+    var nextPlayer,
+        status;
+
+    nextPlayer = this.g_toMove ? 'white' : 'black';
+
+    if (this.g_Checkmate === true) {
+        status = 'CHECKMATE! Player ' + nextPlayer + ' lost.';
+    } else if (this.g_Stalemate === true) {
+        status = 'DRAW!';
+    } else {
+        status = 'Next player is ' + nextPlayer + '.';
+
+        if (this.g_inCheck === true) {
+            status = 'CHECK! ' + status;
+        }
+    }
+    
+    this.save();
+    $('#info-status').html(status);
+    $('#info-fen').html(GetFen());
+}
+
+GameChess.prototype.undoGame = function () {
+    if (this.g_allMoves.length === 0) {
+        return;
+    }
+
+    UnmakeMove(this.g_allMoves[this.g_allMoves.length - 1]);
+    this.g_allMoves.pop();
+    UnmakeMove(this.g_allMoves[this.g_allMoves.length - 1]);
+    this.g_allMoves.pop();
+
+    this.g_Checkmate = false;
+    this.g_Stalemate = false;
+
+    this.g_validMoves = GenerateValidMoves();
+
+    this.board.setPosition(GetFen());
+
+    this.updateGameInfo();
+}
+/*
+GameChess.prototype.resetGame = function () {
+    ResetGame();
+    this.board.setPosition(ChessUtils.FEN.startId, true);
+    this.updateGameInfo();
+    this.g_Checkmate = false;
+    this.g_Stalemate = false;
+}
+*/
+GameChess.prototype.pieceMove = function (move) {
+    var i,
+        moveFromX = ChessUtils.convertIndexToColumn(ChessUtils.convertNotationSquareToIndex(move.from)),
+        moveFromY = ChessUtils.convertIndexToRow(ChessUtils.convertNotationSquareToIndex(move.from)),
+        moveToX = ChessUtils.convertIndexToColumn(ChessUtils.convertNotationSquareToIndex(move.to)),
+        moveToY = ChessUtils.convertIndexToRow(ChessUtils.convertNotationSquareToIndex(move.to));
+
+    for (i = 0; i < this.g_validMoves.length; i++) {
+        fromX = (this.g_validMoves[i] & 0xF) - 4;
+        fromY = 7 - (((this.g_validMoves[i] >> 4) & 0xF) - 2);
+        toX = ((this.g_validMoves[i] >> 8) & 0xF) - 4;
+        toY = 7 - (((this.g_validMoves[i] >> 12) & 0xF) - 2);
+
+        if ((moveFromX === fromX) && (moveFromY === fromY) && (moveToX === toX) && (moveToY === toY)) {
+
+            this.board.enableUserInput(false);
+
+            this.g_allMoves[this.g_allMoves.length] = this.g_validMoves[i];
+            MakeMove(this.g_validMoves[i]);
+
+            this.updateGameInfo('');
+
+            this.g_validMoves = null;
+
+            if (GenerateValidMoves().length === 0) {
+                if (this.g_inCheck) {
+                    this.g_Checkmate = true;
+                } else {
+                    this.g_Stalemate = true;
+                }
+            } else {
+                setTimeout(this.blackMoves.bind(this), 1000);
+            }
+
+            return GetFen();
+        }
+
+    }
+
+    return false;
+}
+
+GameChess.prototype.blackMoves = function () {
+    Search(function (nextMove) {
+        this.g_allMoves[this.g_allMoves.length] = nextMove;
+        MakeMove(nextMove);
+
+        if (GenerateValidMoves().length === 0) {
+            if (this.g_inCheck) {
+                this.g_Checkmate = true;
+            } else {
+                this.g_Stalemate = true;
+            }
+        }
+
+        this.updateGameInfo();
+
+        this.board.setPosition(GetFen());
+        this.board.enableUserInput(true);
+    }.bind(this), 99, null);
+}
+
+GameChess.prototype.gcMoveToXY = function (gcMove) {
+    return {
+        fromX: (gcMove & 0xF) - 4,
+        fromY: 7 - (((gcMove >> 4) & 0xF) - 2),
+        toX: ((gcMove >> 8) & 0xF) - 4,
+        toY: 7 - (((gcMove >> 12) & 0xF) - 2)
+    }
+}
+
+GameChess.prototype.pieceSelected = function (notationSquare) {
+    var i,
+        pieceColumn,
+        pieceRow,
+        fromX,
+        fromY,
+        toX,
+        toY,
+        moves,
+        movesPosition = [];
+
+    if (!this.g_validMoves || this.g_validMoves === null) {
+        this.g_validMoves = GenerateValidMoves();
+    }
+
+    pieceColumn = ChessUtils.convertIndexToColumn(ChessUtils.convertNotationSquareToIndex(notationSquare));
+    pieceRow = ChessUtils.convertIndexToRow(ChessUtils.convertNotationSquareToIndex(notationSquare));
+
+    for (i = 0; i < this.g_validMoves.length; i++) {
+        fromX = this.gcMoveToXY(this.g_validMoves[i]).fromX;
+        fromY = this.gcMoveToXY(this.g_validMoves[i]).fromY;
+        toX = this.gcMoveToXY(this.g_validMoves[i]).toX;
+        toY = this.gcMoveToXY(this.g_validMoves[i]).toY;
+
+        if ((pieceColumn === fromX) && (pieceRow === fromY)) {
+            movesPosition.push(ChessUtils.convertRowColumnToIndex(toY, toX));
+        }
+
+    }
+    return movesPosition;
+}
+
