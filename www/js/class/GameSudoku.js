@@ -16,6 +16,7 @@ function GameSudoku(options) {
     this.timer = new Timer(options.controller, options.interval, this.timeMilli);
     this.ctrl = options.controller;
     this.rootScope = options.rootScope;
+    this.state = options.state;
 }
 
 GameSudoku.prototype.init = function () {
@@ -160,10 +161,8 @@ GameSudoku.prototype.listener = function (i) {
     if (this.actualNumber && !this.eraseMode && !isFixed)
         this.listInputs[i].value = this.actualNumber;
 
-    if (this.isValidate()) {
-        //console.log("Jugada valida")
-        // if(this.isComplete())
-        //console.log("Ganastes :)")gm
+    if (this.isValidate() && this.isComplete()) {
+        this.state.go("sudokuResult", {});
     }
     
     this.save(posCell, this.actualNumber);

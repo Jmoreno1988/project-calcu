@@ -11,9 +11,10 @@ function GameChess(options) {
     this.sessionService = options.sessionService;
     this.level = options.level;
     this.initFen = this.sessionService.get("progressChess")[this.level].fen || "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
+    this.auxChessjs = new Chess(this.initFen);
 }
 
-GameChess.prototype.init = function() {
+GameChess.prototype.init = function () {
     this.board = new Chessboard('boardChess', {
         position: this.initFen,
         eventHandlers: {
@@ -21,49 +22,74 @@ GameChess.prototype.init = function() {
             onMove: this.pieceMove.bind(this)
         }
     });
-    
+
     ResetGame(this.initFen);
     this.board.setPosition(this.initFen, true);
     this.updateGameInfo();
     this.g_Checkmate = false;
     this.g_Stalemate = false;
-	this.g_timeout = 10;
+    this.g_timeout = 10;
 
     // Listener
-    this.ctrl.$on('$destroy', function(evt) {
+    this.ctrl.$on('$destroy', function (evt) {
         this.save();
         this.rootScope.$broadcast('finishGameChess');
     }.bind(this));
 }
 
-GameChess.prototype.save = function() {
+GameChess.prototype.save = function () {
     var aux = this.sessionService.get("progressChess");
 
     aux[this.level].fen = GetFen();
     this.sessionService.set("progressChess", aux);
+
+    //this.showFen();
 }
 
 GameChess.prototype.updateGameInfo = function () {
     var nextPlayer,
         status;
 
+
     nextPlayer = this.g_toMove ? 'white' : 'black';
-
-    if (this.g_Checkmate === true) {
-        status = 'CHECKMATE! Player ' + nextPlayer + ' lost.';
-    } else if (this.g_Stalemate === true) {
-        status = 'DRAW!';
-    } else {
-        status = 'Next player is ' + nextPlayer + '.';
-
-        if (this.g_inCheck === true) {
-            status = 'CHECK! ' + status;
-        }
-    }
+    /*
+        if (this.g_Checkmate === true) {
+            status = 'CHECKMATE! Player ' + nextPlayer + ' lost.';
+        } else if (this.g_Stalemate === true) {
+            status = 'DRAW!';
+        } else {
+            status = 'Next player is ' + nextPlayer + '.';
     
+            if (this.g_inCheck === true) {
+                status = 'CHECK! ' + status;
+            }
+        }
+      */
+
+    this.auxChessjs.load(GetFen());
+
+    if (this.auxChessjs.game_over())
+        console.log("Game over")
+
+    if (this.auxChessjs.in_check())
+        console.log("in_check")
+
+    if (this.auxChessjs.in_checkmate())
+        console.log("in_checkmate")
+
+    if (this.auxChessjs.in_draw())
+        console.log("in_draw")
+
+    if (this.auxChessjs.in_stalemate())
+        console.log("in_stalemate")
+
+    if (this.auxChessjs.in_threefold_repetition())
+        console.log("in_threefold_repetition")
+
     this.save();
-    $('#info-status').html(status);
-    $('#info-fen').html(GetFen());
+    //console.log(status)
+    //$('#info-status').html(status);
+    //$('#info-fen').html(GetFen());
 }
 
 GameChess.prototype.undoGame = function () {
@@ -197,3 +223,7 @@ GameChess.prototype.pieceSelected = function (notationSquare) {
     return movesPosition;
 }
 
+
+GameChess.prototype.showFen = function () {
+    console.log(GetFen())
+}
