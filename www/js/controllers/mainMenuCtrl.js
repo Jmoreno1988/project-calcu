@@ -16,15 +16,6 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
         }
 
         $scope.openListGames = function() {
-            /*
-            document.getElementById("buttonShare").classList.toggle("buttonShareSecondPosition");
-            document.getElementById("buttonEvaluate").classList.toggle("buttonEvaluateSecondPosition");
-            document.getElementById("buttonSudoku").classList.toggle("buttonSudokuSecondPosition");
-            document.getElementById("buttonCalculator").classList.toggle("buttonCalculatorSecondPosition");
-            document.getElementById("buttonChess").classList.toggle("buttonChessSecondPosition");
-            document.getElementById("buttonPlay").classList.toggle("buttonPlaySecondPosition");
-            document.getElementById("buttonClose").classList.toggle("buttonCloseSecondPosition");
-            */
             document.getElementById("planet1").classList.toggle("p1SecondPosition");
             document.getElementById("planet2").classList.toggle("p2SecondPosition");
             document.getElementById("planet3").classList.toggle("p3SecondPosition");
@@ -84,21 +75,7 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
             );
             //$cordovaSocialSharing.shareViaTwitter('Digital Signature Maker', null /* img */, 'https://play.google.com/store/apps/details?id=com.prantikv.digitalsignaturemaker', null, function(errormsg){alert("Error: Cannot Share")});
         }
-/*
-        $scope.showPopup = function () {
-            var confirmPopup = $ionicPopup.alert({
-                title: 'Work in progress',
-                template: 'Estara listo en la versión final del juego ;)'
-            });
-        }
-*/
 
-        $ionicModal.fromTemplateUrl('my-modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function (modal) {
-            $scope.modal = modal;
-        });
         $scope.openModal = function () {
             $scope.modal.show();
         };
@@ -132,49 +109,6 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
                 }
             });
         };
-
-        // Comprobar si existe usuario
-        var infoUser = sessionService.get("infoUser");
-
-        if(!infoUser.id){
-            console.log("WARNING :: No existe usuario registrado en la app.");
-            var node = document.getElementById("imgAccount");
-            node.src = "img/account-alert.svg";
-        }
-
-        $scope.validateInfo = function() {
-            var email = document.getElementById("inputEmailUser").value;
-            var nick = document.getElementById("inputNickUser").value;
-/*
-            if(!Util.validateNick(nick)) {
-                console.log("Nick invalido, por favor ingrese un nick con un formato valido.")
-                return;
-            }
-
-            if(!Util.validateEmail(email)) {
-                console.log("Email invalido, por favor ingrese un email con un formato valido.")
-                return;
-            }
-*/
-            // Mandar info al server
-            var url = cfg.urlServer + 'insertnewuser?nick=' + nick;
-            $http({
-                method: 'GET',
-                url: url
-            }).then(function successCallback(response) {
-                var infoUser = sessionService.get("infoUser");
-                infoUser.id = response.data.id;
-                infoUser.nick = response.data.nick;
-
-                sessionService.set("infoUser", infoUser);
-
-                console.log(sessionService.get("infoUser"));
-
-            }.bind(this), function errorCallback(response) {
-                console.log("Error:")
-                console.log(response)
-            });
-        }
 
 
         // Traduccion

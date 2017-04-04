@@ -352,7 +352,7 @@
             <div id="halo"></div>
             <div class="backgroundRotate" id="planet2">
                 <div class="planet">
-                    <div class="buttonIcon">
+                    <div class="buttonIcon" ui-sref="sudokuSelectLevel">
                         <img src="img/grid.svg">
                     </div>
                 </div>
@@ -376,7 +376,7 @@
 
             <div class="backgroundRotate" id="planet5">
                 <div class="planet">
-                    <div class="buttonIcon">
+                    <div class="buttonIcon" ng-click="shareViaTwitter('some message', null, 'https://www.thepolyglotdeveloper.com')">
                         <img src="img/share.svg">
                     </div>
                 </div>
@@ -419,61 +419,11 @@
             <div class="buttonMenu" id="buttonClose">
                 <div class="buttonIcon"><img src="img/close.svg" alt="" ui-sref="selectLevel"></div>
             </div>
-
-            <!--
-        <div class="buttonMenu" id="buttonScores">
-            <div class="buttonIcon"><img src="img/trophy.svg" alt="" ng-click="goTo('menuRecordsCal')"></div>
         </div>
-        -->
-
-            <!--
-        <div class="buttonMenu" id="buttonOptions" ng-click="openModal()">
-            <div class="buttonIcon"><img id="imgAccount" src="img/account.svg" alt=""></div>
-        </div>
-        -->
-
-            <div class="buttonMenu" id="buttonSudoku" ui-sref="sudokuSelectLevel">
-                <div class="buttonIcon"><img id="imgAccount" src="img/grid.svg" alt=""></div>
-                <div class="helpTitle" id="helpSudoku">{{mainMenuCtrl_sudoku}}</div>
-            </div>
-
-            <div class="buttonMenu" id="buttonShare">
-                <div class="buttonIcon"><img src="img/share.svg" alt="" ng-click="shareViaTwitter('some message', null, 'https://www.thepolyglotdeveloper.com')"></div>
-                <div class="helpTitle" id="helpShare">{{mainMenuCtrl_share}}</div>
-            </div>
-        </div>
-
-
-
 
         <!-- Mensaje ayuda -->
         <div id="buttonHelp"><img src="img/comment-question-outline.svg" alt="" ng-click="showHelp()"></div>
         <span class="helpTitle" id="helpOptions">{{mainMenuCtrl_options}}</span>
         <!-- Fin Mensaje ayuda -->
-
-        <script id="my-modal.html" type="text/ng-template">
-            <ion-modal-view>
-                <ion-header-bar align-title="left" class="bar-positive">
-                    <h1 class="title">{{mainMenuCtrl_userProfile}}</h1>
-                    <div class="buttons">
-                        <button class="button icon ion-close" ng-click="closeModal()"></button>
-                    </div>
-                </ion-header-bar>
-            <ion-content class="padding">
-          <div class="list">
-            <label class="item item-input">
-              <span class="input-label">{{mainMenuCtrl_nickName}}</span>
-              <input id="inputNickUser" type="text" placeholder="">
-            </label>
-            <label class="item item-input">
-              <span class="input-label">{{mainMenuCtrl_email}}</span>
-              <input id="inputEmailUser" type="text" placeholder="">
-            </label>
-            <button class="button button-full button-positive" ng-click="validateInfo()">{{mainMenuCtrl_save}}</button>
-            <button class="button button-full button-clear button-assertive" ng-click="showConfirmResetProfile()">{{mainMenuCtrl_reset}}</button>
-          </div>
-        </ion-content>
-            </ion-modal-view>
-        </script>
     </ion-content>
 </ion-view>
