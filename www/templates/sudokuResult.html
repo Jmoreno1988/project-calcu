@@ -1,11 +1,21 @@
 <ion-view title="Sudoku" id="sudokuResult">
     <style>
-      
+
     </style>
     <ion-nav-buttons side="right" class="has-header">
         <button class="button icon ion-android-settings" ng-click="openSettings()"></button>
     </ion-nav-buttons>
     <ion-content padding="true" class="has-header">
-        qwerty
+        <div>Reto superado!</div>
+
+        <div>Tiempo empleado: {{time}} </div>
+
+        <div>Nivel {{level}} {{totalSuccess}} veces superado!: </div>
+
+        <div class="button-bar">
+            <a class="button" ui-sref="mainMenu">HOME</a>
+            <a class="button" ui-sref="sudokuBoard">RETRY</a>
+            <a class="button" ui-sref="sudokuSelectLevel">LEVELS</a>
+        </div>
     </ion-content>
 </ion-view>
