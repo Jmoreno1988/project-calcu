@@ -16,6 +16,7 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
         }
 
         $scope.openListGames = function() {
+            /*
             document.getElementById("buttonShare").classList.toggle("buttonShareSecondPosition");
             document.getElementById("buttonEvaluate").classList.toggle("buttonEvaluateSecondPosition");
             document.getElementById("buttonSudoku").classList.toggle("buttonSudokuSecondPosition");
@@ -23,6 +24,12 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
             document.getElementById("buttonChess").classList.toggle("buttonChessSecondPosition");
             document.getElementById("buttonPlay").classList.toggle("buttonPlaySecondPosition");
             document.getElementById("buttonClose").classList.toggle("buttonCloseSecondPosition");
+            */
+            document.getElementById("planet1").classList.toggle("p1SecondPosition");
+            document.getElementById("planet2").classList.toggle("p2SecondPosition");
+            document.getElementById("planet3").classList.toggle("p3SecondPosition");
+            document.getElementById("planet4").classList.toggle("p4SecondPosition");
+            document.getElementById("planet5").classList.toggle("p5SecondPosition");
         }
 
         $scope.showHelp = function() {

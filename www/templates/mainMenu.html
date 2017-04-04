@@ -78,7 +78,7 @@
             transform: translate(-50%, -50%);
             transition: all .3s ease;
         }
-
+        
         .buttonPlaySecondPosition {
             width: 60px!important;
             height: 60px!important;
@@ -177,17 +177,17 @@
             opacity: 1!important;
             transform: translate(52px, -75px)!important;
         }
-
+        
         #buttonClose {
             z-index: 2;
             width: 60px;
             height: 60px;
             background: #2196f3;
-            transition: all .3s ease; 
+            transition: all .3s ease;
             pointer-events: none;
             opacity: 0;
         }
-
+        
         .buttonCloseSecondPosition {
             opacity: 1!important;
         }
@@ -195,8 +195,8 @@
         #halo {
             z-index: -2;
             position: absolute;
-            width: 180px;
-            height: 180px;
+            width: 215px;
+            height: 215px;
             top: 50%;
             left: 50%;
             -ms-transform: translate(-50%, -50%);
@@ -205,27 +205,26 @@
             border-radius: 50%;
             border: 3px solid #448AFF;
         }
-
         /* Ayuda */
+        
         #buttonHelp {
             position: absolute;
             bottom: 0;
             right: 0;
             margin-right: 5px;
         }
-
-
+        
         #helpOptions {
             position: absolute;
             top: 0;
             right: 0;
-            margin: 0 -20px 0 0; 
+            margin: 0 -20px 0 0;
         }
-
+        
         .helpOptionsShowSecond {
             opacity: 1!important;
         }
-
+        
         .helpTitle {
             color: black;
             text-align: center;
@@ -233,82 +232,220 @@
             opacity: 0;
             transition: all .5s ease;
         }
-
+        
         #helpShare {
             margin: 10px 0 0 0;
         }
-
+        
         #helpRate {
             margin: 10px 0 0 -50px;
         }
-
+        
         #helpCalcu {
             margin: -60px 0 0 -50px;
         }
-
+        
         #helpChess {
             margin: -55px 0 0 0px;
         }
-
+        
         #helpSudoku {
             margin: -65px 0 0 -28px;
         }
+        /* Menu ionico */
+        .planet {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 3px solid #448AFF;
+            background: white;
+            
+        }
+
+        .backgroundRotate {
+            width: 200px;
+            height: 200px;
+            transition: 1s all ease;
+            position: absolute;
+        }
+
+        .ion {
+            background: #3f51b5;
+        }
+
+        #galaxy {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+        }
+        
+        #core {
+            width: 75px;
+            height: 75px;
+            background: #448AFF;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+        }
+
+        #planet1 {
+            transform: rotate(90deg);
+        } 
+
+        #planet2 {
+            transform: rotate(90deg);
+        }
+
+        #planet3 {
+            transform: rotate(90deg);
+        }
+
+        #planet4 {
+            transform: rotate(90deg);
+        }
+
+        #planet5 {
+            transform: rotate(90deg);
+        }
+
+        .p1SecondPosition {
+            transform: rotate(180deg)!important;
+        }
+
+        .p2SecondPosition {
+            transform: rotate(472.5deg)!important;
+        }
+
+        .p3SecondPosition {
+            transform: rotate(405deg)!important;
+        }
+
+        .p4SecondPosition {
+            transform: rotate(337.5deg)!important;
+        }
+
+        .p5SecondPosition {
+            transform: rotate(270deg)!important;
+        }
+        /* Fin Menu ionico */
     </style>
 
     <ion-nav-buttons side="right" class="has-header">
-        <button class="button icon ion-android-settings" ng-click="openSettings()"></button>
+        <button class="button icon ion-android-settings"></button>
     </ion-nav-buttons>
 
+
     <ion-content padding="true" class="has-header">
-        <div id="mainMenu-container4" class="creator-container containerCircles">
-            <img width="48" height="48" src="img/circle1.svg"></img>
-            <img width="48" height="48" src="img/circle2.svg"></img>
-            <img width="48" height="48" src="img/circle3.svg"></img>
-            <img width="48" height="48" src="img/circle4.svg"></img>
+
+        <div id="galaxy">
+            <div id="halo"></div>
+            <div class="backgroundRotate" id="planet2">
+                <div class="planet">
+                    <div class="buttonIcon">
+                        <img src="img/grid.svg">
+                    </div>
+                </div>
+            </div>
+
+            <div class="backgroundRotate" id="planet3">
+                <div class="planet">
+                    <div class="buttonIcon" ui-sref="chessSelectLevel">
+                        <img src="img/horse.svg">
+                    </div>
+                </div>
+            </div>
+
+            <div class="backgroundRotate" id="planet4">
+                <div class="planet">
+                    <div class="buttonIcon" ui-sref="selectLevel">
+                        <img src="img/calculator.svg">
+                    </div>
+                </div>
+            </div>
+
+            <div class="backgroundRotate" id="planet5">
+                <div class="planet">
+                    <div class="buttonIcon">
+                        <img src="img/share.svg">
+                    </div>
+                </div>
+            </div>
+
+             <div class="backgroundRotate" id="planet1">
+                <div class="planet">
+                    <div class="buttonIcon" ng-click="showValorateModal()">
+                        <img src="img/heart.svg">
+                    </div>
+                </div>
+            </div>
+
+<!--
+            <div class="backgroundRotate" id="planet1" class="buttonMenu">
+                <div class="planet ion">
+                </div>
+            </div>
+            -->
         </div>
 
-        <div id="halo"></div>
-        <div class="buttonMenu" id="buttonPlay" ng-click="openListGames()">
+        <div id="core" ng-click="openListGames()">
             <div class="buttonText">{{mainMenuCtrl_play}}</div>
         </div>
 
-        <div class="buttonMenu" id="buttonClose">
-            <div class="buttonIcon"><img src="img/close.svg" alt="" ui-sref="selectLevel"></div>
-        </div>
-        <!--
+
+        <div style="display:none">
+            <div id="mainMenu-container4" class="creator-container containerCircles">
+                <img width="48" height="48" src="img/circle1.svg"></img>
+                <img width="48" height="48" src="img/circle2.svg"></img>
+                <img width="48" height="48" src="img/circle3.svg"></img>
+                <img width="48" height="48" src="img/circle4.svg"></img>
+            </div>
+
+            <div id="halo"></div>
+            <div class="buttonMenu" id="buttonPlay" ng-click="openListGames()">
+                <div class="buttonText">{{mainMenuCtrl_play}}</div>
+            </div>
+
+            <div class="buttonMenu" id="buttonClose">
+                <div class="buttonIcon"><img src="img/close.svg" alt="" ui-sref="selectLevel"></div>
+            </div>
+
+            <!--
         <div class="buttonMenu" id="buttonScores">
             <div class="buttonIcon"><img src="img/trophy.svg" alt="" ng-click="goTo('menuRecordsCal')"></div>
         </div>
         -->
-        <div class="buttonMenu" id="buttonCalculator">
-            <div class="buttonIcon"><img src="img/calculator.svg" alt="" ui-sref="selectLevel"></div>
-            <div class="helpTitle" id="helpCalcu">{{mainMenuCtrl_calcu}}</div>
-        </div>
 
-        <div class="buttonMenu" id="buttonChess">
-            <div class="buttonIcon"><img src="img/horse.svg" alt="" ui-sref="chessSelectLevel"></div>
-            <div class="helpTitle" id="helpChess">{{mainMenuCtrl_chess}}</div>
-        </div>
-
-        <div class="buttonMenu" id="buttonEvaluate">
-            <div class="buttonIcon"><img src="img/heart.svg" alt="" ng-click="showValorateModal()"></div>
-            <div class="helpTitle" id="helpRate">{{mainMenuCtrl_rate}}</div>
-        </div>
-        <!--
+            <!--
         <div class="buttonMenu" id="buttonOptions" ng-click="openModal()">
             <div class="buttonIcon"><img id="imgAccount" src="img/account.svg" alt=""></div>
         </div>
         -->
-        <div class="buttonMenu" id="buttonSudoku" ui-sref="sudokuSelectLevel">
-            <div class="buttonIcon"><img id="imgAccount" src="img/grid.svg" alt=""></div>
-            <div class="helpTitle" id="helpSudoku">{{mainMenuCtrl_sudoku}}</div>
+
+            <div class="buttonMenu" id="buttonSudoku" ui-sref="sudokuSelectLevel">
+                <div class="buttonIcon"><img id="imgAccount" src="img/grid.svg" alt=""></div>
+                <div class="helpTitle" id="helpSudoku">{{mainMenuCtrl_sudoku}}</div>
+            </div>
+
+            <div class="buttonMenu" id="buttonShare">
+                <div class="buttonIcon"><img src="img/share.svg" alt="" ng-click="shareViaTwitter('some message', null, 'https://www.thepolyglotdeveloper.com')"></div>
+                <div class="helpTitle" id="helpShare">{{mainMenuCtrl_share}}</div>
+            </div>
         </div>
 
-        <div class="buttonMenu" id="buttonShare">
-            <div class="buttonIcon"><img src="img/share.svg" alt="" ng-click="shareViaTwitter('some message', null, 'https://www.thepolyglotdeveloper.com')"></div>
-            <div class="helpTitle" id="helpShare">{{mainMenuCtrl_share}}</div>
-        </div>
-        
+
+
+
         <!-- Mensaje ayuda -->
         <div id="buttonHelp"><img src="img/comment-question-outline.svg" alt="" ng-click="showHelp()"></div>
         <span class="helpTitle" id="helpOptions">{{mainMenuCtrl_options}}</span>
