@@ -253,6 +253,9 @@
             margin: -65px 0 0 -28px;
         }
         /* Menu ionico */
+        
+        #wrapperMainMenu {}
+        
         .planet {
             position: absolute;
             top: 0;
@@ -262,20 +265,19 @@
             border-radius: 50%;
             border: 3px solid #448AFF;
             background: white;
-            
         }
-
+        
         .backgroundRotate {
             width: 200px;
             height: 200px;
             transition: 1s all ease;
             position: absolute;
         }
-
+        
         .ion {
             background: #3f51b5;
         }
-
+        
         #galaxy {
             width: 200px;
             height: 200px;
@@ -298,43 +300,43 @@
             text-align: center;
             color: white;
         }
-
+        
         #planet1 {
             transform: rotate(90deg);
-        } 
-
+        }
+        
         #planet2 {
             transform: rotate(90deg);
         }
-
+        
         #planet3 {
             transform: rotate(90deg);
         }
-
+        
         #planet4 {
             transform: rotate(90deg);
         }
-
+        
         #planet5 {
             transform: rotate(90deg);
         }
-
+        
         .p1SecondPosition {
             transform: rotate(180deg)!important;
         }
-
+        
         .p2SecondPosition {
             transform: rotate(472.5deg)!important;
         }
-
+        
         .p3SecondPosition {
             transform: rotate(405deg)!important;
         }
-
+        
         .p4SecondPosition {
             transform: rotate(337.5deg)!important;
         }
-
+        
         .p5SecondPosition {
             transform: rotate(270deg)!important;
         }
@@ -346,8 +348,15 @@
     </ion-nav-buttons>
 
 
-    <ion-content padding="true" class="has-header">
-
+    <ion-content padding="true" class="has-header" id="wrapperMainMenu">
+        
+        <div id="mainMenu-container4" class="creator-container containerCircles">
+            <img width="48" height="48" src="img/circle1.svg"></img>
+            <img width="48" height="48" src="img/circle2.svg"></img>
+            <img width="48" height="48" src="img/circle3.svg"></img>
+            <img width="48" height="48" src="img/circle4.svg"></img>
+        </div>
+        
         <div id="galaxy">
             <div id="halo"></div>
             <div class="backgroundRotate" id="planet2">
@@ -382,7 +391,7 @@
                 </div>
             </div>
 
-             <div class="backgroundRotate" id="planet1">
+            <div class="backgroundRotate" id="planet1">
                 <div class="planet">
                     <div class="buttonIcon" ng-click="showValorateModal()">
                         <img src="img/heart.svg">
@@ -390,7 +399,7 @@
                 </div>
             </div>
 
-<!--
+            <!--
             <div class="backgroundRotate" id="planet1" class="buttonMenu">
                 <div class="planet ion">
                 </div>
@@ -402,14 +411,8 @@
             <div class="buttonText">{{mainMenuCtrl_play}}</div>
         </div>
 
-
         <div style="display:none">
-            <div id="mainMenu-container4" class="creator-container containerCircles">
-                <img width="48" height="48" src="img/circle1.svg"></img>
-                <img width="48" height="48" src="img/circle2.svg"></img>
-                <img width="48" height="48" src="img/circle3.svg"></img>
-                <img width="48" height="48" src="img/circle4.svg"></img>
-            </div>
+
 
             <div id="halo"></div>
             <div class="buttonMenu" id="buttonPlay" ng-click="openListGames()">
