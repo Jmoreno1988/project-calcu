@@ -1,6 +1,6 @@
 GameCal.prototype.constructor = GameCal;
 
-function GameCal(difficulty, controller, $state, $interval, bridgeService, sessionService, $cordovaVibration) {
+function GameCal(difficulty, rootScope, controller, $state, $interval, bridgeService, sessionService, $cordovaVibration) {
     this.vibration = $cordovaVibration;
     this.difficulty = difficulty;
     this.bridgeService = bridgeService;
@@ -19,6 +19,7 @@ function GameCal(difficulty, controller, $state, $interval, bridgeService, sessi
     this.unknown = null;
     this.timeVibration = 250;
     this.timer = new Timer(controller, $interval);
+    this.rootScope = rootScope;
 }
 
 GameCal.prototype.init = function () {
@@ -55,6 +56,8 @@ GameCal.prototype.finish = function () {
     }
 
     this.timer.cancelTimer();
+    
+    this.rootScope.$broadcast("finishGameCal");
 
     this.$state.go("result", {});
 }

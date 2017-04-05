@@ -1,7 +1,7 @@
-appControllers.controller('canvasCtrl', ['$scope', '$stateParams', 'bridgeService', '$interval', '$state', 'sessionService',
-    function ($scope, $stateParams, bridgeService, $interval, $state, sessionService) {
+appControllers.controller('canvasCtrl', ['$scope', '$stateParams', 'bridgeService', '$interval', '$state', 'sessionService', '$rootScope',
+    function ($scope, $stateParams, bridgeService, $interval, $state, sessionService, $rootScope) {
         var level = bridgeService.data.selectLevel;
-        var game = new GameCal(level, $scope, $state, $interval, bridgeService, sessionService);
+        var game = new GameCal(level, $rootScope, $scope, $state, $interval, bridgeService, sessionService);
 
         game.init(); // lets rock!!!
 
