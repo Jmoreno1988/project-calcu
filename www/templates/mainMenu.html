@@ -1,29 +1,8 @@
 <ion-view title="Menu" id="page14">
-    <style>
-        .width50 {
-            width: 48%;
-        }
-        
-        .floatL {
-            float: left;
-        }
-        
-        .floatR {
-            float: right;
-        }
-        
+    <style>        
         .containerCircles {
             text-align: center;
             margin: 50px 0 10px 0;
-        }
-        
-        .rotateY {
-            transform: rotateY(130deg);
-            transition: all 1s ease;
-        }
-        
-        .bar-header {
-            background-image: linear-gradient(0deg, #32408f, #32408f 50%, transparent 100%);
         }
         
         .buttonMenu {
@@ -192,19 +171,7 @@
             opacity: 1!important;
         }
         
-        #halo {
-            z-index: -2;
-            position: absolute;
-            width: 215px;
-            height: 215px;
-            top: 50%;
-            left: 50%;
-            -ms-transform: translate(-50%, -50%);
-            -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            border: 3px solid #448AFF;
-        }
+        
         /* Ayuda */
         
         #buttonHelp {
@@ -268,8 +235,8 @@
         }
         
         .backgroundRotate {
-            width: 200px;
-            height: 200px;
+            width: 190px;
+            height: 190px;
             transition: 1s all ease;
             position: absolute;
         }
@@ -279,13 +246,27 @@
         }
         
         #galaxy {
-            width: 200px;
-            height: 200px;
+            width: 190px;
+            height: 190px;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             border-radius: 50%;
+        }
+
+        #halo {
+            z-index: -2;
+            position: absolute;
+            width: 205px;
+            height: 205px;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 3px solid #448AFF;
         }
         
         #core {
@@ -320,6 +301,10 @@
         #planet5 {
             transform: rotate(90deg);
         }
+
+        #planet1Icon {
+            transition: all 1s ease;
+        }
         
         .p1SecondPosition {
             transform: rotate(180deg)!important;
@@ -340,6 +325,14 @@
         .p5SecondPosition {
             transform: rotate(270deg)!important;
         }
+
+        .pIcon1SecondPosition {
+            transform: rotate(-90deg)!important;
+        }
+
+        .noPointerEvt {
+                pointer-events: none;
+        }
         /* Fin Menu ionico */
     </style>
 
@@ -351,65 +344,57 @@
     <ion-content padding="true" class="has-header" id="wrapperMainMenu">
         
         <div id="mainMenu-container4" class="creator-container containerCircles">
-            <img width="48" height="48" src="img/circle1.svg"></img>
+            <img width="48" height="48" src="img/circle1-2.svg"></img>
             <img width="48" height="48" src="img/circle2.svg"></img>
-            <img width="48" height="48" src="img/circle3.svg"></img>
+            <img width="48" height="48" src="img/circle3-2.svg"></img>
             <img width="48" height="48" src="img/circle4.svg"></img>
         </div>
         
         <div id="galaxy">
             <div id="halo"></div>
             <div class="backgroundRotate" id="planet2">
-                <div class="planet">
-                    <div class="buttonIcon" ui-sref="sudokuSelectLevel">
-                        <img src="img/grid.svg">
+                <div class="planet" ui-sref="sudokuSelectLevel">
+                    <div class="buttonIcon">
+                        <img src="img/sudoku2.svg">
                     </div>
                 </div>
             </div>
 
             <div class="backgroundRotate" id="planet3">
-                <div class="planet">
-                    <div class="buttonIcon" ui-sref="chessSelectLevel">
-                        <img src="img/horse.svg">
+                <div class="planet" ui-sref="chessSelectLevel">
+                    <div class="buttonIcon">
+                        <img src="img/horse-rotate.svg">
                     </div>
                 </div>
             </div>
 
             <div class="backgroundRotate" id="planet4">
-                <div class="planet">
-                    <div class="buttonIcon" ui-sref="selectLevel">
-                        <img src="img/calculator.svg">
-                    </div>
+                <div class="planet" ui-sref="selectLevel">
+                        <img src="img/calculator2.svg">
                 </div>
             </div>
 
             <div class="backgroundRotate" id="planet5">
-                <div class="planet">
-                    <div class="buttonIcon" ng-click="shareViaTwitter('some message', null, 'https://www.thepolyglotdeveloper.com')">
-                        <img src="img/share.svg">
+                <div class="planet" ng-click="shareViaTwitter('some message', null, 'https://www.thepolyglotdeveloper.com')">
+                    <div class="buttonIcon">
+                        <img src="img/share-rotate.svg">
                     </div>
                 </div>
             </div>
 
             <div class="backgroundRotate" id="planet1">
-                <div class="planet">
-                    <div class="buttonIcon" ng-click="showValorateModal()">
-                        <img src="img/heart.svg">
+                <div class="planet" ui-sref="selectLevel">
+                    <div class="buttonIcon">
+                        <img id="planet1Icon" src="img/heart.svg">
                     </div>
                 </div>
             </div>
-
-            <!--
-            <div class="backgroundRotate" id="planet1" class="buttonMenu">
-                <div class="planet ion">
-                </div>
-            </div>
-            -->
         </div>
 
         <div id="core" ng-click="openListGames()">
             <div class="buttonText">{{mainMenuCtrl_play}}</div>
         </div>
+        
 
         <div style="display:none">
 
@@ -419,9 +404,7 @@
                 <div class="buttonText">{{mainMenuCtrl_play}}</div>
             </div>
 
-            <div class="buttonMenu" id="buttonClose">
-                <div class="buttonIcon"><img src="img/close.svg" alt="" ui-sref="selectLevel"></div>
-            </div>
+            
         </div>
 
         <!-- Mensaje ayuda -->

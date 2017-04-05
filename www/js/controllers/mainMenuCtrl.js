@@ -21,6 +21,7 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
             document.getElementById("planet3").classList.toggle("p3SecondPosition");
             document.getElementById("planet4").classList.toggle("p4SecondPosition");
             document.getElementById("planet5").classList.toggle("p5SecondPosition");
+            document.getElementById("planet1Icon").classList.toggle("pIcon1SecondPosition");
         }
 
         $scope.showHelp = function() {
