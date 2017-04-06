@@ -17,7 +17,7 @@ appControllers.controller('resultCtrl', ['$scope', '$stateParams', 'bridgeServic
         $scope.selectLevel = selectLevel;
 
         $scope.openSettings = function () { $ionicSideMenuDelegate.toggleLeft() }
-
+/*
         // Graficos
         var labels = [];
 
@@ -33,7 +33,7 @@ appControllers.controller('resultCtrl', ['$scope', '$stateParams', 'bridgeServic
                     right: 40
                 }
             });
-
+*/
         $scope.goTo = function (page) {
             $state.go(page);
         }
