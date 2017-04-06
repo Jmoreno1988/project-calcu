@@ -28,6 +28,11 @@ GameCal.prototype.init = function () {
     this.timer.sCallback = this.step.bind(this);
     this.timer.init();
     this.pullInfo();
+
+    this.ctrl.$on('$destroy', function(evt) {
+        console.log("lanzo finishGameCal")
+        this.rootScope.$broadcast('finishGameCal');
+    }.bind(this));
 }
 
 GameCal.prototype.step = function () {
@@ -56,6 +61,7 @@ GameCal.prototype.finish = function () {
     }
 
     this.timer.cancelTimer();
+    
     
     this.rootScope.$broadcast("finishGameCal");
 

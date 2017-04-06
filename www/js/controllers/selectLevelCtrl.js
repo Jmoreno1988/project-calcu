@@ -33,8 +33,12 @@ appControllers.controller('selectLevelCtrl', ['$scope', '$stateParams', '$state'
         }
 
         $scope.$on('finishGameCal', function (evt) {
-            console.log("se fini")
+            console.log("se termino la partida. Fd: selectLevelCtrl");
             updateInfoCal();
+        });
+
+        $scope.$on('$destroy', function () {
+            console.log("$destroy");
         });
 
         $scope.$on("changeLanguage", function () { translate() });

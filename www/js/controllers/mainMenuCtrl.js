@@ -96,22 +96,6 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
             // Execute action
         });
 
-        $scope.showConfirmResetProfile = function () {
-            var confirmPopup = $ionicPopup.confirm({
-                title: 'Borrar perfil',
-                template: '¿Esta seguro de querer borrar su perfil y toda la información asociada a el?'
-            });
-
-            confirmPopup.then(function (res) {
-                if (res) {
-                    console.log('Borrar perfil...');
-                } else {
-                    console.log('Todavia no, dame un turno mas...');
-                }
-            });
-        };
-
-
         // Traduccion
         $scope.$on("changeLanguage", function () { translate() });
 
