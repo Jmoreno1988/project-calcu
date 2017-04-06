@@ -16,6 +16,12 @@ appControllers.controller('resultCtrl', ['$scope', '$stateParams', 'bridgeServic
         $scope.totalScore = totalScore;
         $scope.selectLevel = selectLevel;
 
+        if(isWin) {
+            disableNodes(["stateGameFail", "fail"]);
+        } else {
+            disableNodes(["stateGameSuccess", "medal"]);
+        }
+
         $scope.openSettings = function () { $ionicSideMenuDelegate.toggleLeft() }
 /*
         // Graficos
@@ -36,5 +42,10 @@ appControllers.controller('resultCtrl', ['$scope', '$stateParams', 'bridgeServic
 */
         $scope.goTo = function (page) {
             $state.go(page);
+        }
+
+        function disableNodes(ids) {
+            for(var i = 0; i < ids.length; i++)
+                document.getElementById(ids[i]).style.display = "none";
         }
     }])
