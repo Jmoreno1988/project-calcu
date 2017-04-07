@@ -63,11 +63,6 @@ GameSudoku.prototype.init = function () {
 
     this.timer.sCallback = this.step.bind(this);
     this.timer.init();
-
-    this.ctrl.$on('$destroy', function(evt) {
-        this.saveAll();
-        this.rootScope.$broadcast('finishGameSudoku');
-    }.bind(this));
 }
 
 GameSudoku.prototype.step = function() {
