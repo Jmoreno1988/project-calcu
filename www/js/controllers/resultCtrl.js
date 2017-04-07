@@ -1,5 +1,5 @@
-appControllers.controller('resultCtrl', ['$scope', '$stateParams', 'bridgeService', '$ionicSideMenuDelegate', '$state',
-    function ($scope, $stateParams, bridgeService, $ionicSideMenuDelegate, $state) {
+appControllers.controller('resultCtrl', ['$scope', '$rootScope', '$stateParams', 'bridgeService', '$ionicSideMenuDelegate', '$state',
+    function ($scope, $rootScope,$stateParams, bridgeService, $ionicSideMenuDelegate, $state) {
         var listScores = bridgeService.data.listScore;
         var totalScore = listScores.reduce(function (a, b) { return a + b; }, 0);
         var timeTotal = bridgeService.data.timeCal;
@@ -23,7 +23,17 @@ appControllers.controller('resultCtrl', ['$scope', '$stateParams', 'bridgeServic
         }
 
         $scope.openSettings = function () { $ionicSideMenuDelegate.toggleLeft() }
-/*
+
+        $scope.goTo = function (page) {
+            $state.go(page);
+        }
+
+        function disableNodes(ids) {
+            for(var i = 0; i < ids.length; i++)
+                document.getElementById(ids[i]).style.display = "none";
+        }
+
+        /*
         // Graficos
         var labels = [];
 
@@ -40,12 +50,4 @@ appControllers.controller('resultCtrl', ['$scope', '$stateParams', 'bridgeServic
                 }
             });
 */
-        $scope.goTo = function (page) {
-            $state.go(page);
-        }
-
-        function disableNodes(ids) {
-            for(var i = 0; i < ids.length; i++)
-                document.getElementById(ids[i]).style.display = "none";
-        }
     }])

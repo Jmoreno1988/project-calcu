@@ -16,11 +16,6 @@ appControllers.controller('selectLevelCtrl', ['$scope', '$stateParams', '$state'
             }
         }
 
-/*
-        $scope.update = function () {
-            console.log(123)
-        }
-*/
         $scope.showPopup = function () {
             var confirmPopup = $ionicPopup.alert({
                 title: 'Work in progress',
@@ -31,15 +26,6 @@ appControllers.controller('selectLevelCtrl', ['$scope', '$stateParams', '$state'
         $scope.openSettings = function () {
             $ionicSideMenuDelegate.toggleLeft();
         }
-
-        $scope.$on('finishGameCal', function (evt) {
-            console.log("se termino la partida. Fd: selectLevelCtrl");
-            updateInfoCal();
-        });
-
-        $scope.$on('$destroy', function () {
-            console.log("$destroy");
-        });
 
         $scope.$on("changeLanguage", function () { translate() });
 
