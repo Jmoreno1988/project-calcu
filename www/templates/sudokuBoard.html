@@ -5,7 +5,10 @@
 // Author: Jonas Ohlsson
 // License: MIT
 */
-        
+        #sudoku {
+            text-align: center;
+        }
+
         .sudoku-board {
             min-height: 22.75rem;
             margin-bottom: 1em;
@@ -19,6 +22,7 @@
             background: white;
             max-width: 11.11111%;
         }
+
         /*rules for drawing the black lines dividing houses
 			-- specific for board size 9! need diff rules for diff board sizes
 		*/
@@ -155,7 +159,18 @@
         }
         
         .cliked {
-            background: lightgray;
+            background: white;
+            color: black;
+        }
+
+        #wrapperBotonera {
+            margin-top: 30px;
+        }
+
+        .buttonSetNumbers {
+            background: #607D8B;
+            color: white;
+            border: 1px solid white;
         }
     </style>
     <ion-nav-buttons side="right" class="has-header">
@@ -163,8 +178,11 @@
     </ion-nav-buttons>
     <ion-content padding="true" class="has-header">
         <div id="wrapperSudoku">
-            <div> <h1 style="text-align:center" id="labelLevelSudoku"> {{levelSudoku}} </h1> </div>
+            <!--<div><span style="float:right"> {{labelTimer}} </span> <h1>{{levelSudoku}}</h1> </div>-->
+            <!--<div> <h1 id="labelLevelSudoku"> {{levelSudoku}} </h1> <span style="text-align:right"> {{labelTimer}} </span></div>-->
             <div id='sudoku'></div>
+
+            <div id="wrapperBotonera">
             <div class="button-bar">
                 <a id="1" clicked class="buttonSetNumbers button" ng-click="clickNumber(1)">1</a>
                 <a id="2" class="buttonSetNumbers button" ng-click="clickNumber(2)">2</a>
@@ -185,8 +203,87 @@
                 <a id="1" class="button" ng-click="solveStep()">step</a>
                 <a id="2" class="button" ng-click="solveAll()">all</a>
             </div>
+            </div>
 
             <div style="text-align:center"> {{labelTimer}} </div>
         </div>
     </ion-content>
+
+    <style>
+        .sudoku-board-cell:nth-child(3) { border-right: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(6) { border-right: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(9) { border-right: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(13) { border-right: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(16) { border-right: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(19) { border-right: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(23) { border-right: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(26) { border-right: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(29) { border-right: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(33) { border-right: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(36) { border-right: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(39) { border-right: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(43) { border-right: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(46) { border-right: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(49) { border-right: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(53) { border-right: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(56) { border-right: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(59) { border-right: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(63) { border-right: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(66) { border-right: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(69) { border-right: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(73) { border-right: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(76) { border-right: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(79) { border-right: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(83) { border-right: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(86) { border-right: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(89) { border-right: 2px solid #607D8B; }
+
+        .sudoku-board-cell:nth-child(1) { border-top: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(2) { border-top: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(3) { border-top: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(4) { border-top: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(5) { border-top: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(6) { border-top: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(7) { border-top: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(8) { border-top: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(9) { border-top: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(31) { border-top: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(32) { border-top: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(33) { border-top: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(34) { border-top: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(35) { border-top: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(36) { border-top: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(37) { border-top: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(38) { border-top: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(39) { border-top: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(61) { border-top: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(62) { border-top: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(63) { border-top: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(64) { border-top: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(65) { border-top: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(66) { border-top: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(67) { border-top: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(68) { border-top: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(69) { border-top: 2px solid #607D8B; }
+
+        .sudoku-board-cell:nth-child(81) { border-bottom: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(82) { border-bottom: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(83) { border-bottom: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(84) { border-bottom: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(85) { border-bottom: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(86) { border-bottom: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(87) { border-bottom: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(88) { border-bottom: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(89) { border-bottom: 2px solid #607D8B; }
+
+        .sudoku-board-cell:nth-child(1) { border-left: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(11) { border-left: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(21) { border-left: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(31) { border-left: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(41) { border-left: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(51) { border-left: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(61) { border-left: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(71) { border-left: 2px solid #607D8B; }
+        .sudoku-board-cell:nth-child(81) { border-left: 2px solid #607D8B; }
+    </style>
 </ion-view>
