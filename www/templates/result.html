@@ -6,7 +6,7 @@
         
         #wrapperDiploma {
             border: 20px solid #724530;
-            padding: 50px 30px 50px 30px;
+            padding: 30px 30px 50px 30px;
             background: #ece8d8;
             text-align: center;
             font-size: 130%;
@@ -72,6 +72,10 @@
             text-align: center;
             transform: rotate(-10deg);
         }
+
+        #levelResult {
+            text-transform: uppercase;
+        }
     </style>
     <!--
   <ion-nav-buttons side="left" class="has-header">
@@ -86,8 +90,8 @@
         <h1 id="stateGameFail">FAIL!!!</h1>
         <h1 id="stateGameSuccess">SUCCESS!!!</h1>
         <div id="wrapperDiploma">
-            Level: {{level}}/{{levelWin}} ({{selectLevel}}) <br> <br> Total Score: {{totalScore}} <br> <br> Total time: {{timeTotal}}
-            <br>
+            <h2 id="levelResult">{{selectLevel}}</h2> <br> Total Score: {{totalScore}} <br> <br>Level: {{level}}/{{levelWin}}<br> <br> Total time: {{timeTotal}}
+            <br> 
             <div class="circleDiploma" id="circleDiploma1"></div>
             <div class="circleDiploma" id="circleDiploma2"></div>
             <div class="circleDiploma" id="circleDiploma3"></div>
@@ -99,6 +103,7 @@
         <!-- Grafico
     <div class="ct-chart ct-golden-section"></div>
     -->
+        <br>
         <div class="button-bar bar-positive">
             <a class="button" ui-sref="mainMenu">HOME</a>
             <a class="button" ui-sref="canvas">RETRY</a>
