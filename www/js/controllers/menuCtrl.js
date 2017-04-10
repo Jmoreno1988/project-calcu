@@ -1,5 +1,5 @@
-appControllers.controller('menuCtrl', ['$rootScope', '$scope', '$stateParams', 'sessionService',
-    function ($rootScope, $scope, $stateParams, sessionService, $cordovaSocialSharing) {
+appControllers.controller('menuCtrl', ['$rootScope', '$scope', '$stateParams', 'sessionService', '$ionicPopup',
+    function ($rootScope, $scope, $stateParams, sessionService, $ionicPopup, $cordovaSocialSharing) {
 
         $scope.goTo = function (page) {
             switch (page) {
@@ -19,6 +19,23 @@ appControllers.controller('menuCtrl', ['$rootScope', '$scope', '$stateParams', '
                     break;
             }
         }
+
+        $scope.modalResetApp = function () {
+            var l = sessionService.get("config").lenguage;
+            var d = dictionary; 
+            var confirmPopup = $ionicPopup.confirm({
+                title: Translator.get("menuCtrl_titleReset", l, d),
+                template: Translator.get("menuCtrl_msgReset", l, d),
+                cancelText: Translator.get("menuCtrl_cancel", l, d),
+                okText: Translator.get("menuCtrl_accept", l, d)
+            });
+
+            confirmPopup.then(function (res) {
+                if (res) {
+                    sessionService.clear();
+                } else { }
+            });
+        };
 
         // Configuracion de la vibracion
         var config = sessionService.get("config");
@@ -64,7 +81,8 @@ appControllers.controller('menuCtrl', ['$rootScope', '$scope', '$stateParams', '
                 "menuCtrl_language",
                 "menuCtrl_vibration",
                 "menuCtrl_removeADS",
-                "menuCtrl_moreGames"
+                "menuCtrl_moreGames",
+                "menuCtrl_resetApp"
             ]);
         }
 

@@ -23,6 +23,11 @@ var dictionary = {
         "menuCtrl_vibration": "Vibración",
         "menuCtrl_removeADS": "Eliminar publicidad",
         "menuCtrl_moreGames": "Más juegos",
+        "menuCtrl_resetApp": "Borrar datos guardados",
+        "menuCtrl_titleReset": "Borrar datos guardados",
+        "menuCtrl_msgReset": "Se borraran partidas, puntuaciones y records guardados.",
+        "menuCtrl_cancel": "Cancelar",
+        "menuCtrl_accept": "Aceptar",
 
         "selectLevelCtrl_levelEasy": "Facil",
         "selectLevelCtrl_levelNormal": "Normal",
@@ -80,6 +85,7 @@ var dictionary = {
         "mainMenuCtrl_email": "Email (optional)",
         "mainMenuCtrl_save": "Save changes",
         "mainMenuCtrl_reset": "Reset profile",
+        "menuCtrl_resetApp": "Reset save data",
 
         "menuCtrl_language": "Language",
         "menuCtrl_vibration": "Vibration",
