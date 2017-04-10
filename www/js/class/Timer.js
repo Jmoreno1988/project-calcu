@@ -35,7 +35,6 @@ Timer.prototype.getTime = function() {
 Timer.prototype.getTimeMillis = function() {
     var auxTime = new Date();
     var millis = auxTime.getTime() - this.initMilliseconds;
-    
     return millis;
 }
 

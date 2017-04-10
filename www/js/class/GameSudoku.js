@@ -59,14 +59,16 @@ GameSudoku.prototype.init = function () {
 
     this.listBoxes = this.generateListBoxes();
     this.isValidate();
-    this.saveAll();
 
     this.timer.sCallback = this.step.bind(this);
     this.timer.init();
+    
+    this.saveAll();
 }
 
 GameSudoku.prototype.step = function() {
     this.ctrl.labelTimer = this.timer.getTime();
+    this.saveAll();
 }
 
 GameSudoku.prototype.save = function(pos, value) {
@@ -85,7 +87,7 @@ GameSudoku.prototype.saveAll = function(pos, value) {
 
     for(var i = 0; i < this.sudokuJs.getBoard().length; i++)
         aux[this.difficulty].board[i].val = this.sudokuJs.getBoard()[i].val;
-    
+
     aux[this.difficulty].time = this.timer.getTimeMillis();
     this.sessionService.set("progressSudoku", aux);
 }
