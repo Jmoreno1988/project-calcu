@@ -23,6 +23,7 @@ GameChess.prototype.init = function () {
         }
     });
 
+
     ResetGame(this.initFen);
     this.board.setPosition(this.initFen, true);
     this.updateGameInfo();
@@ -84,7 +85,16 @@ GameChess.prototype.updateGameInfo = function () {
     if (this.auxChessjs.in_threefold_repetition())
         console.log("in_threefold_repetition")
 
+/*
+    var fen = GetFen();
+    if(this.auxChessjs.validate_fen(GetFen()))
+        console.log(this.auxChessjs.validate_fen(GetFen()))
+    else 
+        console.log(this.auxChessjs.validate_fen(GetFen()))
+  */  
     this.save();
+
+
     //console.log(status)
     //$('#info-status').html(status);
     //$('#info-fen').html(GetFen());
