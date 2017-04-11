@@ -11,5 +11,4 @@ appControllers.controller('chessBoardCtrl', ['$scope', '$rootScope', 'sessionSer
 		});
 
 		gameChess.init();
-
 	}])
