@@ -1,14 +1,21 @@
 <ion-view hide-back-button="false" title="Chess" id="chessBoard">
-  <style>
-  
-  </style>
+    <style>
 
-  <ion-nav-buttons side="right" class="has-header">
-    <button class="button icon ion-android-settings" ng-click="openSettings()"></button>
-  </ion-nav-buttons>
+    </style>
 
-  <ion-content padding="true" class="has-header">
-      <div id="boardChess" style="width:100%"></div>
-  </ion-content>
+    <ion-nav-buttons side="right" class="has-header">
+        <button class="button icon ion-android-settings" ng-click="openSettings()"></button>
+    </ion-nav-buttons>
+
+    <ion-content padding="true" class="has-header">
+        <div>{{level}}</div>
+
+        <div id="boardChess" style="width:100%"></div>
+
+        <div>
+            Total Moves: {{totalMoves}} <br>
+            Time: {{timer}}
+        </div>
+    </ion-content>
 
 </ion-view>

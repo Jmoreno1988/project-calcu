@@ -12,6 +12,10 @@ function GameChess(options) {
     this.level = options.level;
     this.initFen = this.sessionService.get("progressChess")[this.level].fen || "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
     this.auxChessjs = new Chess(this.initFen);
+    this.timeMilli = this.sessionService.get("progressChess")[this.level].time;
+    this.timer = new Timer(options.ctrl, options.interval, this.timeMilli);
+    this.state = options.state;
+    this.totalmoves = this.sessionService.get("progressChess")[this.level].moves;
 }
 
 GameChess.prototype.init = function () {
@@ -36,22 +40,34 @@ GameChess.prototype.init = function () {
         this.save();
         this.rootScope.$broadcast('finishGameChess');
     }.bind(this));
+
+    this.timer.sCallback = this.step.bind(this);
+    this.timer.init();
+}
+
+GameChess.prototype.step = function() {
+    this.ctrl.timer = this.timer.getTime();
+    this.ctrl.totalMoves = this.totalMoves;
+    this.save();
 }
 
 GameChess.prototype.save = function () {
     var aux = this.sessionService.get("progressChess");
 
     aux[this.level].fen = GetFen();
+    aux[this.level].time = this.timer.getTimeMillis();
+    aux[this.level].moves = this.totalmoves;
+
     this.sessionService.set("progressChess", aux);
 }
 
-GameChess.prototype.updateGameInfo = function () {
+GameChess.prototype.updateGameInfo = function (isUndo) {
+    /*
     var nextPlayer,
         status;
 
 
     nextPlayer = this.g_toMove ? 'white' : 'black';
-    /*
         if (this.g_Checkmate === true) {
             status = 'CHECKMATE! Player ' + nextPlayer + ' lost.';
         } else if (this.g_Stalemate === true) {
@@ -64,6 +80,11 @@ GameChess.prototype.updateGameInfo = function () {
             }
         }
       */
+
+    if(!isUndo)
+        this.totalmoves++;
+    else
+        this.totalmoves--;
 
     this.auxChessjs.load(GetFen());
 
@@ -93,11 +114,6 @@ GameChess.prototype.updateGameInfo = function () {
         console.log(this.auxChessjs.validate_fen(GetFen()))
   */  
     this.save();
-
-
-    //console.log(status)
-    //$('#info-status').html(status);
-    //$('#info-fen').html(GetFen());
 }
 
 GameChess.prototype.undoGame = function () {
@@ -116,8 +132,8 @@ GameChess.prototype.undoGame = function () {
     this.g_validMoves = GenerateValidMoves();
 
     this.board.setPosition(GetFen());
-
-    this.updateGameInfo();
+    
+    this.updateGameInfo(true);
 }
 /*
 GameChess.prototype.resetGame = function () {
@@ -187,6 +203,7 @@ GameChess.prototype.blackMoves = function () {
 
         this.board.setPosition(GetFen());
         this.board.enableUserInput(true);
+        
     }.bind(this), 99, null);
 }
 

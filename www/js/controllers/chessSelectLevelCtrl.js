@@ -47,6 +47,14 @@ appControllers.controller('chessSelectLevelCtrl', ['$scope', 'sessionService', '
             $scope.hardTime = progressChess.hard.time;
         }
 
+        function removeBoard(level) {
+            var aux = sessionService.get("progressChess");
+            aux[level].fen = null;
+            aux[level].time = "--";
+            aux[level].moves = 0;
+            sessionService.set("progressChess", aux);
+        }
+
 
         // Traduccion
         $scope.$on("changeLanguage", function () { translate() });

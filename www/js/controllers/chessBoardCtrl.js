@@ -1,5 +1,5 @@
-appControllers.controller('chessBoardCtrl', ['$scope', '$rootScope', 'sessionService', 'bridgeService',
-	function ($scope, $rootScope, sessionService, bridgeService) {
+appControllers.controller('chessBoardCtrl', ['$scope', '$rootScope', 'sessionService', 'bridgeService', '$interval', '$state',
+	function ($scope, $rootScope, sessionService, bridgeService, $interval, $state) {
 
 		var level = bridgeService.data.chessSelectLevel;
 
@@ -7,7 +7,9 @@ appControllers.controller('chessBoardCtrl', ['$scope', '$rootScope', 'sessionSer
 			ctrl: $scope,
 			rootScope: $rootScope,
 			sessionService: sessionService,
-			level: level
+			level: level,
+			interval: $interval,
+			state: $state
 		});
 
 		gameChess.init();
