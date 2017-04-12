@@ -1,6 +1,6 @@
 var cfg = {
     // Caution !!!
-    resetLocalStorage: true,
+    resetLocalStorage: false,
     isForPaymentVersion: false,
 
     // Url del servidor

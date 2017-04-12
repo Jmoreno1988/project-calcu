@@ -36,19 +36,20 @@ appControllers.controller('chessSelectLevelCtrl', ['$scope', 'sessionService', '
             $scope.easyWins = progressChess.easy.wins;
             $scope.easyDefeats = progressChess.easy.defeats;
             $scope.easyMoves = progressChess.easy.moves;
-            $scope.easyTime = progressChess.easy.time;
+            $scope.easyTime = Util.millisToMinutesAndSeconds(progressChess.easy.time);
             $scope.normalWins = progressChess.normal.wins;
             $scope.normalDefeats = progressChess.normal.defeats;
             $scope.normalMoves = progressChess.normal.moves;
-            $scope.normalTime = progressChess.normal.time;
+            $scope.normalTime = Util.millisToMinutesAndSeconds(progressChess.normal.time);
             $scope.hardWins = progressChess.hard.wins;
             $scope.hardDefeats = progressChess.hard.defeats;
             $scope.hardMoves = progressChess.hard.moves;
-            $scope.hardTime = progressChess.hard.time;
+            $scope.hardTime = Util.millisToMinutesAndSeconds(progressChess.hard.time);
         }
 
         function removeBoard(level) {
             var aux = sessionService.get("progressChess");
+            
             aux[level].fen = null;
             aux[level].time = "--";
             aux[level].moves = 0;

@@ -15,7 +15,7 @@ function GameChess(options) {
     this.timeMilli = this.sessionService.get("progressChess")[this.level].time;
     this.timer = new Timer(options.ctrl, options.interval, this.timeMilli);
     this.state = options.state;
-    this.totalmoves = this.sessionService.get("progressChess")[this.level].moves;
+    this.totalMoves = this.sessionService.get("progressChess")[this.level].moves;
 }
 
 GameChess.prototype.init = function () {
@@ -56,12 +56,12 @@ GameChess.prototype.save = function () {
 
     aux[this.level].fen = GetFen();
     aux[this.level].time = this.timer.getTimeMillis();
-    aux[this.level].moves = this.totalmoves;
+    aux[this.level].moves = this.totalMoves;
 
     this.sessionService.set("progressChess", aux);
 }
 
-GameChess.prototype.updateGameInfo = function (isUndo) {
+GameChess.prototype.updateGameInfo = function () {
     /*
     var nextPlayer,
         status;
@@ -80,11 +80,6 @@ GameChess.prototype.updateGameInfo = function (isUndo) {
             }
         }
       */
-
-    if(!isUndo)
-        this.totalmoves++;
-    else
-        this.totalmoves--;
 
     this.auxChessjs.load(GetFen());
 
@@ -133,6 +128,7 @@ GameChess.prototype.undoGame = function () {
 
     this.board.setPosition(GetFen());
     
+    this.totalMoves--;
     this.updateGameInfo(true);
 }
 /*
@@ -177,16 +173,17 @@ GameChess.prototype.pieceMove = function (move) {
             } else {
                 setTimeout(this.blackMoves.bind(this), 1000);
             }
-
+            this.totalMoves++;
             return GetFen();
         }
 
     }
-
+    
     return false;
 }
 
 GameChess.prototype.blackMoves = function () {
+    this.totalMoves++;
     Search(function (nextMove) {
         this.g_allMoves[this.g_allMoves.length] = nextMove;
         MakeMove(nextMove);
@@ -198,7 +195,7 @@ GameChess.prototype.blackMoves = function () {
                 this.g_Stalemate = true;
             }
         }
-
+        
         this.updateGameInfo();
 
         this.board.setPosition(GetFen());
