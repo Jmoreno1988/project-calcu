@@ -58,6 +58,10 @@ var dictionary = {
         "chessSelectLevelCtrl_defeats": "Derrotas",
         "chessSelectLevelCtrl_moves": "Movimientos",
         "chessSelectLevelCtrl_time": "Tiempo",
+        "chessSelectLevelCtrl_titlePopUp": "Reiniciar nivel",
+        "chessSelectLevelCtrl_msgPopUp": "Si reinicia se perderan todos los datos guardados.",
+        "chessSelectLevelCtrl_cancelPopUp": "Cancel",
+        "chessSelectLevelCtrl_acceptPopUp": "Aceptar",
 
         "easy": "Facil",
         "normal": "Normal",
@@ -122,6 +126,10 @@ var dictionary = {
         "chessSelectLevelCtrl_defeats": "Defeats",
         "chessSelectLevelCtrl_moves": "Moves",
         "chessSelectLevelCtrl_time": "Time",
+        "chessSelectLevelCtrl_titlePopUp": "Reset game",
+        "chessSelectLevelCtrl_msgPopUp": "The game will be deleted, are you sure?",
+        "chessSelectLevelCtrl_cancelPopUp": "Cancel",
+        "chessSelectLevelCtrl_acceptPopUp": "Accept",
 
         "easy": "Easy",
         "normal": "Normal",

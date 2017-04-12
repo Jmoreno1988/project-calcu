@@ -1,19 +1,7 @@
-appControllers.controller('chessSelectLevelCtrl', ['$scope', 'sessionService', '$state', 'bridgeService', '$ionicSideMenuDelegate',
-    function ($scope, sessionService, $state, bridgeService, $ionicSideMenuDelegate) {
-        var progressChess = sessionService.get("progressChess");
+appControllers.controller('chessSelectLevelCtrl', ['$scope', 'sessionService', '$state', 'bridgeService', '$ionicSideMenuDelegate', '$ionicPopup',
+    function ($scope, sessionService, $state, bridgeService, $ionicSideMenuDelegate, $ionicPopup) {
 
-        $scope.easyWins = progressChess.easy.wins;
-        $scope.easyDefeats = progressChess.easy.defeats;
-        $scope.easyMoves = progressChess.easy.moves;
-        $scope.easyTime = progressChess.easy.time;
-        $scope.normalWins = progressChess.normal.wins;
-        $scope.normalDefeats = progressChess.normal.defeats;
-        $scope.normalMoves = progressChess.normal.moves;
-        $scope.normalTime = progressChess.normal.time;
-        $scope.hardWins = progressChess.hard.wins;
-        $scope.hardDefeats = progressChess.hard.defeats;
-        $scope.hardMoves = progressChess.hard.moves;
-        $scope.hardTime = progressChess.hard.time;
+        updateInfo();
 
         $scope.selectLevel = function (level) {
             bridgeService.data.chessSelectLevel = level;
@@ -22,6 +10,41 @@ appControllers.controller('chessSelectLevelCtrl', ['$scope', 'sessionService', '
 
         $scope.openSettings = function () {
             $ionicSideMenuDelegate.toggleLeft();
+        }
+
+        $scope.confirmRemoveBoard = function (level) {
+            var l = sessionService.get("config").lenguage;
+            var d = dictionary;
+            var confirmPopup = $ionicPopup.confirm({
+                title: Translator.get("chessSelectLevelCtrl_titlePopUp", l, d),
+                template: Translator.get("chessSelectLevelCtrl_msgPopUp", l, d),
+                cancelText: Translator.get("chessSelectLevelCtrl_cancelPopUp", l, d),
+                okText: Translator.get("chessSelectLevelCtrl_acceptPopUp", l, d)
+            });
+
+            confirmPopup.then(function (res) {
+                if (res) {
+                    removeBoard(level);
+                    updateInfo();
+                } else { }
+            });
+        }
+
+        function updateInfo() {
+            var progressChess = sessionService.get("progressChess");
+
+            $scope.easyWins = progressChess.easy.wins;
+            $scope.easyDefeats = progressChess.easy.defeats;
+            $scope.easyMoves = progressChess.easy.moves;
+            $scope.easyTime = progressChess.easy.time;
+            $scope.normalWins = progressChess.normal.wins;
+            $scope.normalDefeats = progressChess.normal.defeats;
+            $scope.normalMoves = progressChess.normal.moves;
+            $scope.normalTime = progressChess.normal.time;
+            $scope.hardWins = progressChess.hard.wins;
+            $scope.hardDefeats = progressChess.hard.defeats;
+            $scope.hardMoves = progressChess.hard.moves;
+            $scope.hardTime = progressChess.hard.time;
         }
 
 
