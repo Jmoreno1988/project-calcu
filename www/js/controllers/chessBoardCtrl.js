@@ -9,8 +9,11 @@ appControllers.controller('chessBoardCtrl', ['$scope', '$rootScope', 'sessionSer
 			sessionService: sessionService,
 			level: level,
 			interval: $interval,
-			state: $state
+			state: $state,
+			bridgeService: bridgeService
 		});
 
 		gameChess.init();
+
+		$scope.level = dictionary[sessionService.get("config").lenguage][level];
 	}])

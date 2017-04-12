@@ -16,6 +16,7 @@ function GameChess(options) {
     this.timer = new Timer(options.ctrl, options.interval, this.timeMilli);
     this.state = options.state;
     this.totalMoves = this.sessionService.get("progressChess")[this.level].moves;
+    this.bridgeService = options.bridgeService; 
 }
 
 GameChess.prototype.init = function () {
@@ -62,25 +63,6 @@ GameChess.prototype.save = function () {
 }
 
 GameChess.prototype.updateGameInfo = function () {
-    /*
-    var nextPlayer,
-        status;
-
-
-    nextPlayer = this.g_toMove ? 'white' : 'black';
-        if (this.g_Checkmate === true) {
-            status = 'CHECKMATE! Player ' + nextPlayer + ' lost.';
-        } else if (this.g_Stalemate === true) {
-            status = 'DRAW!';
-        } else {
-            status = 'Next player is ' + nextPlayer + '.';
-    
-            if (this.g_inCheck === true) {
-                status = 'CHECK! ' + status;
-            }
-        }
-      */
-
     this.auxChessjs.load(GetFen());
 
     if (this.auxChessjs.game_over())
@@ -101,6 +83,11 @@ GameChess.prototype.updateGameInfo = function () {
     if (this.auxChessjs.in_threefold_repetition())
         console.log("in_threefold_repetition")
 
+    if(this.auxChessjs.game_over()) {
+        this.finish();
+        this.state.go("chessResult", {});
+    }
+
 /*
     var fen = GetFen();
     if(this.auxChessjs.validate_fen(GetFen()))
@@ -109,6 +96,14 @@ GameChess.prototype.updateGameInfo = function () {
         console.log(this.auxChessjs.validate_fen(GetFen()))
   */  
     this.save();
+}
+
+GameChess.prototype.finish = function() {
+    this.bridgeService.data.timeChess = this.timer.getTimeMillis();
+    this.bridgeService.data.levelWinChess = (this.totalMoves % 2) ? true : false;
+    this.bridgeService.data.totalMovesChess = this.totalMoves;
+    this.bridgeService.data.totalWinsChess = this.sessionService.get("progressChess")[this.level].wins;
+    this.bridgeService.data.totalDefeatsChess = this.sessionService.get("progressChess")[this.level].defeats;
 }
 
 GameChess.prototype.undoGame = function () {
@@ -131,15 +126,7 @@ GameChess.prototype.undoGame = function () {
     this.totalMoves--;
     this.updateGameInfo(true);
 }
-/*
-GameChess.prototype.resetGame = function () {
-    ResetGame();
-    this.board.setPosition(ChessUtils.FEN.startId, true);
-    this.updateGameInfo();
-    this.g_Checkmate = false;
-    this.g_Stalemate = false;
-}
-*/
+
 GameChess.prototype.pieceMove = function (move) {
     var i,
         moveFromX = ChessUtils.convertIndexToColumn(ChessUtils.convertNotationSquareToIndex(move.from)),
