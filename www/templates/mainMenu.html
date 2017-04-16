@@ -141,6 +141,13 @@
             text-align: center;
             color: white;
         }
+
+        #wrapperPlanet {
+            width: 50px;
+            height: 50px;
+            background: red;
+            position:relative;
+        }
         
         #planet1,
         #planet2,
@@ -163,7 +170,7 @@
         }
         
         .p3SecondPosition {
-            transform: rotate(405deg)!important;
+            transform: rotate(404.9999deg)!important;
         }
         
         .p4SecondPosition {
@@ -196,12 +203,17 @@
                     </div>
                 </div>
             </div>
-
+            
+            <!-- adasdasd -->
             <div class="backgroundRotate" id="planet3">
-                <div class="planet" ui-sref="chessSelectLevel">
-                    <div class="buttonIcon">
-                        <img src="img/horse-rotate.svg">
+                <!--
+                    <div class="planet" >
+                        <div class="buttonIcon"  ui-sref="chessSelectLevel">
+                            <img src="img/horse-rotate.svg">
+                        </div>
                     </div>
+                    -->
+                <div id="wrapperPlanet" ng-click="test()">
                 </div>
             </div>
 
@@ -239,7 +251,7 @@
         <span class="helpTitle" id="helpOptions">{{mainMenuCtrl_options}}</span>
         <!-- Fin Mensaje ayuda -->
 
-  <!--
+        <!--
         <style>
             #galaxy2 {
                 position: absolute;

@@ -96,6 +96,10 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
             // Execute action
         });
 
+        $scope.test = function() {
+            console.log(123)
+        }
+
         // Traduccion
         $scope.$on("changeLanguage", function () { translate() });
 

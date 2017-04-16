@@ -1,6 +1,5 @@
 <ion-view title="Calcu" id="pageSelectLevel" ng-init ="update()" cache-view="false">
     <style>
-
     </style>
     <ion-nav-buttons side="right" class="has-header">
         <button class="button icon ion-android-settings" ng-click="openSettings()"></button>
@@ -8,19 +7,19 @@
     <ion-content padding="true" class="has-header">
         <div class="list">
             <a class="item item-icon-left item-icon-right" ng-click="selectLevel('easy')">
-                <i class="icon ion-tshirt"></i>
+                <i class="icon ion-tshirt green"></i>
                 <h2>{{selectLevelCtrl_levelEasy}}</h2>
                 <p>{{selectLevelCtrl_record}}: {{recordEasy}} :: {{selectLevelCtrl_lastScore}}: {{lastScoreEasy}}</p>
             </a>
 
             <a class="item item-icon-left item-icon-right" ng-click="selectLevel('normal')">
-                <i class="icon ion-ribbon-b"></i>
+                <i class="icon ion-ribbon-b amber"></i>
                 <h2>{{selectLevelCtrl_levelNormal}}</h2>
                 <p>{{selectLevelCtrl_record}}: {{recordNormal}} :: {{selectLevelCtrl_lastScore}}: {{lastScoreNormal}}</p>
             </a>
 
             <a class="item item-icon-left item-icon-right" ng-click="selectLevel('hard')">
-                <i class="icon ion-ribbon-a"></i>
+                <i class="icon ion-ribbon-a red"></i>
                 <h2>{{selectLevelCtrl_levelHard}}</h2>
                 <p>{{selectLevelCtrl_record}}: {{recordHard}} :: {{selectLevelCtrl_lastScore}}: {{lastScoreHard}}</p>
             </a>
@@ -36,7 +35,7 @@
             </a>
 
             <a class="item item-icon-left item-icon-right" ng-click="selectLevel('kids')">
-                <i class="icon ion-ios-football"></i>
+                <i class="icon ion-ios-football lightBlue"></i>
                 <h2>{{selectLevelCtrl_levelKids}}</h2>
                 <p>{{selectLevelCtrl_record}}: {{recordKids}} :: {{selectLevelCtrl_lastScore}}: {{lastScoreKids}}</p>
             </a>
