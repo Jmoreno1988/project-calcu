@@ -1,4 +1,5 @@
 var cfg = {
+    version: "1.0.0",
     // Caution !!!
     resetLocalStorage: false,
     isForPaymentVersion: false,

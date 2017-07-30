@@ -22,6 +22,12 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
             document.getElementById("planet4").classList.toggle("p4SecondPosition");
             document.getElementById("planet5").classList.toggle("p5SecondPosition");
             document.getElementById("planet1Icon").classList.toggle("pIcon1SecondPosition");
+
+            document.getElementById("wpChess").classList.toggle("wpActivate");
+            document.getElementById("wpCalcu").classList.toggle("wpActivate");
+            document.getElementById("wpSudo").classList.toggle("wpActivate");
+            document.getElementById("wpShare").classList.toggle("wpActivate");
+            document.getElementById("wpOpi").classList.toggle("wpActivate");
         }
 
         $scope.showHelp = function() {
@@ -97,7 +103,7 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
         });
 
         $scope.test = function() {
-            console.log(123)
+            console.log("Inicio juego")
         }
 
         // Traduccion

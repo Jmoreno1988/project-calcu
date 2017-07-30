@@ -155,6 +155,40 @@
         #planet4,
         #planet5 {
             transform: rotate(90deg);
+            float:left;
+        }
+
+        .wp{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 50px;
+            height: 50px;
+            display: none;
+        }
+
+        .wpActivate {
+            display: block;
+        }
+
+        #wpChess {
+            transform: translate(-50%, -125px);
+        }
+
+        #wpCalcu {
+            transform: translate(-115px, -65px);
+        }
+
+        #wpSudo {
+            transform: translate(65px, -65px);
+        }
+
+        #wpShare {
+            transform: translate(-95px, 45px);
+        }
+
+        #wpOpi {
+            transform: translate(45px, 45px);
         }
         
         #planet1Icon {
@@ -197,7 +231,7 @@
         <div id="galaxy">
             <div id="halo"></div>
             <div class="backgroundRotate" id="planet2">
-                <div class="planet" ui-sref="sudokuSelectLevel">
+                <div class="planet">
                     <div class="buttonIcon">
                         <img src="img/sudoku2.svg">
                     </div>
@@ -206,28 +240,25 @@
             
             <!-- adasdasd -->
             <div class="backgroundRotate" id="planet3">
-                <!--
                     <div class="planet" >
-                        <div class="buttonIcon"  ui-sref="chessSelectLevel">
+                        <div class="buttonIcon">
                             <img src="img/horse-rotate.svg">
                         </div>
                     </div>
-                    -->
-                <div id="wrapperPlanet" ng-click="test()">
-                </div>
+                
             </div>
 
             <div class="backgroundRotate" id="planet4">
-                <div class="planet" ui-sref="selectLevel">
+                <div class="planet">
                     <img src="img/calculator2.svg">
                 </div>
             </div>
 
             <div class="backgroundRotate" id="planet5">
-                <div class="planet" ng-click="shareViaTwitter('some message', null, 'https://www.thepolyglotdeveloper.com')">
+                <div class="planet">
                     <div class="buttonIcon">
                         <img src="img/share-rotate.svg">
-                        <span class="helpTitle" id="helpOptions">{{mainMenuCtrl_share}}</span>
+                        
                     </div>
                 </div>
             </div>
@@ -245,6 +276,15 @@
         <div id="core" ng-click="openListGames()">
             <div class="buttonText">{{mainMenuCtrl_play}}</div>
         </div>
+
+        <!-- -->
+        <div class="wp" id="wpChess" ui-sref="chessSelectLevel"> </div>
+        <div class="wp" id="wpCalcu" ui-sref="selectLevel"> </div>
+        <div class="wp" id="wpSudo" ui-sref="sudokuSelectLevel"> </div>
+        <div class="wp" id="wpShare" ng-click="shareViaTwitter('some message', null, 'https://www.thepolyglotdeveloper.com')">
+            <span class="helpTitle" id="helpOptions">{{mainMenuCtrl_share}}</span>
+        </div>
+        <div class="wp" id="wpOpi" ng-click="showValorateModal()"> </div>
 
         <!-- Mensaje ayuda -->
         <div id="buttonHelp"><img src="img/comment-question-outline.svg" alt="" ng-click="showHelp()"></div>
