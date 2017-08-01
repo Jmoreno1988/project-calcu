@@ -8,13 +8,15 @@
     </ion-nav-buttons>
 
     <ion-content padding="true" class="has-header">
-        <div>{{level}}</div>
+        <div style="text-align:center"><h1>{{level}}</h1></div>
+        <div style="text-align:center">{{timer}}</div>
 
-        <div id="boardChess" style="width:100%"></div>
+        <div id="boardChess" style="width:100%; opacity: 0.1; border: 1px solid #D8D8D8;"></div>
 
-        <div>
+        <div style="border: 1px solid #D8D8D8; text-align:center;">
+            <span id="labelCheck" style="color: red; display:none;"> Check!!! </span> <br>
             Total Moves: {{totalMoves}} <br>
-            Time: {{timer}}
+            Turn: {{actualTurn}} <br>
         </div>
     </ion-content>
 

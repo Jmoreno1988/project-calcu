@@ -49,6 +49,13 @@ GameChess.prototype.init = function () {
 GameChess.prototype.step = function() {
     this.ctrl.timer = this.timer.getTime();
     this.ctrl.totalMoves = this.totalMoves;
+    this.ctrl.actualTurn = this.totalMoves % 2 ? "black" : "white";
+    
+    if(this.auxChessjs.in_check())
+        document.getElementById("labelCheck").style.display = "block";
+    else 
+        document.getElementById("labelCheck").style.display = "none";
+
     this.save();
 }
 
