@@ -1,19 +1,7 @@
-<ion-view title="Select Level" id="pageSudokuSelectLevel" cache-view="false">
+<ion-view title="Sudoku" id="pageSudokuSelectLevel" cache-view="false">
     <style>
-        .grey{
+    .grey{
             color: #666;
-        }
-
-        .amber {
-            color: #ffc107;
-        }
-
-        .purple {
-            color: #673ab7;
-        }
-
-        .blue {
-            color: #2196f3;
         }
     </style>
     <ion-nav-buttons side="right" class="has-header">
@@ -23,7 +11,7 @@
         <div class="list">
             <a class="item item-icon-left item-icon-right">
                 <span ng-click="selectLevel('easy')">
-                    <i class="icon ion-tshirt blue"></i>
+                    <i class="icon ion-tshirt"></i>
                     <h2>{{sudokuSelectLevelCtrl_easy}}</h2>
                     <p> {{sudokuSelectLevelCtrl_wins}}: {{easyWins}} :: {{sudokuSelectLevelCtrl_time}}: {{easyTime}} </p>
                 </span>
@@ -32,7 +20,7 @@
 
             <a class="item item-icon-left item-icon-right">
                 <span ng-click="selectLevel('normal')">
-                <i class="icon ion-ribbon-a amber"></i>
+                <i class="icon ion-ribbon-a"></i>
                 <h2>{{sudokuSelectLevelCtrl_normal}}</h2>
                 <p> {{sudokuSelectLevelCtrl_wins}}: {{normalWins}} :: {{sudokuSelectLevelCtrl_time}}: {{normalTime}} </p>
                 </span>
@@ -41,20 +29,12 @@
 
             <a class="item item-icon-left item-icon-right">
                 <span ng-click="selectLevel('hard')">
-                <i class="icon ion-university purple"></i>
+                <i class="icon ion-university"></i>
                 <h2>{{sudokuSelectLevelCtrl_hard}}</h2>
                 <p> {{sudokuSelectLevelCtrl_wins}}: {{hardWins}} :: {{sudokuSelectLevelCtrl_time}}: {{hardTime}} </p>
                 </span>
                 <i class="icon ion-trash-b grey" ng-click="confirmRemoveBoard('hard')"></i>
             </a>
-            <!--
-            <a class="item item-icon-left item-icon-right" ng-click="selectLevel('very hard')">
-                <i class="icon ion-ribbon-a"></i>
-                <h2>{{sudokuSelectLevelCtrl_veryHard}}</h2>
-                <p> {{sudokuSelectLevelCtrl_wins}}: {{veryHardWins}} :: {{sudokuSelectLevelCtrl_time}}: {{veryHardTime}} </p>
-                <i class="icon ion-trash-b" ng-click="confirmRemoveBoard('veryHard')"></i>
-            </a>
-            -->
         </div>
     </ion-content>
 </ion-view>

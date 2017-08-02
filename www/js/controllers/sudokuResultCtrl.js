@@ -3,9 +3,9 @@ appControllers.controller('sudokuResultCtrl', ['$scope', 'bridgeService', '$ioni
         var level = bridgeService.data.sudokuSelectLevel;
         var aux = sessionService.get("progressSudoku");
        
-        aux[level].board = null;
-        aux[level].wins = aux[level].wins + 1;
-        sessionService.set("progressSudoku", aux);
+        //aux[level].board = null;
+        //aux[level].wins = aux[level].wins + 1;
+        //sessionService.set("progressSudoku", aux);
 
         $scope.level = dictionary[sessionService.get("config").lenguage][level];
         $scope.time = millisToMinutesAndSeconds(aux[level].time);

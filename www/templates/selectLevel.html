@@ -1,20 +1,5 @@
-<ion-view title="Calcu" id="pageSelectLevel" ng-init="update()" cache-view="false">
+<ion-view title="Calculator" id="pageSelectLevel" ng-init="update()" cache-view="false">
     <style>
-        .grey {
-            color: #666;
-        }
-        
-        .amber {
-            color: #ffc107;
-        }
-        
-        .purple {
-            color: #673ab7;
-        }
-        
-        .blue {
-            color: #2196f3;
-        }
     </style>
     <ion-nav-buttons side="right" class="has-header">
         <button class="button icon ion-android-settings" ng-click="openSettings()"></button>
@@ -22,25 +7,25 @@
     <ion-content padding="true" class="has-header">
         <div class="list">
             <a class="item item-icon-left item-icon-right" ng-click="selectLevel('easy')">
-                <i class="icon ion-tshirt green"></i>
+                <i class="icon ion-tshirt grey"></i>
                 <h2>{{selectLevelCtrl_levelEasy}}</h2>
                 <p>{{selectLevelCtrl_record}}: {{recordEasy}} :: {{selectLevelCtrl_lastScore}}: {{lastScoreEasy}}</p>
             </a>
 
             <a class="item item-icon-left item-icon-right" ng-click="selectLevel('normal')">
-                <i class="icon ion-ribbon-b amber"></i>
+                <i class="icon ion-ribbon-b grey"></i>
                 <h2>{{selectLevelCtrl_levelNormal}}</h2>
                 <p>{{selectLevelCtrl_record}}: {{recordNormal}} :: {{selectLevelCtrl_lastScore}}: {{lastScoreNormal}}</p>
             </a>
 
             <a class="item item-icon-left item-icon-right" ng-click="selectLevel('hard')">
-                <i class="icon ion-ribbon-a red"></i>
+                <i class="icon ion-ribbon-a grey"></i>
                 <h2>{{selectLevelCtrl_levelHard}}</h2>
                 <p>{{selectLevelCtrl_record}}: {{recordHard}} :: {{selectLevelCtrl_lastScore}}: {{lastScoreHard}}</p>
             </a>
 
             <a class="item item-icon-left item-icon-right" ng-click="selectLevel('master')">
-                <i class="icon ion-university"></i>
+                <i class="icon ion-university grey"></i>
                 <h2>{{selectLevelCtrl_levelMaster}}</h2>
                 <p>{{selectLevelCtrl_record}}: {{recordMaster}} :: {{selectLevelCtrl_lastScore}}: {{lastScoreMaster}}</p>
             </a>
@@ -50,17 +35,19 @@
             </a>
 
             <a class="item item-icon-left item-icon-right" ng-click="selectLevel('kids')">
-                <i class="icon ion-ios-football lightBlue"></i>
+                <i class="icon ion-ios-football grey"></i>
                 <h2>{{selectLevelCtrl_levelKids}}</h2>
                 <p>{{selectLevelCtrl_record}}: {{recordKids}} :: {{selectLevelCtrl_lastScore}}: {{lastScoreKids}}</p>
             </a>
 
+            <!--
             <a class="item item-icon-left item-icon-right" ng-click="showPopup('survival')">
-                <i class="icon ion-ios-infinite"></i>
+                <i class="icon ion-ios-infinite grey"></i>
                 <h2>{{selectLevelCtrl_levelSurvival}}</h2>
                 <p>{{selectLevelCtrl_goodLuck}}</p>
                 <p>{{selectLevelCtrl_record}}: {{recordSurvival}} :: {{selectLevelCtrl_lastScore}}: {{lastScoreSurvival}}</p>
             </a>
+            -->
         </div>
     </ion-content>
 </ion-view>

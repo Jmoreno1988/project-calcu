@@ -7,5 +7,5 @@ appControllers.controller('canvasCtrl', ['$scope', '$stateParams', 'bridgeServic
 
         // Binding events
         $scope.checkResult = function(option) { game.checkResult(option) };
-        $scope.reset = function() { game.reset() };
+        $scope.reset = function() { game.reset(); };
     }])

@@ -90,9 +90,14 @@ GameCal.prototype.generateMove = function () {
         case "kids":
             this.generateKids();
             break;
+        
+        case "infinity":
+            this.generateInfinity();
+            break;
     }
 
-    //this.shuffle(this.options);
+    /* Comentar para que no se mezclen los numeros */
+    this.shuffle(this.options);
     this.pullInfo();
 }
 
@@ -159,9 +164,11 @@ GameCal.prototype.checkResult = function (option) {
 }
 
 GameCal.prototype.reset = function () {
-    this.level = 0;
+    this.level = 1;
+    this.score = 1000;
+    this.totalScore = 0;
+    this.errors = 0;
     this.timer.init();
-    this.score = 0;
     this.newRound();
     this.generateMove();
     this.pullInfo();

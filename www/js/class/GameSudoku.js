@@ -20,6 +20,7 @@ function GameSudoku(options) {
 }
 
 GameSudoku.prototype.init = function () {
+    console.log(this.sessionService.get("progressSudoku")[this.difficulty].board)
     this.sudokuJs = $("#" + this.idBoard).sudokuJS({
         difficulty: this.difficulty,
         board: this.sessionService.get("progressSudoku")[this.difficulty].board
@@ -159,10 +160,19 @@ GameSudoku.prototype.listener = function (i) {
         this.listInputs[i].value = this.actualNumber;
 
     if (this.isValidate() && this.isComplete()) {
+        this.reset();
         this.state.go("sudokuResult", {});
     }
     
     this.save(posCell, this.actualNumber);
+}
+
+GameSudoku.prototype.reset = function() {
+    console.log("Reseteo.....")
+    
+    
+
+    console.log(this.sessionService.get("progressSudoku")[this.difficulty].board);
 }
 
 GameSudoku.prototype.isComplete = function () {
