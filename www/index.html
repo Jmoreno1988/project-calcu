@@ -125,7 +125,8 @@
                                 <option ng-repeat="language in languagesList">{{language.title}}</option>
                             </select>
                         </label>
-                        <ion-toggle ng-model="isVibration" ng-checked="isVibration" ng-change="updateIsVibration()" toggle-class="toggle-balanced"> {{menuCtrl_vibration}} </ion-toggle>
+                        <ion-toggle ng-model="isVibration" ng-checked="isVibration" ng-change="updateIsVibration()" toggle-class="toggle-balanced">
+                        {{menuCtrl_vibration}} </ion-toggle>
                         <ion-item ng-click="goTo('removeAds')">
                             {{menuCtrl_removeADS}}
                         </ion-item>
@@ -142,6 +143,33 @@
             </ion-side-menu>
         </ion-side-menus>
     </div>
+
+    <script>
+       function shareWith(socialNetwork) {
+           var urlShareTwitter = "http://twitter.com/?status=";
+           var urlShareFacebook = "http://www.facebook.com/sharer/sharer.php?u=";
+           var urlWhastApp = "whatsapp://send?text=";
+
+           switch(socialNetwork) {
+                case 1: // Twitter
+                    var url = urlShareTwitter + encodeURIComponent("Compartir por twitter");
+                    window.open(url, "");
+                    break;
+                
+                case 2: // Facebook 
+                    var url = urlShareFacebook + encodeURIComponent("Compartir por twitter");
+                    window.open(url, "");
+                    break;
+
+                case 3: // WhastApp 
+                    var url = urlWhastApp + encodeURIComponent("Compartir por twitter");
+                    window.open(url, "");
+                    break;
+
+           }
+           
+       }
+    </script>
 </body>
 
 </html>

@@ -1,7 +1,7 @@
 appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSideMenuDelegate', 'sessionService', '$http', '$ionicPopup', '$state', '$cordovaSocialSharing', '$ionicModal',
     function ($scope, $stateParams, $ionicSideMenuDelegate, sessionService, $http, $ionicPopup, $state, $cordovaSocialSharing, $ionicModal) {
         // $ionicSideMenuDelegate.canDragContent(false);
-        
+
         if (cfg.resetLocalStorage)
             sessionService.clear();
 
@@ -15,7 +15,7 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
             sessionService.set("infoUser", cfg.modelObjectLocalStorage.infoUser);
         }
 
-        $scope.openListGames = function() {
+        $scope.openListGames = function () {
             document.getElementById("planet1").classList.toggle("p1SecondPosition");
             document.getElementById("planet2").classList.toggle("p2SecondPosition");
             document.getElementById("planet3").classList.toggle("p3SecondPosition");
@@ -30,9 +30,9 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
             document.getElementById("wpOpi").classList.toggle("wpActivate");
         }
 
-        $scope.showHelp = function() {
+        $scope.showHelp = function () {
             var list = document.querySelectorAll(".helpTitle")
-            for(var i = 0; i < list.length; i++)
+            for (var i = 0; i < list.length; i++)
                 list[i].classList.toggle("helpOptionsShowSecond");
         }
 
@@ -45,7 +45,7 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
                 case 'menuRecordsCal':
                     $state.go(page);
                     break;
-                case 'sudokuBoard': 
+                case 'sudokuBoard':
                     $state.go(page);
                     break;
             }
@@ -53,7 +53,7 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
 
         $scope.showValorateModal = function () {
             var l = sessionService.get("config").lenguage;
-            var d = dictionary; 
+            var d = dictionary;
             var confirmPopup = $ionicPopup.confirm({
                 title: Translator.get("mainMenuCtrl_titleOpinion", l, d),
                 template: Translator.get("mainMenuCtrl_msgOpinion", l, d),
@@ -67,6 +67,36 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
                 } else { }
             });
         };
+
+        $scope.showShareMenu = function () {
+            var alertPopup = $ionicPopup.alert({
+                title: 'Share',
+                template:
+                '<div class="row">' +
+                    '<div class="col" onclick="shareWith(2)"><img src="img/social-networks-logos/facebook.svg"></div>' +
+                    '<div class="col" onclick="shareWith(1)"><img src="img/social-networks-logos/twitter.svg"></div>' +
+                    '<div class="col" onclick="shareWith(3)"><img src="img/social-networks-logos/whatsapp.svg"></div>' +
+                '</div>'
+            });
+        };
+
+        $scope.shareWith = function(socialNetworks) {
+            console.log(123123)
+            switch(socialNetworks) {
+                case '1': 
+                    console.log("facebook")
+                    break;
+                
+                case '2': 
+                    console.log("twitter")
+                    break;
+                
+                case '3': 
+                    console.log("whatsapp")
+                    break;
+            }
+        }
+
 
         $scope.shareViaTwitter = function (message, image, link) {
             //$cordovaSocialSharing.shareViaTwitter("Check out this cool app I'm using called IonicProject for ");
@@ -102,7 +132,7 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
             // Execute action
         });
 
-        $scope.test = function() {
+        $scope.test = function () {
             console.log("Inicio juego")
         }
 

@@ -219,6 +219,7 @@
             transform: rotate(-90deg)!important;
         }
         /* Fin Menu ionico */
+
     </style>
 
     <ion-nav-buttons side="right" class="has-header">
@@ -281,7 +282,7 @@
         <div class="wp" id="wpChess" ui-sref="chessSelectLevel"> </div>
         <div class="wp" id="wpCalcu" ui-sref="selectLevel"> </div>
         <div class="wp" id="wpSudo" ui-sref="sudokuSelectLevel"> </div>
-        <div class="wp" id="wpShare" ng-click="shareViaTwitter('some message', null, 'https://www.thepolyglotdeveloper.com')">
+        <div class="wp" id="wpShare" ng-click="showShareMenu()">
             <span class="helpTitle" id="helpOptions">{{mainMenuCtrl_share}}</span>
         </div>
         <div class="wp" id="wpOpi" ng-click="showValorateModal()"> </div>
