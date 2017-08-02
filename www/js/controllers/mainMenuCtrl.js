@@ -81,7 +81,6 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
         };
 
         $scope.shareWith = function(socialNetworks) {
-            console.log(123123)
             switch(socialNetworks) {
                 case '1': 
                     console.log("facebook")
@@ -95,22 +94,6 @@ appControllers.controller('mainMenuCtrl', ['$scope', '$stateParams', '$ionicSide
                     console.log("whatsapp")
                     break;
             }
-        }
-
-
-        $scope.shareViaTwitter = function (message, image, link) {
-            //$cordovaSocialSharing.shareViaTwitter("Check out this cool app I'm using called IonicProject for ");
-            $cordovaSocialSharing.shareViaEmail(
-                'Message', // can contain HTML tags, but support on Android is rather limited:  http://stackoverflow.com/questions/15136480/how-to-send-html-content-with-image-through-android-default-email-client
-                'Subject',
-                ['to@person1.com', 'to@person2.com'], // TO: must be null or an array
-                ['cc@person1.com'], // CC: must be null or an array
-                null, // BCC: must be null or an array
-                ['https://www.google.nl/images/srpr/logo4w.png', 'www/localimage.png'], // FILES: can be null, a string, or an array
-                function () { console.log('si') }, // called when sharing worked, but also when the user cancelled sharing via email. On iOS, the callbacks' boolean result parameter is true when sharing worked, false if cancelled. On Android, this parameter is always true so it can't be used). See section "Notes about the successCallback" below.
-                function () { console.log('nop') } // called when sh*t hits the fan
-            );
-            //$cordovaSocialSharing.shareViaTwitter('Digital Signature Maker', null /* img */, 'https://play.google.com/store/apps/details?id=com.prantikv.digitalsignaturemaker', null, function(errormsg){alert("Error: Cannot Share")});
         }
 
         $scope.openModal = function () {
